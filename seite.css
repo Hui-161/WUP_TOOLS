@@ -17,8 +17,8 @@ body { margin: 0; background: var(--papier); color: var(--text);
 header.kopf { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; align-items: baseline;
   padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--linie); }
 header.kopf .marke { font-weight: 650; letter-spacing: .01em; color: var(--text); text-decoration: none; margin-right: auto; }
-header.kopf nav a { color: var(--leise); text-decoration: none; margin-left: 1.1rem; font-size: .95rem; }
-header.kopf nav a:first-child { margin-left: 0; }
+header.kopf nav { display: flex; flex-wrap: wrap; gap: .2rem 1.1rem; min-width: 0; }
+header.kopf nav a { color: var(--leise); text-decoration: none; font-size: .95rem; }
 header.kopf nav a:hover, header.kopf nav a[aria-current] { color: var(--text); }
 h1 { font-size: 2.1rem; line-height: 1.2; font-weight: 650; margin: 3rem 0 .75rem; letter-spacing: -.01em; }
 h2 { font-size: 1.25rem; font-weight: 650; margin: 3rem 0 .5rem; padding-top: 1rem; border-top: 1px solid var(--linie); }

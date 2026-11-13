@@ -4,16 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WUP-Werkzeuge</title>
+<meta name="description" content="WUP-Editor und WUP-Editor-Übersicht direkt im Browser: WUP-Dateien laden, prüfen, bearbeiten und exportieren.">
+<link rel="canonical" href="https://wup.hui161.de/werkzeuge.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WUP-Werkzeuge">
+<meta property="og:title" content="WUP-Werkzeuge">
+<meta property="og:description" content="WUP-Editor und WUP-Editor-Übersicht direkt im Browser: WUP-Dateien laden, prüfen, bearbeiten und exportieren.">
+<meta property="og:url" content="https://wup.hui161.de/werkzeuge.html">
+<meta property="og:image" content="https://wup.hui161.de/bilder/editor.png">
+<meta property="og:image:width" content="2720">
+<meta property="og:image:height" content="1640">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="seite.css">
 </head>
 <body>
 <header class="kopf">
   <span><a class="marke" href="./">WUP-Werkzeuge</a><span class="reiter" role="tablist" aria-label="Werkzeug">
-    <button type="button" role="tab" id="reiter-editor" aria-controls="werkzeug-editor" data-werkzeug="editor">Editor</button>
     <button type="button" role="tab" id="reiter-uebersicht" aria-controls="werkzeug-uebersicht" data-werkzeug="uebersicht">Übersicht</button>
+    <button type="button" role="tab" id="reiter-editor" aria-controls="werkzeug-editor" data-werkzeug="editor">Editor</button>
   </span></span>
-  <nav><a href="doku.html">Doku</a><a href="https://github.com/Hui-161/WUP_TOOLS">Quelltext</a><a id="ohneRahmen" href="Wup/wup_editor/wup_editor.html" title="Das Werkzeug ohne Website-Kopf im ganzen Fenster öffnen">Ohne Rahmen</a></nav>
+  <nav><a href="doku.html">Doku</a><a href="https://github.com/Hui-161/WUP_TOOLS">Quelltext</a><a id="ohneRahmen" href="Wup/wup_editor_oversight/wup_editor_oversight.html" title="Das Werkzeug ohne Website-Kopf im ganzen Fenster öffnen">Ohne Rahmen</a></nav>
 </header>
 <iframe id="werkzeug-editor" role="tabpanel" aria-labelledby="reiter-editor" title="WUP-Editor" src="Wup/wup_editor/wup_editor.html" hidden></iframe>
 <iframe id="werkzeug-uebersicht" role="tabpanel" aria-labelledby="reiter-uebersicht" title="WUP-Editor-Übersicht" src="Wup/wup_editor_oversight/wup_editor_oversight.html" hidden></iframe>
@@ -31,7 +43,7 @@
   var ohneRahmen = document.getElementById('ohneRahmen');
   var aktiv = null;
   function zeigen(name, ohneVerlauf) {
-    if (!rahmen[name]) name = 'editor';
+    if (!rahmen[name]) name = 'uebersicht';   /* ohne Angabe die Übersicht: das meist zuerst geöffnete Werkzeug */
     aktiv = name;
     Object.keys(rahmen).forEach(function (n) {
       rahmen[n].hidden = n !== name;

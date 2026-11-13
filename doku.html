@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Doku — WUP-Werkzeuge</title>
 <meta name="description" content="Anleitung zu WUP-Editor, Übersicht und MCP-Server: Einrichten, Prüfregeln, Automatiken, Export.">
+<link rel="canonical" href="https://wup.hui161.de/doku.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WUP-Werkzeuge">
+<meta property="og:title" content="Doku — WUP-Werkzeuge">
+<meta property="og:description" content="Anleitung zu WUP-Editor, Übersicht und MCP-Server: Einrichten, Prüfregeln, Automatiken, Export.">
+<meta property="og:url" content="https://wup.hui161.de/doku.html">
+<meta property="og:image" content="https://wup.hui161.de/bilder/editor.png">
+<meta property="og:image:width" content="2720">
+<meta property="og:image:height" content="1640">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="seite.css">
 </head>
@@ -12,7 +23,7 @@
 <div class="seite">
 <header class="kopf">
   <a class="marke" href="./">WUP-Werkzeuge</a>
-  <nav><a href="./">Übersicht</a><a href="doku.html" aria-current="page">Doku</a><a href="mcp.html">MCP</a><a href="https://github.com/Hui-161/WUP_TOOLS">Quelltext</a><a href="en/" lang="en">English</a></nav>
+  <nav><a href="./">Start</a><a href="werkzeuge.html#uebersicht">Übersicht</a><a href="werkzeuge.html#editor">Editor</a><a href="doku.html" aria-current="page">Doku</a><a href="mcp.html">MCP</a><a href="https://github.com/Hui-161/WUP_TOOLS">Quelltext</a><a href="en/" lang="en">English</a></nav>
 </header>
 <main>
 <h1>Doku</h1>
@@ -21,8 +32,8 @@
 
 <h2 id="einrichten">Einrichten</h2>
 <h3>Starten</h3>
-<p>Die Werkzeuge laufen direkt von dieser Seite: <a href="werkzeuge.html#editor">Editor</a>, <a href="werkzeuge.html#uebersicht">Übersicht</a>. Wer ohne Netz arbeiten will, lädt beide Werkzeuge über <a href="./#herunterladen">Herunterladen</a> in denselben Ordner und öffnet sie per Doppelklick; der Dateiname nennt Version und Tag des Herunterladens. Die Übersicht fragt dann einmal nach der Editor-Datei. Geladene WUP-Dateien bleiben in beiden Fällen im Browser; es wird nichts übertragen.</p>
-<p>Auf dieser Seite laufen Editor und Übersicht nebeneinander unter dem Website-Kopf. Die Reiter „Editor“ und „Übersicht“ wechseln zwischen beiden, ohne dass etwas neu geladen wird oder verloren geht. „Im Editor öffnen“ in der Übersicht wechselt zum Editor und übergibt die Datei; Änderungen kommen in die Übersicht zurück. „Ohne Rahmen“ öffnet das gerade gezeigte Werkzeug im ganzen Fenster.</p>
+<p>Die Werkzeuge laufen direkt von dieser Seite: <a href="werkzeuge.html#uebersicht">Übersicht</a>, <a href="werkzeuge.html#editor">Editor</a>; beide sind im Menü jeder Seite erreichbar. Wer ohne Netz arbeiten will, lädt beide Werkzeuge über <a href="./#herunterladen">Herunterladen</a> in denselben Ordner und öffnet sie per Doppelklick; der Dateiname nennt Version und Tag des Herunterladens. Die Übersicht fragt dann einmal nach der Editor-Datei. Geladene WUP-Dateien bleiben in beiden Fällen im Browser; es wird nichts übertragen.</p>
+<p>Auf dieser Seite laufen Editor und Übersicht nebeneinander unter dem Website-Kopf. Die Reiter „Übersicht“ und „Editor“ wechseln zwischen beiden, ohne dass etwas neu geladen wird oder verloren geht. „Im Editor öffnen“ in der Übersicht wechselt zum Editor und übergibt die Datei; Änderungen kommen in die Übersicht zurück. „Ohne Rahmen“ öffnet das gerade gezeigte Werkzeug im ganzen Fenster.</p>
 
 <h3>Gerätebelegung</h3>
 <p>In einer WUP-Datei steht am Ende jeder Nagelreihe (<code>NR</code>) ein Index. Welches Nagel- oder Klammergerät dahinter steht, legt die Anlage fest. Der Editor braucht diese Zuordnung für zwei Dinge: Er meldet Nagelreihen mit einem Index, den die Anlage nicht kennt, und er rechnet für jedes Gerät den Sperrflächen-Abstand, also den Sicherheitsabstand zwischen Nagelreihe und Säge oder Fräse.</p>

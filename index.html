@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WUP-Werkzeuge — Editor, Übersicht und MCP-Server für WUP-Dateien</title>
 <meta name="description" content="Freie Werkzeuge für WUP-Maschinendateien im Holzrahmenbau: prüfen, bearbeiten, exportieren. Läuft im Browser, ohne Installation.">
+<link rel="canonical" href="https://wup.hui161.de/">
+<link rel="alternate" hreflang="de" href="https://wup.hui161.de/">
+<link rel="alternate" hreflang="en" href="https://wup.hui161.de/en/">
+<link rel="alternate" hreflang="x-default" href="https://wup.hui161.de/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WUP-Werkzeuge">
+<meta property="og:title" content="WUP-Werkzeuge">
+<meta property="og:description" content="Freie Werkzeuge für WUP-Maschinendateien im Holzrahmenbau: prüfen, bearbeiten, exportieren. Läuft im Browser, ohne Installation.">
+<meta property="og:url" content="https://wup.hui161.de/">
+<meta property="og:image" content="https://wup.hui161.de/bilder/editor.png">
+<meta property="og:image:width" content="2720">
+<meta property="og:image:height" content="1640">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "WUP-Werkzeuge", "description": "Editor, Mehrdatei-Übersicht und MCP-Server für WUP-Maschinendateien der Holzrahmenbau-Elementfertigung: prüfen, bearbeiten, exportieren.", "url": "https://wup.hui161.de/", "image": "https://wup.hui161.de/bilder/editor.png", "applicationCategory": "BusinessApplication", "operatingSystem": "Webbrowser", "inLanguage": "de", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "license": "https://www.gnu.org/licenses/gpl-3.0.html", "author": {"@type": "Person", "name": "Lars Ojus"}, "sameAs": ["https://github.com/Hui-161/WUP_TOOLS"], "keywords": "WUP, Holzrahmenbau, Elementfertigung, Multifunktionsbrücke, CNC, Nagelreihe, Sperrfläche, MCP"}</script>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="seite.css">
 </head>
@@ -12,15 +27,15 @@
 <div class="seite">
 <header class="kopf">
   <a class="marke" href="">WUP-Werkzeuge</a>
-  <nav><a href="" aria-current="page">Übersicht</a><a href="doku.html">Doku</a><a href="mcp.html">MCP</a><a href="https://github.com/Hui-161/WUP_TOOLS">Quelltext</a><a href="en/" lang="en">English</a></nav>
+  <nav><a href="./" aria-current="page">Start</a><a href="werkzeuge.html#uebersicht">Übersicht</a><a href="werkzeuge.html#editor">Editor</a><a href="doku.html">Doku</a><a href="mcp.html">MCP</a><a href="https://github.com/Hui-161/WUP_TOOLS">Quelltext</a><a href="en/" lang="en">English</a></nav>
 </header>
 <main>
 <h1>WUP-Dateien prüfen und bearbeiten</h1>
 <p class="vorspann">Drei freie Werkzeuge für die Maschinendateien der Holzrahmenbau-Elementfertigung. Sie laufen im Browser, brauchen keine Installation und schicken keine Datei ins Netz.</p>
 
 <div class="start">
-  <a class="knopf voll" href="werkzeuge.html#editor">Editor starten</a>
-  <a class="knopf" href="werkzeuge.html#uebersicht">Übersicht starten</a>
+  <a class="knopf voll" href="werkzeuge.html#uebersicht">Übersicht starten</a>
+  <a class="knopf" href="werkzeuge.html#editor">Editor starten</a>
 </div>
 <p class="leise">Zum Arbeiten ohne Netz lassen sich beide Werkzeuge <a href="#herunterladen">herunterladen</a>.</p>
 
@@ -31,12 +46,12 @@
 
 <h2>Die Werkzeuge</h2>
 <dl class="werkzeuge">
-  <dt>WUP-Editor</dt>
-  <dd>Öffnet eine WUP-Datei und zeigt sie als Draufsicht, Schnitt und in 3D. Prüft sie gegen 25 Regeln, von der fehlenden Sperrfläche über Nagelreihen auf einer Plattenkante bis zum unbekannten Gerät. Bearbeitungen lassen sich ändern, verschieben und neu anlegen; Automatiken rechnen Über- und Unterschnitt, Freistiche und Sperrflächen. Eine unveränderte Datei kommt Byte für Byte gleich wieder heraus.
-  <span class="weiter"><a href="werkzeuge.html#editor">Starten</a> · <a href="doku.html#editor">Doku</a></span></dd>
   <dt>WUP-Editor-Übersicht</dt>
   <dd>Lädt einen ganzen Auftrag auf einmal, zeigt je Wand eine Karte mit Befunden und rechnet Prüfungen und Automatiken über alle Dateien. Eine einzelne Wand geht mit einem Klick in den Editor und kommt geändert zurück.
   <span class="weiter"><a href="werkzeuge.html#uebersicht">Starten</a> · <a href="doku.html#uebersicht">Doku</a></span></dd>
+  <dt>WUP-Editor</dt>
+  <dd>Öffnet eine WUP-Datei und zeigt sie als Draufsicht, Schnitt und in 3D. Prüft sie gegen 25 Regeln, von der fehlenden Sperrfläche über Nagelreihen auf einer Plattenkante bis zum unbekannten Gerät. Bearbeitungen lassen sich ändern, verschieben und neu anlegen; Automatiken rechnen Über- und Unterschnitt, Freistiche und Sperrflächen. Eine unveränderte Datei kommt Byte für Byte gleich wieder heraus.
+  <span class="weiter"><a href="werkzeuge.html#editor">Starten</a> · <a href="doku.html#editor">Doku</a></span></dd>
   <dt>WUP-MCP-Server</dt>
   <dd>Stellt dieselben Prüfungen und Automatiken KI-Assistenten über das Model Context Protocol bereit, dazu die Suche in der WUP-Schnittstellenbeschreibung. Braucht Node.js, keine weiteren Pakete.
   <span class="weiter"><a href="mcp.html">Einrichten</a></span></dd>
@@ -53,8 +68,8 @@
 <table class="laden">
 <thead><tr><th>Werkzeug</th><th>Version</th><th></th></tr></thead>
 <tbody>
-<tr><td>WUP-Editor</td><td class="nr" data-version="editor"></td><td><a href="Wup/wup_editor/wup_editor.html" download data-werkzeug="editor">Herunterladen</a></td></tr>
 <tr><td>WUP-Editor-Übersicht</td><td class="nr" data-version="uebersicht"></td><td><a href="Wup/wup_editor_oversight/wup_editor_oversight.html" download data-werkzeug="uebersicht">Herunterladen</a></td></tr>
+<tr><td>WUP-Editor</td><td class="nr" data-version="editor"></td><td><a href="Wup/wup_editor/wup_editor.html" download data-werkzeug="editor">Herunterladen</a></td></tr>
 <tr><td>WUP-MCP-Server</td><td class="nr" data-version="mcp"></td><td><a href="https://github.com/Hui-161/WUP_TOOLS/archive/refs/heads/main.zip">ZIP von GitHub</a> · <a href="mcp.html">Anleitung</a></td></tr>
 </tbody>
 </table>

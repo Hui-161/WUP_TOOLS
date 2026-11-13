@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WUP Tools — editor, overview and MCP server for WUP files</title>
 <meta name="description" content="Free tools for WUP machine files in timber-frame construction: check, edit, export. Runs in the browser, nothing to install.">
+<link rel="canonical" href="https://wup.hui161.de/en/">
+<link rel="alternate" hreflang="de" href="https://wup.hui161.de/">
+<link rel="alternate" hreflang="en" href="https://wup.hui161.de/en/">
+<link rel="alternate" hreflang="x-default" href="https://wup.hui161.de/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WUP Tools">
+<meta property="og:title" content="WUP Tools">
+<meta property="og:description" content="Free tools for WUP machine files in timber-frame construction: check, edit, export. Runs in the browser, nothing to install.">
+<meta property="og:url" content="https://wup.hui161.de/en/">
+<meta property="og:image" content="https://wup.hui161.de/bilder/editor.png">
+<meta property="og:image:width" content="2720">
+<meta property="og:image:height" content="1640">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "WUP Tools", "description": "Editor, multi-file overview and MCP server for WUP machine files in timber-frame element production: check, edit, export.", "url": "https://wup.hui161.de/en/", "image": "https://wup.hui161.de/bilder/editor.png", "applicationCategory": "BusinessApplication", "operatingSystem": "Web browser", "inLanguage": "de", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "license": "https://www.gnu.org/licenses/gpl-3.0.html", "author": {"@type": "Person", "name": "Lars Ojus"}, "sameAs": ["https://github.com/Hui-161/WUP_TOOLS"], "keywords": "WUP, Holzrahmenbau, Elementfertigung, Multifunktionsbrücke, CNC, Nagelreihe, Sperrfläche, MCP"}</script>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="../seite.css">
 </head>
@@ -12,15 +27,15 @@
 <div class="seite">
 <header class="kopf">
   <a class="marke" href="../en/">WUP Tools</a>
-  <nav><a href="../en/" aria-current="page">Overview</a><a href="https://github.com/Hui-161/WUP_TOOLS">Source</a><a href="../" lang="de">Deutsch</a></nav>
+  <nav><a href="../en/" aria-current="page">Home</a><a href="../werkzeuge.html#uebersicht">Overview</a><a href="../werkzeuge.html#editor">Editor</a><a href="https://github.com/Hui-161/WUP_TOOLS">Source</a><a href="../" lang="de">Deutsch</a></nav>
 </header>
 <main>
 <h1>Check and edit WUP files</h1>
 <p class="vorspann">Three free tools for the machine files used in timber-frame element production. They run in the browser, need no installation and send no file to the network.</p>
 
 <div class="start">
-  <a class="knopf voll" href="../werkzeuge.html#editor">Start the editor</a>
-  <a class="knopf" href="../werkzeuge.html#uebersicht">Start the overview</a>
+  <a class="knopf voll" href="../werkzeuge.html#uebersicht">Start the overview</a>
+  <a class="knopf" href="../werkzeuge.html#editor">Start the editor</a>
 </div>
 <p class="leise">The user interface is German. The tools can also be <a href="#download">downloaded</a> and used offline.</p>
 
@@ -31,10 +46,10 @@
 
 <h2>The tools</h2>
 <dl class="werkzeuge">
-  <dt>WUP Editor</dt>
-  <dd>Opens a WUP file and shows it in plan view, section and 3D. Checks it against 25 rules, from a missing nailing exclusion area to nail rows on a panel edge or an unknown device. Operations can be changed, moved and created; automatics compute overcuts and undercuts, relief cuts and exclusion areas. An unchanged file is written back byte for byte.</dd>
   <dt>WUP Editor Overview</dt>
   <dd>Loads a whole job at once, shows one card per wall with its findings and runs checks and automatics across all files. A single wall opens in the editor with one click and comes back changed.</dd>
+  <dt>WUP Editor</dt>
+  <dd>Opens a WUP file and shows it in plan view, section and 3D. Checks it against 25 rules, from a missing nailing exclusion area to nail rows on a panel edge or an unknown device. Operations can be changed, moved and created; automatics compute overcuts and undercuts, relief cuts and exclusion areas. An unchanged file is written back byte for byte.</dd>
   <dt>WUP MCP server</dt>
   <dd>Makes the same checks and automatics available to AI assistants through the Model Context Protocol, plus search in the WUP interface specification. Needs Node.js 18 or newer and no packages:
   <pre><code>node Wup/Mcp/wup_mcp_server.js</code></pre>
@@ -47,8 +62,8 @@
 <table class="laden">
 <thead><tr><th>Tool</th><th>Version</th><th></th></tr></thead>
 <tbody>
-<tr><td>WUP Editor</td><td class="nr" data-version="editor"></td><td><a href="../Wup/wup_editor/wup_editor.html" download data-werkzeug="editor">Download</a></td></tr>
 <tr><td>WUP Editor Overview</td><td class="nr" data-version="uebersicht"></td><td><a href="../Wup/wup_editor_oversight/wup_editor_oversight.html" download data-werkzeug="uebersicht">Download</a></td></tr>
+<tr><td>WUP Editor</td><td class="nr" data-version="editor"></td><td><a href="../Wup/wup_editor/wup_editor.html" download data-werkzeug="editor">Download</a></td></tr>
 <tr><td>WUP MCP server</td><td class="nr" data-version="mcp"></td><td><a href="https://github.com/Hui-161/WUP_TOOLS/archive/refs/heads/main.zip">ZIP from GitHub</a></td></tr>
 </tbody>
 </table>

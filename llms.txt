@@ -1,0 +1,23 @@
+# WUP-Werkzeuge
+
+> Freie Werkzeuge (GPL-3.0) für WUP-Maschinendateien der Holzrahmenbau-Elementfertigung: ein Editor und eine Mehrdatei-Übersicht, die im Browser laufen, und ein MCP-Server, der dieselben Prüfregeln und Automatiken KI-Assistenten bereitstellt. Kein Produkt von WEINMANN oder HOMAG. Oberfläche deutsch.
+
+Die Werkzeuge prüfen WUP-Dateien gegen 25 Regeln (z. B. fehlende Sperrflächen über Nagelreihen, Sägetiefe, unbekannte Nagelgeräte, Nagelreihen auf Plattenkanten), rechnen Automatiken (Über- und Unterschnitt, Freistiche, Sperrflächen) und exportieren unveränderte Dateien byte-gleich. Dateien werden nur im Browser verarbeitet. Jede erzeugte Datei ist vor der Fertigung fachlich zu prüfen.
+
+## Werkzeuge
+
+- [Übersicht und Editor im Browser](https://wup.hui161.de/werkzeuge.html): beide Werkzeuge auf einer Seite, mit Reitern
+- [Herunterladen](https://wup.hui161.de/#herunterladen): Einzeldateien mit Version im Dateinamen, Beispieldateien
+
+## Dokumentation
+
+- [Doku](https://wup.hui161.de/doku.html): Einrichten (Gerätebelegung, Maschinenwerte), Editor, alle Prüfregeln P-01 bis P-25, Übersicht, Grenzen
+- [MCP-Server](https://wup.hui161.de/mcp.html): Installation, Anbindung an Claude Code und Claude Desktop, profil.json, Werkzeugliste
+
+## Quelltext
+
+- [GitHub: Hui-161/WUP_TOOLS](https://github.com/Hui-161/WUP_TOOLS): Quelltext, Tests, Beispieldateien, Lizenz
+
+## Optional
+
+- [English](https://wup.hui161.de/en/): short English overview
