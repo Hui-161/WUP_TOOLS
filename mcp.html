@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP-Server — WUP-Werkzeuge</title>
+<meta name="description" content="WUP-MCP-Server installieren: WUP-Dateien von KI-Assistenten prüfen und bearbeiten lassen, lokal und ohne Netzzugriff.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="seite.css">
+</head>
+<body>
+<div class="seite">
+<header class="kopf">
+  <a class="marke" href="./">WUP-Werkzeuge</a>
+  <nav><a href="./">Übersicht</a><a href="doku.html">Doku</a><a href="mcp.html" aria-current="page">MCP</a><a href="https://github.com/Hui-161/WUP_TOOLS">Quelltext</a><a href="en/" lang="en">English</a></nav>
+</header>
+<main>
+<h1>MCP-Server</h1>
+<p class="vorspann">Mit dem MCP-Server kann ein KI-Assistent WUP-Dateien lesen, prüfen und nach Anweisung ändern — mit genau denselben Regeln und Automatiken wie der Editor.</p>
+<p class="leise"><a href="#was">Was er kann</a> · <a href="#installieren">Installieren</a> · <a href="#anbinden">Anbinden</a> · <a href="#geraete">Gerätebelegung</a> · <a href="#beispiele">Beispiele</a> · <a href="#werkzeuge">Werkzeuge</a> · <a href="#daten">Daten</a></p>
+
+<h2 id="was">Was er kann</h2>
+<p>MCP (Model Context Protocol) ist ein offener Standard, über den KI-Assistenten wie Claude auf Werkzeuge zugreifen. Der WUP-MCP-Server ist ein solches Werkzeug. Er läuft auf dem eigenen Rechner und enthält keine eigene Fachlogik: Er lädt den WUP-Editor ohne Browser und ruft dessen Funktionen auf. Was der Server meldet, meldet also auch der Editor.</p>
+<ul>
+  <li>Eine Datei oder einen ganzen Ordner gegen alle 25 Prüfregeln prüfen.</li>
+  <li>Automatiken rechnen: Über- und Unterschnitt, Freistiche, Sperrflächen und weitere.</li>
+  <li>Werte in vielen Bearbeitungen zugleich ersetzen.</li>
+  <li>Steuercodes erklären und in der WUP-Schnittstellenbeschreibung nachschlagen, samt Seitenbildern.</li>
+</ul>
+<p>Der Assistent formuliert daraus Antworten, fasst Befunde zusammen oder schlägt Korrekturen vor. Geändert wird eine Datei nur, wenn ausdrücklich ein Zielpfad genannt ist.</p>
+
+<h2 id="installieren">Installieren</h2>
+<h3>Voraussetzung</h3>
+<p><a href="https://nodejs.org/">Node.js</a> ab Version 18. Weitere Pakete sind nicht nötig. Ob Node.js vorhanden ist, zeigt:</p>
+<pre><code>node --version</code></pre>
+
+<h3>Herunterladen</h3>
+<p>Entweder mit Git:</p>
+<pre><code>git clone https://github.com/Hui-161/WUP_TOOLS.git</code></pre>
+<p>oder auf <a href="https://github.com/Hui-161/WUP_TOOLS">GitHub</a> über „Code“ → „Download ZIP“ und den Ordner entpacken. Der Server braucht den ganzen Ordner, nicht nur seine eigene Datei, weil er den Editor daraus lädt.</p>
+
+<h3>Ausprobieren</h3>
+<p>Im heruntergeladenen Ordner listet dieser Befehl die Werkzeuge des Servers auf:</p>
+<pre><code>node Wup/Mcp/wup_frage.js --liste</code></pre>
+<p>Und dieser prüft eine der mitgelieferten Beispielwände:</p>
+<pre><code>node Wup/Mcp/wup_frage.js wup_pruefen '{"pfad":"Wup/03_Beispiel-synthetisch/SEMA/IW01.WUP"}'</code></pre>
+<p>Ohne Gerätebelegung meldet die Prüfung jede Nagelreihe mit P-20. Das ist richtig so, siehe <a href="#geraete">Gerätebelegung</a>.</p>
+
+<h2 id="anbinden">An einen Assistenten anbinden</h2>
+<p>Der Server spricht über Standardein- und -ausgabe (stdio). Jedes Programm, das MCP-Server so starten kann, kann ihn nutzen. In allen folgenden Beispielen ist <code>/pfad/zu/WUP_TOOLS</code> durch den Ordner zu ersetzen, in den heruntergeladen wurde.</p>
+
+<h3>Claude Code</h3>
+<p>Im Ordner <code>WUP_TOOLS</code> gestartet, findet Claude Code den Server über die mitgelieferte Datei <code>.mcp.json</code> selbst und fragt einmal, ob er ihn verwenden darf. Für alle Ordner verfügbar macht ihn:</p>
+<pre><code>claude mcp add --scope user wup -- node /pfad/zu/WUP_TOOLS/Wup/Mcp/wup_mcp_server.js</code></pre>
+
+<h3>Claude Desktop</h3>
+<p>In der Konfigurationsdatei <code>claude_desktop_config.json</code> den Server eintragen. Sie liegt unter Windows in <code>%APPDATA%\Claude\</code>, unter macOS in <code>~/Library/Application Support/Claude/</code> und lässt sich in Claude Desktop über die Einstellungen unter „Entwickler“ öffnen.</p>
+<pre><code>{
+  "mcpServers": {
+    "wup": {
+      "command": "node",
+      "args": ["C:/Werkzeuge/WUP_TOOLS/Wup/Mcp/wup_mcp_server.js"]
+    }
+  }
+}</code></pre>
+<p>Unter Windows den Pfad mit Schrägstrichen <code>/</code> schreiben oder jeden umgekehrten Schrägstrich verdoppeln. Danach Claude Desktop neu starten.</p>
+
+<h3>Andere Programme</h3>
+<p>Befehl <code>node</code>, Argument der vollständige Pfad zu <code>Wup/Mcp/wup_mcp_server.js</code>, Übertragung stdio.</p>
+
+<h2 id="geraete">Gerätebelegung</h2>
+<p>Im Browser fragt der Editor beim ersten Start, welches Nagel- oder Klammergerät hinter welchem NR-Index steht. Der Server hat keinen Browser und liest die Belegung deshalb aus der Datei <code>Wup/Mcp/profil.json</code>:</p>
+<pre><code>{
+  "nr_indizes": {
+    "10": { "name": "Klammergerät 1", "psf_offset": 7 },
+    "20": { "name": "Klammergerät 2", "psf_offset": 20 }
+  }
+}</code></pre>
+<p><code>psf_offset</code> ist der Sperrflächen-Abstand in Millimetern. Die Werte stehen in den Herstellerunterlagen der Anlage. Eine Datei an anderer Stelle lässt sich über die Umgebungsvariable <code>WUP_PROFIL</code> angeben. Ist die Datei fehlerhaft, meldet der Server das, statt mit einer leeren Belegung weiterzurechnen. Nach einer Änderung den Server bzw. den Assistenten neu starten.</p>
+
+<h2 id="beispiele">Beispiele</h2>
+<p>Was man einem angebundenen Assistenten sagen kann:</p>
+<ul>
+  <li>„Prüfe alle WUP-Dateien in <code>D:/Auftrag 123</code> und fasse die Fehler je Wand zusammen.“</li>
+  <li>„Warum meldet die Wand EG05 P-03, und welche Automatik behebt das?“</li>
+  <li>„Rechne für <code>AW01.WUP</code> die Auto-Sperrflächen und speichere das Ergebnis als <code>AW01_neu.WUP</code>.“</li>
+  <li>„Was bedeutet der Steuercode 222?“</li>
+  <li>„Wie ist eine Nagelreihe in der Schnittstellenbeschreibung definiert? Zeig mir die Seite.“</li>
+</ul>
+
+<h2 id="werkzeuge">Werkzeuge des Servers</h2>
+<div class="rollen">
+<table>
+<thead><tr><th>Werkzeug</th><th>Zweck</th></tr></thead>
+<tbody>
+<tr><td><code>wup_datei_analysieren</code></td><td>Kopfdaten, Lagen, Bearbeitungen und WUP-Version einer Datei.</td></tr>
+<tr><td><code>wup_pruefen</code></td><td>Alle Prüfregeln für eine Datei.</td></tr>
+<tr><td><code>wup_ordner_pruefen</code></td><td>Prüfung aller Dateien eines Ordners.</td></tr>
+<tr><td><code>wup_roundtrip_pruefen</code></td><td>Kontrolle, dass eine unveränderte Datei byte-gleich zurückkommt.</td></tr>
+<tr><td><code>wup_automatik</code></td><td>Automatiken rechnen, Ergebnis auf Wunsch schreiben.</td></tr>
+<tr><td><code>wup_werte_ersetzen</code></td><td>Werte in vielen Bearbeitungen ändern.</td></tr>
+<tr><td><code>wup_steuercode</code></td><td>Einen Steuercode in seine Bedeutung zerlegen.</td></tr>
+<tr><td><code>wup_referenz</code></td><td>Kurzfassung des Formatwissens nach Themen, mit den Prüfregeln und dem Profil.</td></tr>
+<tr><td><code>wup_spezifikation</code></td><td>Suche in der WUP-Schnittstellenbeschreibung (V3.5 deutsch, 3.7 englisch), mit Seitenbildern.</td></tr>
+<tr><td><code>wupworks_befehl</code></td><td>Erzeugt den Befehl für die Übergabe an die Maschinensoftware, führt ihn aber nicht aus.</td></tr>
+<tr><td><code>wup_server_status</code></td><td>Versionen, Gerätebelegung und fehlende Dateien.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Geschrieben wird nur an einen ausdrücklich genannten Zielpfad, nur als <code>.wup</code>, nie in die Werkzeug- und Beispielordner und nur ohne offene Fehler-Befunde, außer der Assistent bestätigt das ausdrücklich.</p>
+
+<h2 id="daten">Wohin die Daten gehen</h2>
+<p>Der Server selbst greift nicht aufs Netz zu und sendet nichts an die Maschine. Was er zurückgibt, liest aber der KI-Assistent — und der schickt es zur Verarbeitung an seinen Anbieter, bei Claude an Anthropic. Personenbezogene Kopffelder einer WUP-Datei (etwa Bearbeiter, Kunde, Bauvorhaben, Ort) gibt der Server deshalb nur geschwärzt aus. Projektnamen, Maße und Bearbeitungen gehen dagegen mit. Ob das für die eigenen Dateien in Ordnung ist, entscheidet der eigene Betrieb.</p>
+
+<div class="kasten">
+  <p><strong>Ergebnisse prüfen.</strong> Was ein Assistent mit dem Server ändert, ist ein Vorschlag. Jede geschriebene Datei ist vor der Fertigung im Editor anzusehen und fachlich zu prüfen.</p>
+</div>
+</main>
+<footer class="fuss">
+  <p>Freie Software unter der <a href="https://github.com/Hui-161/WUP_TOOLS/blob/main/LICENSE">GPL-3.0</a>, ohne jede Gewährleistung. Kein Produkt der WEINMANN Holzbautechnik GmbH oder von HOMAG.</p>
+  <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<div class="hauptbereich" id="hauptbereich">
+  <!-- Arbeitspaket 3: Quelltext/Struktur der ausgewaehlten Wand-Karte, Start eingeklappt -->
+  <section class="quelltext-panel eingeklappt" id="quelltextPanel">
+    <div class="panel-kopf">
+      <span class="text-tab aktiv" data-qtab="quelltext">Quelltext</span>
+      <span class="text-tab" data-qtab="struktur">Struktur</span>
+      <span class="klein" id="quelltextPanelInfo"></span>
+      <button type="button" class="panel-klapp-knopf" id="btnQuelltextZu" title="Ausklappen (Q)">⟩</button>
+    </div>
+    <div class="text-scroller" id="quelltextScroller"><div id="quelltextInhalt"></div></div>
+    <div class="text-scroller versteckt" id="strukturScroller"><div id="strukturInhalt"></div></div>
+  </section>
+  <div class="karten-bereich">
+    <div class="leer-hinweis" id="leerHinweis">
+      <p>Noch keine Dateien geladen.</p>
+      <div class="drop-zone" id="dropZoneGross">.wup-Dateien hier ablegen oder oben „Dateien öffnen…“ verwenden</div>
+      <p class="klein" id="haftungsHinweis" style="margin-top:12px;color:var(--text-gedimmt)">Ohne Gewähr: Jede exportierte Datei vor der Fertigung fachlich prüfen.</p>
+      <!-- v0.14: Angebot "Letzte Sitzung wiederherstellen" (nur mit Sicherung) -->
+      <div class="sitzung-karte versteckt" id="sitzungKarte"></div>
+    </div>
+    <!-- v0.13: Suche · Filter · Sortierung · Ansicht (Detail/Kompakt/Liste) -->
+    <div class="karten-leiste" id="kartenLeiste" hidden>
+      <input type="search" id="kartenSuche" class="karten-suche" placeholder="🔍 Wand suchen … (Strg+F) — z. B. EG20"
+        title="Sucht in Dateiname, Wandname, ELN, ZNR und Auftragsnummer — Groß/Klein, Leerzeichen, _ und - egal. Enter = erste Treffer-Karte wählen, Esc = leeren" autocomplete="off">
+      <div class="menue-wrap" id="kartenFilterWrap">
+        <button type="button" class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnKartenFilter"
+          title="Wände nach Fehlern, Status und Lagenanzahl filtern">⏷ Filter</button>
+        <div class="menue-panel filter-menue versteckt" id="kartenFilterMenue"></div>
+      </div>
+      <label class="karten-sort" title="Sortierung der Wand-Karten (bleibt gespeichert)">Sortieren:
+        <select id="kartenSortFeld"></select>
+        <button type="button" class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="kartenSortRichtung">↑</button>
+      </label>
+      <div class="segment-gruppe" id="kartenAnsichtUmschalter" title="Ansicht (bleibt gespeichert)"></div>
+      <span class="karten-treffer" id="kartenTreffer"></span>
+    </div>
+    <div class="karten-gitter" id="kartenGitter"></div>
+  </div>
+</div>
+

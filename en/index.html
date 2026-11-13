@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WUP Tools — editor, overview and MCP server for WUP files</title>
+<meta name="description" content="Free tools for WUP machine files in timber-frame construction: check, edit, export. Runs in the browser, nothing to install.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../seite.css">
+</head>
+<body>
+<div class="seite">
+<header class="kopf">
+  <a class="marke" href="../en/">WUP Tools</a>
+  <nav><a href="../en/" aria-current="page">Overview</a><a href="https://github.com/Hui-161/WUP_TOOLS">Source</a><a href="../" lang="de">Deutsch</a></nav>
+</header>
+<main>
+<h1>Check and edit WUP files</h1>
+<p class="vorspann">Three free tools for the machine files used in timber-frame element production. They run in the browser, need no installation and send no file to the network.</p>
+
+<div class="start">
+  <a class="knopf voll" href="../werkzeuge.html#editor">Start the editor</a>
+  <a class="knopf" href="../werkzeuge.html#uebersicht">Start the overview</a>
+</div>
+<p class="leise">The user interface is German. The tools can also be <a href="#download">downloaded</a> and used offline.</p>
+
+<figure>
+  <img src="../bilder/editor.png" width="1360" height="820" alt="WUP editor showing an exterior wall: framing, panels, nail rows and saw contours in plan view">
+  <figcaption>The editor with one of the example walls.</figcaption>
+</figure>
+
+<h2>The tools</h2>
+<dl class="werkzeuge">
+  <dt>WUP Editor</dt>
+  <dd>Opens a WUP file and shows it in plan view, section and 3D. Checks it against 25 rules, from a missing nailing exclusion area to nail rows on a panel edge or an unknown device. Operations can be changed, moved and created; automatics compute overcuts and undercuts, relief cuts and exclusion areas. An unchanged file is written back byte for byte.</dd>
+  <dt>WUP Editor Overview</dt>
+  <dd>Loads a whole job at once, shows one card per wall with its findings and runs checks and automatics across all files. A single wall opens in the editor with one click and comes back changed.</dd>
+  <dt>WUP MCP server</dt>
+  <dd>Makes the same checks and automatics available to AI assistants through the Model Context Protocol, plus search in the WUP interface specification. Needs Node.js 18 or newer and no packages:
+  <pre><code>node Wup/Mcp/wup_mcp_server.js</code></pre>
+  Put your machine's device assignment into <code>Wup/Mcp/profil.json</code>; details are in the <a href="https://github.com/Hui-161/WUP_TOOLS/blob/main/Wup/Mcp/README.md">server README</a> and the <a href="../mcp.html" lang="de">installation guide</a> (German).</dd>
+</dl>
+
+<h2 id="download">Download</h2>
+<p>Each tool is a single HTML file that runs in the browser with a double-click. The file name contains the version and the date and time of the download, e.g. <code>wup_editor_v<span data-version="editor">2.65</span>_2026-11-13_1432.html</code>. Put both files into the same folder; on first start the overview asks once for the editor file.</p>
+<div class="rollen">
+<table class="laden">
+<thead><tr><th>Tool</th><th>Version</th><th></th></tr></thead>
+<tbody>
+<tr><td>WUP Editor</td><td class="nr" data-version="editor"></td><td><a href="../Wup/wup_editor/wup_editor.html" download data-werkzeug="editor">Download</a></td></tr>
+<tr><td>WUP Editor Overview</td><td class="nr" data-version="uebersicht"></td><td><a href="../Wup/wup_editor_oversight/wup_editor_oversight.html" download data-werkzeug="uebersicht">Download</a></td></tr>
+<tr><td>WUP MCP server</td><td class="nr" data-version="mcp"></td><td><a href="https://github.com/Hui-161/WUP_TOOLS/archive/refs/heads/main.zip">ZIP from GitHub</a></td></tr>
+</tbody>
+</table>
+</div>
+<p>Nine invented example walls, one of them deliberately faulty: <button type="button" class="knopf" data-beispiele-zip hidden>Download examples as ZIP</button> <span class="leise" id="ladenMeldung" role="status"></span></p>
+<noscript><p><a href="https://github.com/Hui-161/WUP_TOOLS/tree/main/Wup/03_Beispiel-synthetisch">Example files on GitHub</a></p></noscript>
+
+<h2>Before first use</h2>
+<ol>
+  <li><strong>Enter the device assignment.</strong> On first start the editor asks which nailing or stapling unit of your machine sits behind which NR index. Without it, every nail row is reported as unknown.</li>
+  <li><strong>Check the machine values.</strong> Maximum wall size, saw and router depth and the relief-cut settings are the defaults of one machine; change them under <em>Automatik-Einstellungen</em>.</li>
+  <li><strong>Try an example wall.</strong> Download the examples above.</li>
+</ol>
+<p>The detailed documentation is in German: <a href="../doku.html" lang="de">Doku</a>.</p>
+
+<div class="kasten">
+  <p><strong>Check every file before production.</strong> The tools write machine files and are provided without any warranty. What they report, or fail to report, does not replace a check by a qualified person.</p>
+</div>
+
+<h2>Source and license</h2>
+<p>The source is on <a href="https://github.com/Hui-161/WUP_TOOLS">GitHub</a> under the GNU General Public License 3.0. Issues and suggestions are welcome there.</p>
+<p>“WUP” is the name of the file format. The tools are not a product of WEINMANN Holzbautechnik GmbH or HOMAG; the interface specification included in the repository was published by WEINMANN under the MIT License.</p>
+</main>
+<script src="../laden.js" data-basis="../"></script>
+<footer class="fuss">
+  <p>Free software under the <a href="https://github.com/Hui-161/WUP_TOOLS/blob/main/LICENSE">GPL-3.0</a>, without any warranty. Not a product of WEINMANN Holzbautechnik GmbH or HOMAG.</p>
+  <p><a href="../impressum.html">Impressum (legal notice)</a> · <a href="../datenschutz.html">Datenschutz (privacy)</a></p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+/* ===================== KARTENLEISTE (v0.13): Suche · Filter · Sortierung · Ansicht ===================== */
+/* top:-16px gleicht den Innenabstand des Scroll-Bereichs (.karten-bereich,
+   16px) aus: Chromium misst den Sticky-Abstand ab dessen Innenkante — mit
+   top:0 rutschte die Leiste 16px tiefer und ueber die erste Kartenreihe. */
+.karten-leiste {
+  position: sticky; top: -16px; z-index: 50;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin: -16px -16px 12px; padding: 10px 16px;
+  background: var(--hintergrund); border-bottom: 1px solid var(--rahmen-weich);
+}
+.karten-leiste[hidden] { display: none; }
+.karten-suche {
+  flex: 1 1 260px; max-width: 420px; padding: 6px 10px; font-size: 0.85rem;
+  border: 1px solid var(--rahmen); border-radius: var(--eckenradius-klein);
+  background: var(--flaeche); color: var(--text); font-family: inherit;
+}
+.karten-suche:focus { outline: 2px solid var(--akzent-hintergrund); border-color: var(--akzent); }
+.karten-sort { display: flex; align-items: center; gap: 4px; font-size: 0.78rem; color: var(--text-gedimmt); }
+.karten-sort select { font-size: 0.8rem; padding: 3px 6px; background: var(--flaeche); color: var(--text);
+  border: 1px solid var(--rahmen); border-radius: var(--eckenradius-klein); font-family: inherit; }
+#btnKartenFilter.filter-an { border-color: var(--akzent); color: var(--akzent); background: var(--akzent-hintergrund); }
+.karten-treffer { margin-left: auto; font-size: 0.78rem; color: var(--text-gedimmt); }
+
+.segment-gruppe { display: inline-flex; border: 1px solid var(--rahmen); border-radius: var(--eckenradius-klein); overflow: hidden; }
+.segment-gruppe .segment {
+  border: none; background: var(--flaeche); color: var(--text-gedimmt); font-family: inherit;
+  font-size: 0.78rem; padding: 4px 10px; cursor: pointer;
+}
+.segment-gruppe .segment + .segment { border-left: 1px solid var(--rahmen); }
+.segment-gruppe .segment:hover { background: var(--flaeche-hover); }
+.segment-gruppe .segment.an { background: var(--akzent-hintergrund); color: var(--text); font-weight: 600; }
+
+.filter-menue { min-width: 300px; padding: 10px 12px; gap: 10px; }
+.filter-gruppe { display: flex; flex-direction: column; gap: 3px; }
+.filter-titel { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-gedimmt); margin-bottom: 2px; }
+.filter-option { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer; }
+.filter-chips { display: flex; flex-wrap: wrap; gap: 2px; }
+.filter-fuss { border-top: 1px solid var(--rahmen-weich); padding-top: 8px; }
+.karten-leer { grid-column: 1 / -1; padding: 30px; text-align: center; color: var(--text-gedimmt); font-size: 0.85rem; }
+
+/* ----- Ansicht KOMPAKT: kleine Karten, Kennzahlen in einer Zeile ----- */
+.karten-gitter.ansicht-kompakt { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }
+.ansicht-kompakt .karte-kopf { padding: 5px 8px; }
+.ansicht-kompakt .karte-titel { font-size: 0.78rem; }
+.ansicht-kompakt .karte-untertitel { font-size: 0.66rem; }
+.ansicht-kompakt .karte-kennzahlen { gap: 7px; padding: 4px 8px; font-size: 0.7rem; align-items: center; }
+.ansicht-kompakt .kz-aktion { margin-left: auto; }
+.ansicht-kompakt .kz-aktion .schaltflaeche { padding: 1px 6px; font-size: 0.68rem; }
+
+/* ----- Ansicht LISTE: seit v0.19 der Listen-Baustein (37_liste_baustein.css) ----- */
+/* v0.19 Wandliste (Listen-Baustein): Token-Namen des Bausteins auf die
+   Tokens der Uebersicht abbilden, plus seine Hilfsklasse meldung-klein */
+:root { --grund: var(--hintergrund); --rand: var(--rahmen); --text-leise: var(--text-gedimmt); --akzent-text: #fff; }
+.karten-gitter.ansicht-liste { display: block; }
+.wandliste .meldung-klein, .meldung-klein { font-size: .82rem; color: var(--text-gedimmt); }
+.wandliste input.eingabefeld { width: auto; }
+.wl-bild { width: 80px; height: 34px; }
+.wl-bild svg { width: 100%; height: 100%; display: block; }
+.wl-fehler { color: var(--fehler); }

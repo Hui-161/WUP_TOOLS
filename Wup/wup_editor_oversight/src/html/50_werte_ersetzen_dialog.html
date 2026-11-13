@@ -1,0 +1,86 @@
+<!-- Werte-ersetzen-Dialog (Suchen & Ersetzen; Aufbau synchron zu wup_editor.html) -->
+<div class="modal-hintergrund" id="werteErsetzenModal" style="display:none">
+  <div class="modal-fenster we-fenster">
+    <h2>Suchen &amp; Ersetzen — über alle geladenen Dateien</h2>
+    <div class="we-layout">
+    <div class="we-formular">
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <label class="eig-feld">Feld
+        <select class="eingabefeld" id="weFeld">
+          <optgroup label="Bearbeitungen (NR/PAF/PSG/PSF/PSZ/PML)">
+            <option value="x">X-Koordinate</option><option value="y">Y-Koordinate</option>
+            <option value="xy">X + Y</option><option value="z">Z-Wert</option>
+            <option value="t">Tiefe t</option><option value="steuercode">Steuercode i</option>
+            <option value="radius">Radius r (KB/MP)</option><option value="winkel">Neigungswinkel α</option>
+            <option value="nrIndex">NR-Geraeteindex</option><option value="nrAbstand">NR-Abstand a</option>
+          </optgroup>
+          <optgroup label="Platten (Kopfzeile + Umriss)">
+            <option value="name">Platten-Name (Text)</option>
+            <option value="platteIdx">Platten-Materialindex</option>
+            <option value="platteHz">Platten-Staerke hz</option>
+            <option value="platteZ">Platten-Position z</option>
+            <option value="platteX">Platten-Umriss X</option>
+            <option value="platteY">Platten-Umriss Y</option>
+            <option value="platteXY">Platten-Umriss X + Y</option>
+          </optgroup>
+          <optgroup label="Bauteile (Riegelwerk)">
+            <option value="bozWert">BOZ-Durchmesser</option>
+          </optgroup>
+        </select></label>
+      <label class="eig-feld" id="weSuchLabel"><span id="weSuchText">Suchwert (mm)</span>
+        <input type="number" step="any" class="eingabefeld schmal" id="weSuchwert"></label>
+      <label class="eig-feld" id="weErsatzLabel"><span id="weErsatzText">Ersatzwert (mm)</span>
+        <input type="number" step="any" class="eingabefeld schmal" id="weErsatzwert"></label>
+      <span class="eig-feld" id="weTextModusBlock" style="display:none">Textmodus
+        <span><label><input type="radio" name="weTextModus" value="exakt" checked> exakt</label>
+        <label><input type="radio" name="weTextModus" value="enthaelt"> enthält</label></span></span>
+      <label class="eig-feld" id="weToleranzLabel">Toleranz (mm)
+        <input type="number" step="any" class="eingabefeld schmal" id="weToleranz" value="0.01"></label>
+    </div>
+    <div class="mini-hinweis" id="weFeldHinweis" style="margin-top:6px"></div>
+    <div class="mini-hinweis" id="weScInfo" style="display:none;margin-top:4px"></div>
+    <div class="we-vorschlaege" id="weSuchVorschlaege" style="display:none"></div>
+    <div id="weScStellen" style="display:none;margin-top:8px">
+      <div class="mini-hinweis">Steuercode nach Stellen — 100er = Radiuskorrektur, 10er = Ueber-/Unterschnitt, 1er = Werkzeug:</div>
+      <div id="weScStellenReihen"></div>
+    </div>
+    <div class="we-vorschlaege" id="weErsatzVorschlaege" style="display:none"></div>
+    <div id="weNameFilterBlock" style="display:none;margin-top:8px">
+      <label class="eig-feld">Nur Platten mit Name
+        <select class="eingabefeld" id="weNameFilter"><option value="">— alle Namen —</option></select></label>
+      <div class="mini-hinweis">Geaendert wird nur, wo der Platten-Name exakt uebereinstimmt (Namen aus allen geladenen Dateien).</div>
+    </div>
+    <div id="weLagenBlock">
+      <div class="mini-hinweis">Lagen (Vereinigung aller geladenen Dateien):</div>
+      <div id="weLagenChips" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+    </div>
+    <div id="weTypBlock">
+      <div class="mini-hinweis">Bearbeitungstypen:</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <label><input type="checkbox" class="we-typ" value="NR" checked> NR</label>
+        <label><input type="checkbox" class="we-typ" value="PAF" checked> PAF</label>
+        <label><input type="checkbox" class="we-typ" value="PSG" checked> PSG</label>
+        <label><input type="checkbox" class="we-typ" value="PSF" checked> PSF</label>
+        <label><input type="checkbox" class="we-typ" value="PSZ" checked> PSZ</label>
+        <label><input type="checkbox" class="we-typ" value="PML" checked> PML</label>
+      </div>
+    </div>
+    <div class="mini-hinweis" id="weHinweis" style="display:none"></div>
+    <div class="modal-vorschau" id="weVorschau">Treffer: —</div>
+    <div class="modal-vorschau" id="weAuswahlHinweis" style="color:var(--akzent)"></div>
+    </div>
+    <div class="we-vorschau" id="weVorschauPanel">
+      <div class="we-vorschau-kopf"><span id="weVorschauTitel">Quelltext-Vorschau</span></div>
+      <div class="we-vorschau-liste" id="weVorschauListe">
+        <div class="we-vorschau-leer">Noch keine Treffer — Werte links eingeben.</div></div>
+    </div>
+    </div>
+    <div class="modal-fuss">
+      <button type="button" class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="weVorschauToggle"
+        style="margin-right:auto" title="Quelltext-Vorschau ein-/ausklappen">⯆ Quelltext einklappen</button>
+      <button type="button" class="schaltflaeche schaltflaeche-neben" id="weAbbrechen">Abbrechen</button>
+      <button type="button" class="schaltflaeche schaltflaeche-haupt" id="weAusfuehren">Ersetzen</button>
+    </div>
+  </div>
+</div>
+

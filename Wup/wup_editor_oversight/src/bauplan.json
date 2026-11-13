@@ -1,0 +1,81 @@
+{
+  "werkzeug": "WUP-Editor-Übersicht",
+  "ziel": "wup_editor_oversight.html",
+  "bloecke": [
+    {
+      "art": "html",
+      "datei": "html/00_kopf.html"
+    },
+    {
+      "art": "erzeugt"
+    },
+    {
+      "art": "style",
+      "teile": [
+        "css/10_design_tokens.css",
+        "css/20_kopfzeile_menues_palette.css",
+        "css/30_dropzone_hauptbereich_karten.css",
+        "css/35_kartenleiste_ansichten.css",
+        "css/37_liste_baustein.css",
+        "css/40_hinweis_modal_kernquelle.css",
+        "css/50_quelltext_struktur_panel.css",
+        "css/60_feedback_fusszeile.css"
+      ]
+    },
+    {
+      "art": "html",
+      "datei": "html/10_kopfzeile_menues_chips.html"
+    },
+    {
+      "art": "html",
+      "datei": "html/20_hauptbereich_quelltext_karten.html"
+    },
+    {
+      "art": "html",
+      "datei": "html/30_kontextmenue_palette_fusszeile.html"
+    },
+    {
+      "art": "html",
+      "datei": "html/40_feedback_kernframe_fortschritt.html"
+    },
+    {
+      "art": "html",
+      "datei": "html/50_werte_ersetzen_dialog.html"
+    },
+    {
+      "art": "script",
+      "teile": [
+        "js/10_grundlagen/10_grundlagen_konstanten.js",
+        "js/50_editor_anbindung/15_kern_laden.js",
+        "js/10_grundlagen/20_zustand.js",
+        "js/20_dateien/25_dateien_laden.js",
+        "js/20_dateien/27_sitzung_wiederherstellen.js",
+        "js/20_dateien/30_multiwand_erkennung.js",
+        "js/30_karten/35_karten_svg_renderer.js",
+        "js/30_karten/40_quelltext_struktur_panel.js",
+        "js/30_karten/45_ansicht_karten_chips.js",
+        "js/30_karten/46_liste_baustein.js",
+        "js/30_karten/47_kartenliste_sortieren_filtern.js",
+        "js/30_karten/48_liste_wandliste.js",
+        "js/40_bearbeiten/50_fortschritt_automatiken.js",
+        "js/40_bearbeiten/52_rueckgaengig_wiederholen.js",
+        "js/40_bearbeiten/55_menues_kontextmenue_palette.js",
+        "js/40_bearbeiten/60_werte_ersetzen.js",
+        "js/20_dateien/65_alle_exportieren.js",
+        "js/50_editor_anbindung/70_editor_oeffnen_rueckweg.js",
+        "js/50_editor_anbindung/72_dateien_von_aussen.js",
+        "js/50_editor_anbindung/74_geraetebelegung_hinweis.js",
+        "js/10_grundlagen/75_feedback_modus.js",
+        "js/30_karten/80_karten_auswahl_tastenkuerzel.js",
+        "js/10_grundlagen/90_init.js"
+      ]
+    },
+    {
+      "art": "html",
+      "datei": "html/90_fuss.html"
+    }
+  ],
+  "gross": {
+    "js/30_karten/46_liste_baustein.js": "Kopie des Listen-Bausteins (listen_baustein/liste_baustein.js v2.7) — wird NICHT im Werkzeug geaendert; Aenderungen nur im Baustein, dann Kopie nachziehen (listen_baustein/README.md)."
+  }
+}

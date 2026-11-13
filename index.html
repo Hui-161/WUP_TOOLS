@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WUP-Werkzeuge — Editor, Übersicht und MCP-Server für WUP-Dateien</title>
+<meta name="description" content="Freie Werkzeuge für WUP-Maschinendateien im Holzrahmenbau: prüfen, bearbeiten, exportieren. Läuft im Browser, ohne Installation.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="seite.css">
+</head>
+<body>
+<div class="seite">
+<header class="kopf">
+  <a class="marke" href="">WUP-Werkzeuge</a>
+  <nav><a href="" aria-current="page">Übersicht</a><a href="doku.html">Doku</a><a href="mcp.html">MCP</a><a href="https://github.com/Hui-161/WUP_TOOLS">Quelltext</a><a href="en/" lang="en">English</a></nav>
+</header>
+<main>
+<h1>WUP-Dateien prüfen und bearbeiten</h1>
+<p class="vorspann">Drei freie Werkzeuge für die Maschinendateien der Holzrahmenbau-Elementfertigung. Sie laufen im Browser, brauchen keine Installation und schicken keine Datei ins Netz.</p>
+
+<div class="start">
+  <a class="knopf voll" href="werkzeuge.html#editor">Editor starten</a>
+  <a class="knopf" href="werkzeuge.html#uebersicht">Übersicht starten</a>
+</div>
+<p class="leise">Zum Arbeiten ohne Netz lassen sich beide Werkzeuge <a href="#herunterladen">herunterladen</a>.</p>
+
+<figure>
+  <img src="bilder/editor.png" width="1360" height="820" alt="WUP-Editor mit einer Außenwand: Riegelwerk, Platten, Nagelreihen und Sägekonturen in der Draufsicht">
+  <figcaption>Der Editor mit einer der mitgelieferten Beispielwände.</figcaption>
+</figure>
+
+<h2>Die Werkzeuge</h2>
+<dl class="werkzeuge">
+  <dt>WUP-Editor</dt>
+  <dd>Öffnet eine WUP-Datei und zeigt sie als Draufsicht, Schnitt und in 3D. Prüft sie gegen 25 Regeln, von der fehlenden Sperrfläche über Nagelreihen auf einer Plattenkante bis zum unbekannten Gerät. Bearbeitungen lassen sich ändern, verschieben und neu anlegen; Automatiken rechnen Über- und Unterschnitt, Freistiche und Sperrflächen. Eine unveränderte Datei kommt Byte für Byte gleich wieder heraus.
+  <span class="weiter"><a href="werkzeuge.html#editor">Starten</a> · <a href="doku.html#editor">Doku</a></span></dd>
+  <dt>WUP-Editor-Übersicht</dt>
+  <dd>Lädt einen ganzen Auftrag auf einmal, zeigt je Wand eine Karte mit Befunden und rechnet Prüfungen und Automatiken über alle Dateien. Eine einzelne Wand geht mit einem Klick in den Editor und kommt geändert zurück.
+  <span class="weiter"><a href="werkzeuge.html#uebersicht">Starten</a> · <a href="doku.html#uebersicht">Doku</a></span></dd>
+  <dt>WUP-MCP-Server</dt>
+  <dd>Stellt dieselben Prüfungen und Automatiken KI-Assistenten über das Model Context Protocol bereit, dazu die Suche in der WUP-Schnittstellenbeschreibung. Braucht Node.js, keine weiteren Pakete.
+  <span class="weiter"><a href="mcp.html">Einrichten</a></span></dd>
+</dl>
+
+<figure>
+  <img src="bilder/uebersicht.png" width="1360" height="820" alt="WUP-Editor-Übersicht mit sieben Wänden als Karten">
+  <figcaption>Die Übersicht mit sieben Beispielwänden.</figcaption>
+</figure>
+
+<h2 id="herunterladen">Herunterladen</h2>
+<p>Jedes Werkzeug ist eine einzelne HTML-Datei, die per Doppelklick im Browser läuft. Der Dateiname enthält die Version und Datum und Uhrzeit des Herunterladens, zum Beispiel <code>wup_editor_v<span data-version="editor">2.65</span>_2026-11-13_1432.html</code>.</p>
+<div class="rollen">
+<table class="laden">
+<thead><tr><th>Werkzeug</th><th>Version</th><th></th></tr></thead>
+<tbody>
+<tr><td>WUP-Editor</td><td class="nr" data-version="editor"></td><td><a href="Wup/wup_editor/wup_editor.html" download data-werkzeug="editor">Herunterladen</a></td></tr>
+<tr><td>WUP-Editor-Übersicht</td><td class="nr" data-version="uebersicht"></td><td><a href="Wup/wup_editor_oversight/wup_editor_oversight.html" download data-werkzeug="uebersicht">Herunterladen</a></td></tr>
+<tr><td>WUP-MCP-Server</td><td class="nr" data-version="mcp"></td><td><a href="https://github.com/Hui-161/WUP_TOOLS/archive/refs/heads/main.zip">ZIP von GitHub</a> · <a href="mcp.html">Anleitung</a></td></tr>
+</tbody>
+</table>
+</div>
+<p class="leise">Editor und Übersicht in denselben Ordner legen. Beim ersten Öffnen per Doppelklick fragt die Übersicht einmal nach der Editor-Datei, weil der Browser ihr das selbstständige Laden lokaler Dateien nicht erlaubt.</p>
+
+<h3>Beispieldateien</h3>
+<p>Neun frei erfundene Wände in zwei üblichen Schreibweisen, zum Ausprobieren. Sie enthalten keine echten Projektdaten. Eine Datei ist absichtlich fehlerhaft und zeigt, wie Befunde aussehen. Heruntergeladene Dateien bekommen Datum und Uhrzeit in den Namen.</p>
+<p><button type="button" class="knopf" data-beispiele-zip hidden>Alle als ZIP herunterladen</button> <span class="leise" id="ladenMeldung" role="status"></span></p>
+<div class="rollen"><table id="beispiele" hidden></table></div>
+<noscript><p><a href="https://github.com/Hui-161/WUP_TOOLS/tree/main/Wup/03_Beispiel-synthetisch">Beispieldateien auf GitHub</a></p></noscript>
+
+<h2>Vor dem ersten Einsatz</h2>
+<ol>
+  <li><strong>Gerätebelegung eintragen.</strong> Beim ersten Start fragt der Editor, welches Nagel- oder Klammergerät an der eigenen Anlage hinter welchem NR-Index steht. Ohne diese Angabe meldet er jede Nagelreihe als unbekannt.</li>
+  <li><strong>Maschinenwerte prüfen.</strong> Größte Wand, Säge- und Frästiefe und die Freistich-Einstellungen sind Vorgaben einer Anlage und in den Automatik-Einstellungen änderbar.</li>
+  <li><strong>Mit einer Beispielwand probieren.</strong> Neun frei erfundene Wände stehen oben unter <a href="#herunterladen">Beispieldateien</a>.</li>
+</ol>
+<p>Die Schritte im Einzelnen stehen in der <a href="doku.html">Doku</a>.</p>
+
+<div class="kasten">
+  <p><strong>Jede Datei vor der Fertigung prüfen.</strong> Die Werkzeuge schreiben Maschinendateien und werden ohne jede Gewährleistung bereitgestellt. Was sie melden oder nicht melden, ersetzt nicht die Prüfung durch eine fachkundige Person.</p>
+</div>
+
+<h2>Quelltext und Lizenz</h2>
+<p>Der Quelltext liegt auf <a href="https://github.com/Hui-161/WUP_TOOLS">GitHub</a> und steht unter der GNU General Public License 3.0. Fehlermeldungen und Vorschläge sind dort willkommen. Die Oberfläche der Werkzeuge ist deutsch.</p>
+<p>„WUP“ ist der Name des Dateiformats. Die Werkzeuge sind kein Produkt der WEINMANN Holzbautechnik GmbH oder von HOMAG; die beiliegende Schnittstellenbeschreibung hat WEINMANN unter der MIT-Lizenz veröffentlicht.</p>
+</main>
+<script src="laden.js"></script>
+<footer class="fuss">
+  <p>Freie Software unter der <a href="https://github.com/Hui-161/WUP_TOOLS/blob/main/LICENSE">GPL-3.0</a>, ohne jede Gewährleistung. Kein Produkt der WEINMANN Holzbautechnik GmbH oder von HOMAG.</p>
+  <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-labelledby="title desc">
+  <title id="title">Tongue and groove on panel edges with control code index</title>
+  <desc id="desc">Cross-sections of two plates with tongue and groove edge profiles, including depth and control code mapping.</desc>
+  <defs>
+    <style>
+      .title { font: 700 28px Arial, sans-serif; fill: #1e2d38; }
+      .subtitle { font: 700 19px Arial, sans-serif; fill: #1e2d38; }
+      .label { font: 16px Arial, sans-serif; fill: #1e2d38; }
+      .small { font: 14px Arial, sans-serif; fill: #1e2d38; }
+      .card { fill: #f2f7fb; stroke: #4e6576; stroke-width: 2; }
+      .plateA { fill: #d6e7f5; stroke: #2f4d64; stroke-width: 3; }
+      .plateB { fill: #d8f0df; stroke: #2f6940; stroke-width: 3; }
+      .joint { fill: #ebf0f4; stroke: #5d7281; stroke-width: 2.5; }
+      .dim { stroke: #8a4f10; stroke-width: 2; marker-start: url(#arrowSmall); marker-end: url(#arrowSmall); }
+      .callout { stroke: #2f4d64; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2f4d64" />
+    </marker>
+    <marker id="arrowSmall" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#8a4f10" />
+    </marker>
+  </defs>
+
+  <text x="36" y="42" class="title">5.4.1 Panels with tongue and groove edge profiles</text>
+
+  <rect x="36" y="70" width="360" height="310" class="card" rx="10"/>
+  <text x="54" y="102" class="subtitle">Plate A: Tongue on edge</text>
+  <path class="plateA" d="M72 150 L300 150 L300 195 L332 195 L332 255 L300 255 L300 300 L72 300 Z"/>
+  <text x="78" y="330" class="small">Profile depth example: 21 mm</text>
+  <line x1="300" y1="225" x2="332" y2="225" class="dim"/>
+  <text x="337" y="228" class="small">21 mm</text>
+  <path d="M176 120 C212 120 234 136 254 150" class="callout"/>
+  <text x="88" y="124" class="label">Tongue protrudes</text>
+  <text x="78" y="356" class="label">Control code: 100 + 20 + 1 = 121</text>
+
+  <rect x="420" y="70" width="360" height="310" class="card" rx="10"/>
+  <text x="438" y="102" class="subtitle">Plate B: Groove on edge</text>
+  <path class="plateB" d="M456 150 L684 150 L684 195 L652 195 L652 255 L684 255 L684 300 L456 300 Z"/>
+  <text x="462" y="330" class="small">Profile depth example: 36 mm</text>
+  <line x1="652" y1="225" x2="684" y2="225" class="dim"/>
+  <text x="604" y="228" class="small">36 mm</text>
+  <path d="M590 120 C620 120 632 136 646 150" class="callout"/>
+  <text x="496" y="124" class="label">Groove cuts inward</text>
+  <text x="462" y="356" class="label">Control code: 200 + 30 + 6 = 236</text>
+
+  <rect x="804" y="70" width="360" height="310" class="card" rx="10"/>
+  <text x="822" y="102" class="subtitle">Assembled joint (section)</text>
+  <path class="joint" d="M840 150 L998 150 L998 195 L1030 195 L1030 255 L998 255 L998 300 L840 300 Z"/>
+  <path class="joint" d="M1028 150 L1128 150 L1128 195 L1096 195 L1096 255 L1128 255 L1128 300 L1028 300 Z"/>
+  <line x1="1030" y1="195" x2="1096" y2="195" stroke="#5d7281" stroke-width="2"/>
+  <line x1="1030" y1="255" x2="1096" y2="255" stroke="#5d7281" stroke-width="2"/>
+  <text x="840" y="330" class="small">Tongue of one plate fits into groove of adjacent plate.</text>
+  <text x="840" y="354" class="small">Index value is assigned at PP end point of the profile segment.</text>
+
+  <rect x="36" y="410" width="1128" height="170" class="card" rx="10"/>
+  <text x="56" y="445" class="subtitle">Index application rule (per polygon segment end point / PP)</text>
+  <text x="56" y="478" class="label">control_code = feature base + tens depth + ones depth</text>
+  <text x="56" y="506" class="label">feature base: 100 = tongue, 200 = groove</text>
+  <text x="56" y="534" class="label">tens depth: 00, 10, 20 ... 90</text>
+  <text x="56" y="562" class="label">ones depth: 1 ... 9</text>
+</svg>

@@ -1,0 +1,3622 @@
+{
+ "hinweis": "ERZEUGT von Wup/Mcp/werkzeuge/md_tabellen_erzeugen.js 1.0 aus Wup/02_Schnittstellenbeschreibung etc/Weinmann-wupWorks — nicht von Hand bearbeiten. Inhalt: Weinmann (MIT-Lizenz, LICENSE im selben Ordner). 3.7 gilt NICHT fuer die Anlage (WUP 3.4.1).",
+ "quelle": "github.com/HomagGroup/WEINMANN-wupWorks, Commit c197d6df95aa09fa436ca5da7f32ff9d1a9d2982",
+ "dokumente": [
+  {
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "titel": "Weinmann Interface version 3.7",
+   "kuerzel": "v37",
+   "tabellen": 53
+  },
+  {
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/General_Concept.md",
+   "titel": "SiteBroker — General Concept",
+   "kuerzel": "sbk",
+   "tabellen": 4
+  },
+  {
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Interface_Specification.md",
+   "titel": "SiteBroker — Interface & Method Specification",
+   "kuerzel": "sbi",
+   "tabellen": 10
+  },
+  {
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "titel": "SiteBroker — Machine Telemetry Specification",
+   "kuerzel": "sbd",
+   "tabellen": 14
+  },
+  {
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Integration_Guide.md",
+   "titel": "SiteBroker — Integration Guide",
+   "kuerzel": "sbg",
+   "tabellen": 1
+  },
+  {
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Integration_ManualWorkstation.md",
+   "titel": "SiteBroker — Manual Workstation Integration",
+   "kuerzel": "sbm",
+   "tabellen": 1
+  },
+  {
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Demo_Application.md",
+   "titel": "SiteBroker — Demo Applications",
+   "kuerzel": "sba",
+   "tabellen": 5
+  }
+ ],
+ "anzahl": 88,
+ "tabellen": [
+  {
+   "id": "v37-T01",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.1 File header",
+   "seite": 12,
+   "titel": "The keyword VERSION, with information about the interface version, must be in the first line of the file.",
+   "kopf": [
+    "Command",
+    "Parameters",
+    "Optional",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "VERSION",
+     "integer.integer[.integer]",
+     "",
+     "Version using Semantic Versioning.\nExample: 3.7"
+    ],
+    [
+     "ELEMENTID",
+     "GUID",
+     "X",
+     "Globally unique element and document identifier."
+    ],
+    [
+     "CADDOKUMENTID",
+     "string",
+     "X",
+     "Identifier within the CAD system."
+    ],
+    [
+     "ANR",
+     "string",
+     "X",
+     "Number of the order"
+    ],
+    [
+     "ELB",
+     "string",
+     "X",
+     "Element name for unique identification of the wall type. Permitted characters: a-z, A-Z, 0-9 and _"
+    ],
+    [
+     "ELN",
+     "string",
+     "X",
+     "Element name"
+    ],
+    [
+     "ZNR",
+     "string",
+     "X",
+     "Drawing number"
+    ],
+    [
+     "ELM",
+     "lx, by, hz [,n [,xoffset[,yoffset]]]",
+     "[Bild: page_024_img_078.png]",
+     "Element dimensions of a prefabricated house element. lx: maximum value of the x ordinate (:float) by: maximum value of the y ordinate (:float) hz: maximum value of the z ordinate (:float) n: quantity {1} (:unsigned int) xoffset: offset dimension in x direction {0} (:float) yoffset: offset dimension in y direction {0} (:float)"
+    ],
+    [
+     "CAD",
+     "string",
+     "X",
+     "Specification of the CAD program (free text)"
+    ],
+    [
+     "CADRELEASE",
+     "string",
+     "X",
+     "Specification of the CAD version (free text)"
+    ],
+    [
+     "BEARBEITER",
+     "string",
+     "X",
+     "Editor"
+    ],
+    [
+     "BAUVORHABEN",
+     "string",
+     "X",
+     "Job"
+    ],
+    [
+     "KUNDENNAME",
+     "string",
+     "X",
+     "Customer name"
+    ],
+    [
+     "OBJEKT",
+     "string",
+     "X",
+     "Building object name"
+    ],
+    [
+     "ORT",
+     "string",
+     "X",
+     "Building position"
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 421
+  },
+  {
+   "id": "v37-T02",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.1 Single components, single bars",
+   "seite": 14,
+   "titel": "The following commands define single timber components and built-in parts.",
+   "kopf": [
+    "Command",
+    "Parameter sequence",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "OG",
+     "lx, by, hz, x, y, i, name, z",
+     "Top plate. Uses the standard beam parameter model."
+    ],
+    [
+     "UG",
+     "lx, by, hz, x, y, i, name, z",
+     "Bottom plate. Parameters are equivalent to OG."
+    ],
+    [
+     "LS",
+     "lx, by, hz, x, y, i, name, z",
+     "Longitudinal stud. Parameters are equivalent to OG."
+    ],
+    [
+     "QS",
+     "ly, bx, hz, x, y, i, name, z",
+     "Cross beam. Length is given as ly (Y direction) and width as bx (X direction)."
+    ],
+    [
+     "BT4",
+     "lx, by, hz, x11, y11, x12, y12, x21, y21, x22, y22, i, name, z",
+     "Component with 4 corner points in two point rows (P1.x and P2.x)."
+    ],
+    [
+     "BT6",
+     "lx, by, hz, x11, y11, x12, y12, x13, y13, x21, y21, x22, y22, x23, y23, i, name, z",
+     "Component with 6 corner points in two point rows (P1.x and P2.x)."
+    ],
+    [
+     "BTn",
+     "lx, by, hz, x, y, z, i, name",
+     "Component with n corner points. The outline geometry is defined by the polygon points (PP/KB) that follow the component definition. If no polygon points are specified, the parameters lx, by, hz, x, y, z are interpreted as a rectangular component - equivalent to LS."
+    ],
+    [
+     "EBT",
+     "lx, by, hz, x, y, i, name, z",
+     "Built-in part (for example steel member or special insert)."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 452
+  },
+  {
+   "id": "v37-T03",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.1 Single components, single bars",
+   "seite": 14,
+   "titel": "Common parameter meaning:",
+   "kopf": [
+    "Parameter",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "lx",
+     "float",
+     "Length in X direction (or overall length where explicitly stated)."
+    ],
+    [
+     "ly",
+     "float",
+     "Length in Y direction (used by QS)."
+    ],
+    [
+     "bx",
+     "float",
+     "Width in X direction (used by QS)."
+    ],
+    [
+     "by",
+     "float",
+     "Width in Y direction."
+    ],
+    [
+     "hz",
+     "float",
+     "Component height (thickness in Z direction)."
+    ],
+    [
+     "x, y, z",
+     "float",
+     "Insertion position in element coordinates."
+    ],
+    [
+     "i",
+     "uint",
+     "Material index (and installation information where defined)."
+    ],
+    [
+     "name",
+     "string",
+     "Component designation."
+    ],
+    [
+     "x11 ... x23, y11 ... y23",
+     "float",
+     "Corner point coordinates for BT4/BT6 geometry."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 467
+  },
+  {
+   "id": "v37-T04",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.1 Single components, single bars",
+   "seite": 14,
+   "titel": "BT4 geometry notes:",
+   "kopf": [
+    "Item",
+    "Definition"
+   ],
+   "zeilen": [
+    [
+     "Point naming",
+     "P1.1, P1.2, P2.1, P2.2 (historically: Plu, Pru, Pro, Plo)."
+    ],
+    [
+     "Grain/reference direction",
+     "Defined by line P1.1-P2.2 and/or P1.2-P2.1."
+    ],
+    [
+     "Constraint",
+     "Both reference lines must be parallel. If one line collapses, the remaining line is used."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 481
+  },
+  {
+   "id": "v37-T05",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.1 Single components, single bars",
+   "seite": 14,
+   "titel": "BT6 geometry notes:",
+   "kopf": [
+    "Item",
+    "Definition"
+   ],
+   "zeilen": [
+    [
+     "Point naming",
+     "P1.1, P1.2, P1.3, P2.1, P2.2, P2.3 (historically: Plu, Pmu, Pru, Pro, Pmo, Plo)."
+    ],
+    [
+     "Component length rule",
+     "Length is derived from the maximum distance between a P1.x point and a P2.x point."
+    ],
+    [
+     "Grain/reference direction",
+     "Defined by line P1.1-P2.3 and/or P1.3-P2.1."
+    ],
+    [
+     "Constraint",
+     "Both reference lines must be parallel. If one line collapses, the remaining line is used."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 489
+  },
+  {
+   "id": "v37-T06",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.1 Single components, single bars",
+   "seite": 14,
+   "titel": "A component can now be additionally identified via a unique identifier, for example, to initiate material orders at upstream machines. The following addition…",
+   "kopf": [
+    "Command",
+    "Parameters",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "MODELLREF",
+     "uuid",
+     "Globally unique identifier. Required when ordering material at upfront machines."
+    ],
+    [
+     "CADMODELLREF",
+     "string",
+     "Identifier of the component within the originating CAD system."
+    ],
+    [
+     "TEILENR",
+     "integer",
+     "Short identifier for the unique identification of a component within an element. Can be used, for example, for printing."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 504
+  },
+  {
+   "id": "v37-T07",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.2 Panels",
+   "seite": 18,
+   "titel": "The start of a panel definition opens a component position. It ends when a new panel definition for a different position starts.",
+   "kopf": [
+    "Command",
+    "Parameter sequence",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "PLI0 ... PLI10",
+     "lx, by, hz, x, y, i, name [, z]",
+     "Inside panel in layer 0 to 10. Note: PLI0 is a panel inside the beam layer."
+    ],
+    [
+     "PLA0 ... PLA10",
+     "lx, by, hz, x, y, i, name [, z]",
+     "Outside panel in layer 0 to 10. Note: PLA0 is a panel inside the layer 0."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 531
+  },
+  {
+   "id": "v37-T08",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.2 Panels",
+   "seite": 18,
+   "titel": "Common parameter meaning:",
+   "kopf": [
+    "Parameter",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "lx",
+     "float",
+     "Panel length in X direction."
+    ],
+    [
+     "by",
+     "float",
+     "Panel width in Y direction."
+    ],
+    [
+     "hz",
+     "float",
+     "Panel thickness / height in Z direction."
+    ],
+    [
+     "x, y",
+     "float",
+     "Panel insertion position in element coordinates."
+    ],
+    [
+     "z",
+     "float",
+     "Optional panel Z position. If z is explicitly specified, sign convention applies: PLI z must be positive, PLA z must be negative. If omitted, value is calculated by layer logic."
+    ],
+    [
+     "i",
+     "uint",
+     "Material index."
+    ],
+    [
+     "name",
+     "string",
+     "Panel name / designation."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 538
+  },
+  {
+   "id": "v37-T09",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.2 Panels",
+   "seite": 18,
+   "titel": "Additional identification commands (optional, directly after PLI/PLA):",
+   "kopf": [
+    "Command",
+    "Parameters",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "MODELLREF",
+     "uuid",
+     "Globally unique identifier. Required when ordering material at upstream machines."
+    ],
+    [
+     "CADMODELLREF",
+     "string",
+     "Identifier of the panel in the originating CAD system."
+    ],
+    [
+     "TEILENR",
+     "integer",
+     "Short identifier for unique panel identification within an element."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 550
+  },
+  {
+   "id": "v37-T10",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.2 Panels",
+   "seite": 18,
+   "titel": "Rules and behavior:",
+   "kopf": [
+    "Topic",
+    "Rule"
+   ],
+   "zeilen": [
+    [
+     "Optional z in older versions",
+     "Parameter [z] was optional up to interface version 3.3."
+    ],
+    [
+     "z sign convention by panel side",
+     "If optional parameter z is explicitly specified: PLI must use positive z values, PLA must use negative z values."
+    ],
+    [
+     "Polygon priority",
+     "If polygon points are defined for PLI/PLA, polygon geometry has priority over lx/by. The polygon must be closed (first and last point must be identical)."
+    ],
+    [
+     "Planarity",
+     "All polygon points of one panel must lie in exactly one plane (no warped panel)."
+    ],
+    [
+     "Layer height",
+     "If different panel heights exist in one layer, the thickest panel defines the full layer height."
+    ],
+    [
+     "Recommendation for mixed thickness",
+     "When using mixed panel thicknesses in one layer, define z explicitly for all panels."
+    ],
+    [
+     "Very thin panels",
+     "Panels with hz <= 1 mm are ignored in offset calculation."
+    ],
+    [
+     "Valid polygon outline",
+     "The panel outline polygon must not contain self-intersecting lines or coincident (overlapping) lines. A panel with a cutout must be defined using a dedicated PSF blocked-surface polygon, not by connecting the hole to the outer contour via a shared edge. CAD systems that bridge the outer contour to the cutout along the same path (out and back) produce coincident lines that are not permitted."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 558
+  },
+  {
+   "id": "v37-T11",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.2 Panels",
+   "seite": 18,
+   "titel": "Data types and allowed characters:",
+   "kopf": [
+    "Field",
+    "Type / Rule"
+   ],
+   "zeilen": [
+    [
+     "All numeric fields except i",
+     "floating point number"
+    ],
+    [
+     "i",
+     "natural number"
+    ],
+    [
+     "name",
+     "character string"
+    ],
+    [
+     "Allowed character set in name",
+     "All readable ASCII characters except: , < > : # $ % = ; ! \\ |"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 571
+  },
+  {
+   "id": "v37-T12",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.3 Unprocessed parts",
+   "seite": 20,
+   "titel": "An unprocessed part can contain one or more components of the types LS, QS, OG, UG, BTn. The unprocessed part itself does not carry processing steps.",
+   "kopf": [
+    "Command",
+    "Parameter sequence",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "RT",
+     "lx, by, hz, x, y, z, i, name",
+     "Defines one unprocessed part container, followed by component definitions."
+    ],
+    [
+     "ENDRT",
+     "",
+     "Ends the unprocessed part definition."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 592
+  },
+  {
+   "id": "v37-T13",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.3 Unprocessed parts",
+   "seite": 20,
+   "titel": "Common parameter meaning:",
+   "kopf": [
+    "Parameter",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "lx",
+     "float",
+     "Total length in X direction."
+    ],
+    [
+     "by",
+     "float",
+     "Total width in Y direction."
+    ],
+    [
+     "hz",
+     "float",
+     "Total height in Z direction."
+    ],
+    [
+     "x, y, z",
+     "float",
+     "Insertion position in element coordinates."
+    ],
+    [
+     "i",
+     "uint",
+     "Material index."
+    ],
+    [
+     "name",
+     "string",
+     "Unprocessed part name / designation."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 599
+  },
+  {
+   "id": "v37-T14",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.3 Unprocessed parts",
+   "seite": 20,
+   "titel": "Additional identification commands (optional, directly after RT):",
+   "kopf": [
+    "Command",
+    "Parameters",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "MODELLREF",
+     "uuid",
+     "Globally unique identifier. Required when ordering material at upstream machines."
+    ],
+    [
+     "CADMODELLREF",
+     "string",
+     "Identifier of the unprocessed part in the originating CAD system."
+    ],
+    [
+     "TEILENR",
+     "integer",
+     "Short identifier for unique identification within an element."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 610
+  },
+  {
+   "id": "v37-T15",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.3 Unprocessed parts",
+   "seite": 20,
+   "titel": "Rules and behavior:",
+   "kopf": [
+    "Topic",
+    "Rule"
+   ],
+   "zeilen": [
+    [
+     "Contained component types",
+     "LS, QS, OG, UG, BTn are permitted inside RT/ENDRT."
+    ],
+    [
+     "Processing steps",
+     "The RT container itself does not have own processing steps."
+    ],
+    [
+     "Nesting purpose",
+     "RT groups multiple components into one unprocessed part for downstream handling."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 618
+  },
+  {
+   "id": "v37-T16",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.3 Unprocessed parts",
+   "seite": 20,
+   "titel": "Data types and allowed characters:",
+   "kopf": [
+    "Field",
+    "Type / Rule"
+   ],
+   "zeilen": [
+    [
+     "All numeric fields except i",
+     "floating point number"
+    ],
+    [
+     "i",
+     "natural number"
+    ],
+    [
+     "name",
+     "character string"
+    ],
+    [
+     "Allowed character set in name",
+     "All readable ASCII characters except: , < > : # $ % = ; ! \\ |"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 626
+  },
+  {
+   "id": "v37-T17",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.4 Modules",
+   "seite": 21,
+   "titel": "Defines prefabricated components, and their processing steps, that are combined into an assembly.",
+   "kopf": [
+    "Command",
+    "Parameter sequence",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "MODUL",
+     "lx, by, hz, x, y, name [, z]",
+     "Defines one assembly container, followed by components and their processing steps."
+    ],
+    [
+     "ENDMODUL",
+     "",
+     "Ends the assembly definition."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 639
+  },
+  {
+   "id": "v37-T18",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.4 Modules",
+   "seite": 21,
+   "titel": "Common parameter meaning:",
+   "kopf": [
+    "Parameter",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "lx",
+     "float",
+     "Module length in X direction."
+    ],
+    [
+     "by",
+     "float",
+     "Module width in Y direction."
+    ],
+    [
+     "hz",
+     "float",
+     "Module height in Z direction."
+    ],
+    [
+     "x, y",
+     "float",
+     "Module insertion position in element coordinates."
+    ],
+    [
+     "z",
+     "float",
+     "Module Z position, default 0."
+    ],
+    [
+     "name",
+     "string",
+     "Module name / designation."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 646
+  },
+  {
+   "id": "v37-T19",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.4 Modules",
+   "seite": 21,
+   "titel": "Additional identification commands (optional, directly after MODUL):",
+   "kopf": [
+    "Command",
+    "Parameters",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "MODELLREF",
+     "uuid",
+     "Globally unique identifier. Required when ordering material at upstream machines."
+    ],
+    [
+     "CADMODELLREF",
+     "string",
+     "Identifier of the module in the originating CAD system."
+    ],
+    [
+     "TEILENR",
+     "integer",
+     "Short identifier for unique identification within an element."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 657
+  },
+  {
+   "id": "v37-T20",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.4 Modules",
+   "seite": 21,
+   "titel": "Rules and behavior:",
+   "kopf": [
+    "Topic",
+    "Rule"
+   ],
+   "zeilen": [
+    [
+     "Coordinate system",
+     "Components and processing steps inside a module refer to an element coordinate system with origin at the module origin."
+    ],
+    [
+     "Content",
+     "A module can contain component definitions and related processing steps."
+    ],
+    [
+     "Nesting",
+     "Definition starts with MODUL and ends with ENDMODUL."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 665
+  },
+  {
+   "id": "v37-T21",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.2.4 Modules",
+   "seite": 21,
+   "titel": "Data types and allowed characters:",
+   "kopf": [
+    "Field",
+    "Type / Rule"
+   ],
+   "zeilen": [
+    [
+     "All numeric fields",
+     "floating point number"
+    ],
+    [
+     "name",
+     "character string"
+    ],
+    [
+     "Allowed character set in name",
+     "All readable ASCII characters except: , < > : # $ % = ; ! \\ |"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 673
+  },
+  {
+   "id": "v37-T22",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.3 Spatial processing plane",
+   "seite": 22,
+   "titel": "The spatial processing plane defines a new coordinate system.",
+   "kopf": [
+    "Command",
+    "Parameter sequence",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "RBE2",
+     "e, x, y, z, alpha, gamma, delta",
+     "Defines a spatial processing plane and a transformed coordinate system."
+    ],
+    [
+     "ENDRBE2",
+     "",
+     "Ends the spatial processing plane definition."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 685
+  },
+  {
+   "id": "v37-T23",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.3 Spatial processing plane",
+   "seite": 22,
+   "titel": "Common parameter meaning:",
+   "kopf": [
+    "Parameter",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "e",
+     "uint",
+     "Reference plane. Component processing: 1 to 6; panel processing: 2."
+    ],
+    [
+     "x, y, z",
+     "float",
+     "Origin position of the transformed coordinate system."
+    ],
+    [
+     "alpha",
+     "float",
+     "Rotation around Z axis (first rotation)."
+    ],
+    [
+     "gamma",
+     "float",
+     "Tilt around transformed X' axis (second rotation)."
+    ],
+    [
+     "delta",
+     "float",
+     "Rotation around transformed Z'' axis (third rotation)."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 692
+  },
+  {
+   "id": "v37-T24",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.3 Spatial processing plane",
+   "seite": 22,
+   "titel": "Rules and behavior:",
+   "kopf": [
+    "Topic",
+    "Rule"
+   ],
+   "zeilen": [
+    [
+     "Data types",
+     "All parameters are floating point except e (natural number)."
+    ],
+    [
+     "Combinable processing steps",
+     "RBE2 can be combined with PAF and PZF"
+    ],
+    [
+     "Scope of transformed system",
+     "Processing steps inside one RBE2/ENDRBE2 block refer to the transformed coordinate system of that block."
+    ],
+    [
+     "Nesting",
+     "RBE2 nesting is generally possible; currently one nesting level is supported."
+    ],
+    [
+     "Panel/layer special case",
+     "For panel and layer processing, parameter e is ignored; x, y, z are interpreted in element coordinates."
+    ],
+    [
+     "Transformation order",
+     "Translations (x, y, z) are applied before rotations. Rotation order: alpha, then gamma, then delta."
+    ],
+    [
+     "Angle dependency",
+     "delta depends on gamma; gamma depends on alpha."
+    ],
+    [
+     "Rotation direction",
+     "Positive direction is mathematically positive (counter-clockwise when viewing along the axis toward the origin)."
+    ],
+    [
+     "Depth sign convention",
+     "Depth of eroding operations must be positive and acts counter to the transformed Z'' axis."
+    ],
+    [
+     "Length/width direction",
+     "Length values refer to transformed X'' axis; width values refer to transformed Y'' axis."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 702
+  },
+  {
+   "id": "v37-T25",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.4.1 Component processing steps",
+   "seite": 24,
+   "titel": "Component processing steps can be applied to: UG, OG, LS, QS, BT4, BT6, BTn, RT.",
+   "kopf": [
+    "Command",
+    "Parameter sequence",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "SG",
+     "x, y, z, alpha, gamma, h, e, i [, beta [, s]]",
+     "Saw cut as an infinite cutting plane in the component context."
+    ],
+    [
+     "KN",
+     "x, e, txt [, y [, z [, i]]]",
+     "Text labeling at a defined position."
+    ],
+    [
+     "MPL",
+     "xa, ya, xe, ye, i, e",
+     "Marking line by start/end points."
+    ],
+    [
+     "PML",
+     "e",
+     "Marking line with subsequent polygon points."
+    ],
+    [
+     "PAF",
+     "e [, i [, T]]",
+     "Polygon trimming / countersinking with subsequent polygon points."
+    ],
+    [
+     "PSG",
+     "e [, T]",
+     "Polygon saw cut with subsequent polygon points (PP only)."
+    ],
+    [
+     "PZF",
+     "e",
+     "Start of a tenon joint with subsequent polygon points."
+    ],
+    [
+     "SZ",
+     "x, l",
+     "Blocked zone on plate components."
+    ],
+    [
+     "REFKER",
+     "x, txt [, e]",
+     "Standard notch for roofing parts. The optional reference plane e specifies on which component plane the REFKER contour is defined."
+    ],
+    [
+     "PAL",
+     "e [, T]",
+     "Application line with subsequent polygon points (PP)."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 723
+  },
+  {
+   "id": "v37-T26",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.4.1 Component processing steps",
+   "seite": 24,
+   "titel": "Common parameter meaning:",
+   "kopf": [
+    "Parameter",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "x, y, z",
+     "float",
+     "Position in the active coordinate system. (depends on e)"
+    ],
+    [
+     "xa, ya",
+     "float",
+     "Start point of a line."
+    ],
+    [
+     "xe, ye",
+     "float",
+     "End point of a line."
+    ],
+    [
+     "h",
+     "float",
+     "Saw depth for SG, perpendicular to the reference plane."
+    ],
+    [
+     "e",
+     "uint",
+     "Reference plane. For component processing typically 1 to 6."
+    ],
+    [
+     "i",
+     "uint",
+     "Control code."
+    ],
+    [
+     "T",
+     "uint",
+     "Tool number, default 0 (machine selects tool)."
+    ],
+    [
+     "txt",
+     "string",
+     "Text label (max. 40 characters)."
+    ],
+    [
+     "l",
+     "float",
+     "Length of blocked zone SZ."
+    ],
+    [
+     "alpha, beta, gamma",
+     "float",
+     "Angles for rotation, gradient, and tilt depending on command."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 738
+  },
+  {
+   "id": "v37-T27",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.4.1 Component processing steps",
+   "seite": 24,
+   "titel": "SG-specific rules:",
+   "kopf": [
+    "Topic",
+    "Rule"
+   ],
+   "zeilen": [
+    [
+     "Reference planes",
+     "e = 1 to 6."
+    ],
+    [
+     "Correction in control code i",
+     "1 = positive correction relative to X axis, 2 = negative correction relative to X axis, 3 = no correction. For planes 5 and 6, correction is relative to Y axis."
+    ],
+    [
+     "Optional beta",
+     "Gradient angle in cutting surface, default 0."
+    ],
+    [
+     "Optional s",
+     "s = 0 relative to reference edges (default), s = 1 relative to cutting surfaces."
+    ],
+    [
+     "Geometry interpretation",
+     "SG defines a half-plane. Use PSG for explicit point-to-point saw paths."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 753
+  },
+  {
+   "id": "v37-T28",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.4.1 Component processing steps",
+   "seite": 24,
+   "titel": "Fixed Y/Z values by SG reference plane (implementation note):",
+   "kopf": [
+    "Reference plane",
+    "Y value",
+    "Z value"
+   ],
+   "zeilen": [
+    [
+     "E1",
+     "width",
+     "height"
+    ],
+    [
+     "E2",
+     "0",
+     "height"
+    ],
+    [
+     "E3",
+     "0",
+     "0"
+    ],
+    [
+     "E4",
+     "width",
+     "0"
+    ],
+    [
+     "E5",
+     "free (not fixed)",
+     "free (not fixed)"
+    ],
+    [
+     "E6",
+     "free (not fixed)",
+     "free (not fixed)"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 763
+  },
+  {
+   "id": "v37-T29",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.4.1 Component processing steps",
+   "seite": 24,
+   "titel": "PAF and PSG behavior:",
+   "kopf": [
+    "Topic",
+    "Rule"
+   ],
+   "zeilen": [
+    [
+     "PAF trimming control i",
+     "0 = machine default, 1 = no trimming, 2 = trimming."
+    ],
+    [
+     "Behavior change since 3.4",
+     "From version 3.4, trimming behavior is controlled by PAF parameter i."
+    ],
+    [
+     "PSG polygon points",
+     "Only PP points are permitted."
+    ],
+    [
+     "PSG limitation",
+     "PSG must not split a component longitudinally."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 776
+  },
+  {
+   "id": "v37-T30",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.4.2 Panel processing steps",
+   "seite": 26,
+   "titel": "Execution direction is counter to the panel Z axis.",
+   "kopf": [
+    "Command",
+    "Parameter sequence",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "PAF",
+     "[e [, i [, T]]]",
+     "Polygon trimming / countersinking for panel processing."
+    ],
+    [
+     "PSG",
+     "[e [, T]]",
+     "Polygon saw cut for panel processing (PP only)."
+    ],
+    [
+     "NR",
+     "xa, ya, xe, ye, a, i",
+     "Nail line definition."
+    ],
+    [
+     "NBR",
+     "x, y, i",
+     "Relative nail pattern point, only valid after NR."
+    ],
+    [
+     "PSF",
+     "",
+     "Blocked surface polygon for nailing/stapling exclusion. Polygon must be closed."
+    ],
+    [
+     "PSZ",
+     "",
+     "Protected zone polygon (obstacle definition). Polygon must be closed. Initially describes only one obstacle within one layer."
+    ],
+    [
+     "PML",
+     "",
+     "Marking line with subsequent polygon points."
+    ],
+    [
+     "PAL",
+     "[e [, T]]",
+     "Application line with subsequent polygon points (PP)."
+    ],
+    [
+     "KN",
+     "x, txt, y, z, i",
+     "Panel labeling."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 804
+  },
+  {
+   "id": "v37-T31",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.4.2 Panel processing steps",
+   "seite": 26,
+   "titel": "Panel-specific defaults and restrictions:",
+   "kopf": [
+    "Topic",
+    "Rule"
+   ],
+   "zeilen": [
+    [
+     "Default reference plane",
+     "e defaults to 2 for panel processing."
+    ],
+    [
+     "PAF trimming control i",
+     "0 = machine default, 1 = no trimming, 2 = trimming."
+    ],
+    [
+     "Tool number T",
+     "Default 0 means machine selects tool."
+    ],
+    [
+     "PSG polygon points",
+     "Only PP points are permitted."
+    ],
+    [
+     "PSF and PSZ polygon closure",
+     "Polygon must be closed."
+    ],
+    [
+     "PSF and PSZ point types",
+     "Only PP-PP sequences and MP are allowed."
+    ],
+    [
+     "PSZ interpretation note",
+     "PSZ describes initially only one obstacle within one layer."
+    ],
+    [
+     "NBR usage",
+     "NBR is only valid in combination with NR."
+    ],
+    [
+     "NR nail points (mandatory note)",
+     "For nail points, start and end must be congruent (xa = xe and ya = ye)."
+    ],
+    [
+     "NR recommendation",
+     "Nail points should always be defined with xa = xe, ya = ye, and a = 1."
+    ],
+    [
+     "NR with coincident start/end",
+     "If xa = xe and ya = ye, spacing a is ignored (irrelevant)."
+    ],
+    [
+     "NR conflict rule",
+     "If spacing and start/end definition conflict, spacing a takes precedence. For NR with non-resolving spacing, spacing a wins."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 818
+  },
+  {
+   "id": "v37-T32",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.4.3 Units",
+   "seite": 27,
+   "titel": "Logical grouping of one or more processing steps.",
+   "kopf": [
+    "Command",
+    "Parameters",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "UNIT",
+     "name",
+     "Starts a processing group. Step order in the file does not necessarily define machine execution order."
+    ],
+    [
+     "ENDUNIT",
+     "",
+     "Ends the processing group."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 844
+  },
+  {
+   "id": "v37-T33",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.5 Attributes, properties",
+   "seite": 28,
+   "titel": "- All processing step definitions from section 4.4",
+   "kopf": [
+    "Command",
+    "Parameter sequence",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "PROPERTY",
+     "n, w",
+     "Assigns one property name/value pair to the preceding element."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 884
+  },
+  {
+   "id": "v37-T34",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.5 Attributes, properties",
+   "seite": 28,
+   "titel": "Common parameter meaning:",
+   "kopf": [
+    "Parameter",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "n",
+     "string",
+     "Property name."
+    ],
+    [
+     "w",
+     "number or string",
+     "Property value. String values are enclosed in double quotes."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 890
+  },
+  {
+   "id": "v37-T35",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.5 Attributes, properties",
+   "seite": 28,
+   "titel": "Rules and behavior:",
+   "kopf": [
+    "Topic",
+    "Rule"
+   ],
+   "zeilen": [
+    [
+     "Placement",
+     "PROPERTY must be placed directly after the referenced component or processing step."
+    ],
+    [
+     "Multiplicity",
+     "Multiple PROPERTY lines are allowed for one referenced element."
+    ],
+    [
+     "Machine behavior",
+     "Interpretation is machine-specific; consult machine manufacturer documentation."
+    ],
+    [
+     "Volume for insulation panels",
+     "If a panel is used as insulation and the blow-in volume must be specified, use PROPERTY with name \"Volume\" and set value w to the required volume in cubic meters (m3)."
+    ],
+    [
+     "Reserved names",
+     "Use of reserved names can cause unintended machine behavior."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 897
+  },
+  {
+   "id": "v37-T36",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.6 Polygon paths",
+   "seite": 29,
+   "titel": "Polygon definitions are used to define contours and geometry-dependent processing paths.",
+   "kopf": [
+    "Command",
+    "Parameter sequence",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "PP",
+     "x, y, t, i, alpha, z",
+     "Polygon point / line segment endpoint."
+    ],
+    [
+     "KB",
+     "x, y, r, type, t, i, alpha, z",
+     "Arc endpoint with arc radius and arc type."
+    ],
+    [
+     "MP",
+     "xm, ym, r, t, i, zm",
+     "Circle center point."
+    ],
+    [
+     "TA",
+     "lx, by, xm, ym, z, t, r, alpha, delta, i",
+     "Pocket element for internal trimming geometry."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 917
+  },
+  {
+   "id": "v37-T37",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.6 Polygon paths",
+   "seite": 29,
+   "titel": "Common parameter meaning:",
+   "kopf": [
+    "Parameter",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "x, y, z",
+     "float",
+     "Point position in active coordinate system."
+    ],
+    [
+     "xm, ym, zm",
+     "float",
+     "Center-point position."
+    ],
+    [
+     "t",
+     "float",
+     "Depth, counter to Z axis of reference plane at the current point."
+    ],
+    [
+     "i",
+     "uint",
+     "Control code."
+    ],
+    [
+     "alpha",
+     "float",
+     "Tilt angle at point / segment."
+    ],
+    [
+     "r",
+     "float",
+     "Radius (arc or circle depending on element)."
+    ],
+    [
+     "type",
+     "string",
+     "Arc type for KB (Acw, Acc, ACW, ACC)."
+    ],
+    [
+     "lx, by",
+     "float",
+     "Pocket side lengths for TA."
+    ],
+    [
+     "delta",
+     "float",
+     "Pocket shear angle for TA."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 929
+  },
+  {
+   "id": "v37-T38",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.6 Polygon paths",
+   "seite": 29,
+   "titel": "Rules and behavior:",
+   "kopf": [
+    "Topic",
+    "Rule"
+   ],
+   "zeilen": [
+    [
+     "Permitted base combinations",
+     "PP followed by PP/KB; KB requires preceding PP/KB; MP or TA as single element."
+    ],
+    [
+     "Path closure",
+     "Polygon paths do not need to be closed unless required by the calling command."
+    ],
+    [
+     "Version availability",
+     "Polygon points available since 3.2; z ordinates mandatory since 3.4 (except panel outline / blocked surface exceptions)."
+    ],
+    [
+     "Interpolation",
+     "Non-interpolable attributes are taken from the end point of each line/arc segment."
+    ],
+    [
+     "Allowed usage PP/KB/MP",
+     "Can be used with PAF, PZF, PSF and with component geometries PLI-x, PLA-x, BTn."
+    ],
+    [
+     "Allowed usage TA",
+     "TA is only valid in context of PAF processing."
+    ],
+    [
+     "PROPERTY placement",
+     "PROPERTY must be inserted between the command keyword and PP/KB/MP/TA when used."
+    ],
+    [
+     "PP in special contexts",
+     "For panel outlines or blocked surfaces, x and y can be sufficient. For PAL, depth t must be 0."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 943
+  },
+  {
+   "id": "v37-T39",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "4.6 Polygon paths",
+   "seite": 29,
+   "titel": "Data types and allowed values:",
+   "kopf": [
+    "Field",
+    "Type / Rule"
+   ],
+   "zeilen": [
+    [
+     "All numeric fields except i",
+     "floating point number"
+    ],
+    [
+     "i",
+     "natural number"
+    ],
+    [
+     "type",
+     "string: Acw (CW <= 180 deg), Acc (CCW <= 180 deg), ACW (CW > 180 deg), ACC (CCW > 180 deg)"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 956
+  },
+  {
+   "id": "v37-T40",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "5.1 Installation position of UG, OG, LS, QS, EBT",
+   "seite": 31,
+   "titel": "The identification of the installation position via the material index is used in conjunction with automatic storage. It can be used to control the material …",
+   "kopf": [],
+   "zeilen": [
+    [
+     "The ones position in the material index defines the installation position.",
+     "0: Normal"
+    ],
+    [
+     "",
+     "1: Flat and flush to the external side"
+    ],
+    [
+     "",
+     "2: Flat and flush to the internal side"
+    ],
+    [
+     "",
+     "3: flat in the center of the wall"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 971
+  },
+  {
+   "id": "v37-T41",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "5.1 Installation position of UG, OG, LS, QS, EBT",
+   "seite": 31,
+   "titel": "The evaluation of the ones position is being withdrawn.",
+   "kopf": [],
+   "zeilen": [
+    [
+     "The tens position in the material index defines the rotation around the longitudinal axis of the compo- nent.",
+     "0: Not rotated"
+    ],
+    [
+     "",
+     "1: rotated by 90°"
+    ],
+    [
+     "",
+     "2: rotated by 180°"
+    ],
+    [
+     "",
+     "3: rotated by 270°"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 986
+  },
+  {
+   "id": "v37-T42",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "5.3 Material indices for panels and shuttering",
+   "seite": 33,
+   "titel": "Note: The following material index list is a recommendation. It can be adjusted by agreement with the machine manufacturer. In practice, customers may use mo…",
+   "kopf": [
+    "Material",
+    "Index"
+   ],
+   "zeilen": [
+    [
+     "Wood component",
+     "01-09"
+    ],
+    [
+     "Plaster phases (Fermacell)",
+     "10-19"
+    ],
+    [
+     "Soft fiber panel (Gutex, ...)",
+     "20-29"
+    ],
+    [
+     "OSB (Oriented Strand Board)",
+     "30-39"
+    ],
+    [
+     "Chipboard",
+     "40-49"
+    ],
+    [
+     "Plaster-base sheeting",
+     "50-59"
+    ],
+    [
+     "Plaster",
+     "60-69"
+    ],
+    [
+     "Gypsum plasterboard",
+     "70-79"
+    ],
+    [
+     "Plastic panel",
+     "80-89"
+    ],
+    [
+     "Plywood panel",
+     "90-99"
+    ],
+    [
+     "Plaster",
+     "100-109"
+    ],
+    [
+     "Shuttering",
+     "110-119"
+    ],
+    [
+     "Three-layer panel",
+     "120-129"
+    ],
+    [
+     "Glue",
+     "130-139"
+    ],
+    [
+     "Insulating plate (Diffutherm)",
+     "140-149"
+    ],
+    [
+     "Insulating plate (Heraklith)",
+     "150-159"
+    ],
+    [
+     "Planks",
+     "160-169"
+    ],
+    [
+     "Adhesive tape",
+     "170-179"
+    ],
+    [
+     "Film/vapor block",
+     "180-189*"
+    ],
+    [
+     "Plywood panel",
+     "190-199"
+    ],
+    [
+     "Hardboard",
+     "200-209"
+    ],
+    [
+     "Profiled panel 1)",
+     "210-219"
+    ],
+    [
+     "Porous concrete",
+     "220-229"
+    ],
+    [
+     "Cavity insulation: cellulose",
+     "230-239"
+    ],
+    [
+     "Cavity insulation: soft wood fiber",
+     "240-249"
+    ],
+    [
+     "Cavity insulation: mineral wool",
+     "250-259"
+    ],
+    [
+     "Cavity insulation: fiberglass",
+     "260-269"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 1023
+  },
+  {
+   "id": "v37-T43",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "5.4.1 Control codes for panels with defined polygon points",
+   "seite": 34,
+   "titel": "The control code cannot be interpolated. The reference point is therefore always the end point of a partial section of a polygon path.",
+   "kopf": [
+    "Control code",
+    "Panel meaning"
+   ],
+   "zeilen": [
+    [
+     "1 ... 9",
+     "Depth in mm (ones digit)"
+    ],
+    [
+     "00 ... 90",
+     "Depth in ten mm steps (tens digit)"
+    ],
+    [
+     "100",
+     "Tongue"
+    ],
+    [
+     "200",
+     "Groove"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 1069
+  },
+  {
+   "id": "v37-T44",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "6.1 Sawing and polygon trimming",
+   "seite": 36,
+   "titel": "The following control codes are used to control the saw or trimming unit.",
+   "kopf": [
+    "Control code",
+    "PAF meaning",
+    "PSG meaning"
+   ],
+   "zeilen": [
+    [
+     "1",
+     "Cylindrical trimmer",
+     "Standard saw blade"
+    ],
+    [
+     "2",
+     "Trimmer with chamfer",
+     "Fine-toothed saw blade"
+    ],
+    [
+     "3",
+     "Trimmer for horizontal groove Chainsaw"
+    ],
+    [
+     "4",
+     "Vertical marking trimmer",
+     ""
+    ],
+    [
+     "5...9",
+     "Free",
+     "Free"
+    ],
+    [
+     "10",
+     "Overcutting trimming line",
+     "Overcutting cut"
+    ],
+    [
+     "20",
+     "Undercutting trimming line",
+     "Undercutting cut"
+    ],
+    [
+     "30...90",
+     "locked"
+    ]
+   ],
+   "spalten": 3,
+   "unregelmaessig": true,
+   "mdZeile": 1108
+  },
+  {
+   "id": "v37-T45",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "6.1 Sawing and polygon trimming",
+   "seite": 36,
+   "titel": null,
+   "kopf": [],
+   "zeilen": [
+    [
+     "100",
+     "Tool radius correction \"left\" Workpiece is located to the right of the processing line"
+    ],
+    [
+     "200",
+     "Tool radius correction \"right\" Workpiece is located to the left of the processing line"
+    ],
+    [
+     "300",
+     "Tool radius correction \"middle\" Workpiece is located to the middle of the processing line -> No tool radius offset"
+    ],
+    [
+     "400...900",
+     "locked"
+    ],
+    [
+     "1000...9000",
+     "locked"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 1120
+  },
+  {
+   "id": "v37-T46",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "6.1.3 Tool radius correction",
+   "seite": 37,
+   "titel": "View-side interpretation example:",
+   "kopf": [
+    "Situation (view side fixed)",
+    "Radius correction",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "Workpiece must remain on the right side of the processing line",
+     "100",
+     "Tool radius correction left"
+    ],
+    [
+     "Workpiece must remain on the left side of the processing line",
+     "200",
+     "Tool radius correction right"
+    ],
+    [
+     "No side offset requested",
+     "300",
+     "No tool radius correction (middle)"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 1181
+  },
+  {
+   "id": "v37-T47",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "6.1.5 Examples",
+   "seite": 39,
+   "titel": null,
+   "kopf": [],
+   "zeilen": [
+    [
+     "Circular notch in a clockwise direction PAF MP 3382,40,34,18,211;",
+     "[Bild: page_057_img_169.png]"
+    ],
+    [
+     "Closed, rectangular notch\nPAF\nPP 65,2201,34,121,0;\nPP 133,2201,34,121,0;\nPP 133,2269,34,121,0;\nPP 65,2269,34,121,0;\nPP 65,2201,34,121,0;",
+     "[Bild: page_057_img_170.png]"
+    ],
+    [
+     "Notch with arc\nPAF\nPP 2000,0,16,211,0;\nPP 2000,1800,16,211,0;\nKB 3000,1800,800,\nAcw,16,211,0;\nPP 3000,0,16,211,0;",
+     "[Bild: page_057_img_171.png]"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 1223
+  },
+  {
+   "id": "v37-T48",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "6.2 Pocket trimming",
+   "seite": 39,
+   "titel": "The trimming unit is activated via control codes.",
+   "kopf": [
+    "Control code",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "0",
+     "Overcut/undercut according to the machine rules"
+    ],
+    [
+     "1",
+     "Overcut"
+    ],
+    [
+     "2",
+     "Undercut"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 1239
+  },
+  {
+   "id": "v37-T49",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "6.3 Highlight",
+   "seite": 40,
+   "titel": "The activation of the marking unit for MPL and PML processing is via control codes.",
+   "kopf": [
+    "Control code",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "1",
+     "Inkjet printer"
+    ],
+    [
+     "2",
+     "Ballpoint pen"
+    ],
+    [
+     "3",
+     "Marking awl"
+    ],
+    [
+     "10",
+     "Marking on the opposite plane"
+    ],
+    [
+     "20",
+     "Marking on the definition plane/layer"
+    ],
+    [
+     "100",
+     "Line color: black"
+    ],
+    [
+     "200",
+     "Line color: blue"
+    ],
+    [
+     "300",
+     "Line color: green"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 1256
+  },
+  {
+   "id": "v37-T50",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "6.4 Application line",
+   "seite": 40,
+   "titel": "The activation of the application unit for PAL processing is via control codes.",
+   "kopf": [
+    "Control code",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "1",
+     "Sealing tape 60 mm"
+    ],
+    [
+     "2",
+     "Sealing tape 50 mm"
+    ],
+    [
+     "3",
+     "Gluing"
+    ],
+    [
+     "4...9",
+     "Free"
+    ],
+    [
+     "tens digit 00...99",
+     "Free"
+    ],
+    [
+     "100",
+     "Tool radius correction \"left\" Workpiece is located to the right of the processing line."
+    ],
+    [
+     "200",
+     "Tool radius correction \"right\" Workpiece is located to the left of the processing line"
+    ],
+    [
+     "300",
+     "No tool radius offset"
+    ],
+    [
+     "400...900",
+     "locked"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 1283
+  },
+  {
+   "id": "v37-T51",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "6.5 Polygon blocked surfaces",
+   "seite": 41,
+   "titel": "The control code of a blocked surface qualifies the blocked surface for:",
+   "kopf": [
+    "Control code",
+    "Processing class"
+   ],
+   "zeilen": [
+    [
+     "0",
+     "Fixtures"
+    ],
+    [
+     "1",
+     "Gluing"
+    ],
+    [
+     "2",
+     "Plastering"
+    ],
+    [
+     "3",
+     "Application line"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 1314
+  },
+  {
+   "id": "v37-T52",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "7.2.1 Saw cut without gradient angle",
+   "seite": 42,
+   "titel": null,
+   "kopf": [],
+   "zeilen": [
+    [
+     "6.1",
+     "Sawing line"
+    ],
+    [
+     "6.2",
+     "Reference edge"
+    ],
+    [
+     "6.3",
+     "Reference plane"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 1346
+  },
+  {
+   "id": "v37-T53",
+   "quelle": "schnittstellenbeschreibung_3_7",
+   "dokument": "Interface_version_3_7.md",
+   "abschnitt": "7.2.2 Saw cut with gradient angle",
+   "seite": 43,
+   "titel": null,
+   "kopf": [],
+   "zeilen": [
+    [
+     "6.1",
+     "Sawing line"
+    ],
+    [
+     "6.2",
+     "Reference edge"
+    ],
+    [
+     "6.3",
+     "Reference plane"
+    ],
+    [
+     "6.4",
+     "Line of the saw blade axis"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 1366
+  },
+  {
+   "id": "sbk-T01",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/General_Concept.md",
+   "abschnitt": "The two roles",
+   "titel": "The SiteBroker connects an upstream system with a machine. Conceptually there are two roles; the exact interfaces and methods are specified in the Interface …",
+   "kopf": [
+    "Role",
+    "Who plays it",
+    "Responsibility"
+   ],
+   "zeilen": [
+    [
+     "MES / Orchestrator",
+     "MES, productionManager, any upstream system",
+     "Sends commands to a machine (load order, prepare batch, run batch variant); receives the status responses"
+    ],
+    [
+     "Machine / Client",
+     "A machine, manual workstation, third-party machine",
+     "Receives commands; sends status responses and the online-mode"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 29
+  },
+  {
+   "id": "sbk-T02",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/General_Concept.md",
+   "abschnitt": "Design principles",
+   "titel": null,
+   "kopf": [
+    "Principle",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "MQTT for control only",
+     "The broker carries lightweight command/status messages. It does not transport documents or job payloads."
+    ],
+    [
+     "REST + Central Database for data",
+     "Bulk data (documents, job structures) is fetched separately via REST from the Central Database."
+    ],
+    [
+     "Decoupled & asynchronous",
+     "Publishers and subscribers never talk directly. A request and its response are independent, retained MQTT messages correlated by id."
+    ],
+    [
+     "Symmetric",
+     "The same topic/payload scheme is used regardless of who is on either end."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 36
+  },
+  {
+   "id": "sbk-T03",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/General_Concept.md",
+   "abschnitt": "Deployment scenarios",
+   "titel": "If only a single machine is present or no networked setup is required, the SiteBroker along with the database is installed directly on the machine. In a dist…",
+   "kopf": [
+    "Scenario",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "Single Machine",
+     "SiteBroker and database are installed directly on the machine"
+    ],
+    [
+     "Distributed System",
+     "SiteBroker and database run on a central server; machines connect to this server; the local machine-level broker is deactivated"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 47
+  },
+  {
+   "id": "sbk-T04",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/General_Concept.md",
+   "abschnitt": "Glossary",
+   "titel": null,
+   "kopf": [
+    "Term",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "SiteBroker",
+     "Central MQTT orchestration service; unified interface for production components"
+    ],
+    [
+     "Orchestrator",
+     "Upstream system (MES, productionManager); sender of commands"
+    ],
+    [
+     "Client / Machine",
+     "Connected workstation (automated machine or manual workstation)"
+    ],
+    [
+     "Order / OrderId",
+     "Document and its GUID"
+    ],
+    [
+     "Batch / BatchId",
+     "Job and its GUID"
+    ],
+    [
+     "BatchVariant / BatchVariantId",
+     "Individual execution instance (run) and its GUID"
+    ],
+    [
+     "Retained Message",
+     "MQTT message stored by the broker and delivered immediately to newly connected clients"
+    ],
+    [
+     "Online Mode",
+     "Operating state in which the client accepts jobs from the orchestrator"
+    ],
+    [
+     "PSLV",
+     "Place/Side/Layer/Variant — format for variant identifiers"
+    ],
+    [
+     "Central Database",
+     "REST API database containing documents and job structures (for standard machines)"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 62
+  },
+  {
+   "id": "sbi-T01",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Interface_Specification.md",
+   "abschnitt": "1. Communication protocol (MQTT)",
+   "titel": null,
+   "kopf": [
+    "Property",
+    "Value / Description"
+   ],
+   "zeilen": [
+    [
+     "Protocol",
+     "MQTT v5 (via MQTTnet 4.3)"
+    ],
+    [
+     "Default Port",
+     "1883 (unencrypted)"
+    ],
+    [
+     "QoS",
+     "ExactlyOnce (2)"
+    ],
+    [
+     "Retained Messages",
+     "Yes — commands and responses are published as retained messages so that a client reconnecting after a restart still receives the last message per topic"
+    ],
+    [
+     "Clean Session",
+     "Configurable (default: true)"
+    ],
+    [
+     "Auto-Reconnect",
+     "Yes — with configurable delay"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 24
+  },
+  {
+   "id": "sbi-T02",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Interface_Specification.md",
+   "abschnitt": "2. Topic structure",
+   "titel": "Direction is encoded in the topic order: commands start with the sender, responses start with the machine.",
+   "kopf": [
+    "Interaction",
+    "Direction",
+    "Topic"
+   ],
+   "zeilen": [
+    [
+     "Load order",
+     "Orchestrator → Client",
+     "/ /order/ /load"
+    ],
+    [
+     "Order loaded",
+     "Client → Orchestrator",
+     "/orchestrator/order/ /loaded"
+    ],
+    [
+     "Prepare batch",
+     "Orchestrator → Client",
+     "/ /batch/ /prepare"
+    ],
+    [
+     "Batch prepared",
+     "Client → Orchestrator",
+     "/orchestrator/batch/ /prepared"
+    ],
+    [
+     "Run batch variant",
+     "Orchestrator → Client",
+     "/ /batch-variant/ /produce"
+    ],
+    [
+     "Batch variant produced",
+     "Client → Orchestrator",
+     "/orchestrator/batch-variant/ /produced"
+    ],
+    [
+     "Online mode",
+     "Client → Orchestrator",
+     "/orchestrator/settings/online-mode"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 47
+  },
+  {
+   "id": "sbi-T03",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Interface_Specification.md",
+   "abschnitt": "Known AdditionalProperties keys",
+   "titel": null,
+   "kopf": [
+    "Key",
+    "Usage"
+   ],
+   "zeilen": [
+    [
+     "\"Filename\"",
+     "File name (legacy import, optional)"
+    ],
+    [
+     "\"Variant\"",
+     "PSLV variant (see below)"
+    ],
+    [
+     "\"OrderId\"",
+     "Document ID — always included in the load command and the loaded/prepared/produced responses; optional (legacy) in the prepare command and (manual workstation) in the produce command"
+    ],
+    [
+     "\"BatchId\"",
+     "Job ID — always included in the prepare command and the prepared/produced responses; optional (legacy) in the produce command"
+    ],
+    [
+     "\"BatchVariantId\"",
+     "Execution ID — always included in the produce command and the produced response"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 81
+  },
+  {
+   "id": "sbi-T04",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Interface_Specification.md",
+   "abschnitt": "OrderStatus",
+   "titel": null,
+   "kopf": [
+    "Value",
+    "Name",
+    "Meaning",
+    "Terminal"
+   ],
+   "zeilen": [
+    [
+     "0",
+     "Requested",
+     "Command sent, not yet processed",
+     ""
+    ],
+    [
+     "1",
+     "Preparing",
+     "Machine is importing the document",
+     ""
+    ],
+    [
+     "2",
+     "Imported",
+     "Order successfully loaded",
+     "✅"
+    ],
+    [
+     "3",
+     "Aborted",
+     "Order load failed/cancelled",
+     "✅"
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 103
+  },
+  {
+   "id": "sbi-T05",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Interface_Specification.md",
+   "abschnitt": "BatchStatus",
+   "titel": null,
+   "kopf": [
+    "Value",
+    "Name",
+    "Meaning",
+    "Terminal"
+   ],
+   "zeilen": [
+    [
+     "0",
+     "Requested",
+     "Command sent",
+     ""
+    ],
+    [
+     "1",
+     "Incomplete",
+     "Missing data / not ready",
+     ""
+    ],
+    [
+     "2",
+     "Preparing",
+     "Being prepared",
+     ""
+    ],
+    [
+     "3",
+     "Ready",
+     "Batch prepared",
+     "✅"
+    ],
+    [
+     "4",
+     "Aborted",
+     "Prepare failed/cancelled",
+     "✅"
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 114
+  },
+  {
+   "id": "sbi-T06",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Interface_Specification.md",
+   "abschnitt": "RunStatus",
+   "titel": null,
+   "kopf": [
+    "Value",
+    "Name",
+    "Meaning",
+    "Terminal"
+   ],
+   "zeilen": [
+    [
+     "0",
+     "Requested",
+     "Command sent",
+     ""
+    ],
+    [
+     "1",
+     "Inactive",
+     "Not running / paused",
+     ""
+    ],
+    [
+     "2",
+     "Active",
+     "Production running",
+     ""
+    ],
+    [
+     "3",
+     "Done",
+     "Variant produced",
+     "✅"
+    ],
+    [
+     "4",
+     "Aborted",
+     "Run failed/cancelled",
+     "✅"
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 126
+  },
+  {
+   "id": "sbi-T07",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Interface_Specification.md",
+   "abschnitt": "OnlineModeStatus",
+   "titel": null,
+   "kopf": [
+    "Value",
+    "Name"
+   ],
+   "zeilen": [
+    [
+     "1",
+     "Offline"
+    ],
+    [
+     "2",
+     "Online"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 138
+  },
+  {
+   "id": "sbi-T08",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Interface_Specification.md",
+   "abschnitt": "SiteBrokerOptions",
+   "titel": null,
+   "kopf": [
+    "Key",
+    "Type",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "Hostname",
+     "string",
+     "Host of the broker and central server. This value overrides Mqtt:Hostname internally."
+    ],
+    [
+     "MachineNumber",
+     "string",
+     "The machine this process represents. Must be unique across the site."
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 336
+  },
+  {
+   "id": "sbi-T09",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Interface_Specification.md",
+   "abschnitt": "Mqtt (MqttOptions)",
+   "titel": "Full list with defaults: MqttOptions.cs; validation in ServiceExtensions.cs.",
+   "kopf": [
+    "Key",
+    "Type",
+    "Default",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "Hostname",
+     "string",
+     "—",
+     "Set internally from SiteBrokerOptions:Hostname; do not configure it here."
+    ],
+    [
+     "Port",
+     "int",
+     "1883",
+     "Broker port."
+    ],
+    [
+     "Id",
+     "string",
+     "random Guid",
+     "MQTT client id. Must be unique per connected process — duplicate ids cause the broker to disconnect the older client."
+    ],
+    [
+     "Username / Password",
+     "string",
+     "null",
+     "Broker credentials, if required."
+    ],
+    [
+     "CleanSession",
+     "bool",
+     "true",
+     "If false, subscriptions and queued messages survive reconnects."
+    ],
+    [
+     "ConnectTimeoutInSeconds",
+     "int",
+     "90",
+     "Connect wait. Validated to be 30–600; out-of-range throws ValidationException."
+    ],
+    [
+     "AutoReconnectDelay",
+     "TimeSpan",
+     "5 s",
+     "Delay between automatic reconnect attempts."
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 345
+  },
+  {
+   "id": "sbi-T10",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Interface_Specification.md",
+   "abschnitt": "10. Library structure",
+   "titel": "The library lives in Applications/Sitebroker/Wup.Works.SiteBroker.Client. Key types (one file each, kept as the single source of truth — read the code instea…",
+   "kopf": [
+    "Concern",
+    "Type(s)",
+    "Source"
+   ],
+   "zeilen": [
+    [
+     "Orchestrator role",
+     "ISiteBrokerControllerService / SiteBrokerControllerService",
+     "Interfaces/, Services/"
+    ],
+    [
+     "Machine role",
+     "ISiteBrokerClientService / SiteBrokerClientService",
+     "Interfaces/, Services/"
+    ],
+    [
+     "MQTT transport",
+     "IMqttClientService / MqttClientService",
+     "Interfaces/, Services/"
+    ],
+    [
+     "Topic building/validation",
+     "TopicHelper",
+     "Helpers/TopicHelper.cs"
+    ],
+    [
+     "Startup wiring & last-will",
+     "ServiceExtensions.AddSiteBroker",
+     "ServiceExtensions.cs"
+    ],
+    [
+     "Hosted connect worker",
+     "SiteBrokerWorker",
+     "Services/BackgroundWorkers/"
+    ],
+    [
+     "Status enums",
+     "OrderStatus, BatchStatus, RunStatus, OnlineModeStatus",
+     "Models/Enums/"
+    ],
+    [
+     "Event args & payload",
+     "*StatusEventArgs, GenericPayloadDto",
+     "Models/"
+    ],
+    [
+     "Configuration",
+     "MqttOptions, SiteBrokerOptions",
+     "Configuration/"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 363
+  },
+  {
+   "id": "sbd-T01",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "1. Scope & design principles",
+   "titel": "This channel covers read-only, machine-originated data: each status or counter value a production client, such as a WEINMANN machine, provides to the outside…",
+   "kopf": [
+    "Principle",
+    "Decision"
+   ],
+   "zeilen": [
+    [
+     "One signal = one topic = one event",
+     "Every value is its own retained MQTT message."
+    ],
+    [
+     "Event on change",
+     "A value is published whenever it changes."
+    ],
+    [
+     "State always readable via retain",
+     "Because every message is retained, a newly connected consumer immediately gets the last value of every signal — without any snapshot topic."
+    ],
+    [
+     "No history",
+     "Telemetry carries only the current value of a signal. Historical series / alarm history are out of scope."
+    ],
+    [
+     "Reuse the existing bus",
+     "Same broker, same MachineNumber, same retained-message philosophy as Interface & Method Specification §1."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 26
+  },
+  {
+   "id": "sbd-T02",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "2. Relationship to the command interface",
+   "titel": null,
+   "kopf": [
+    "Aspect",
+    "Command interface (spec)",
+    "Telemetry channel (this document)"
+   ],
+   "zeilen": [
+    [
+     "Direction",
+     "Bidirectional (request → response)",
+     "Unidirectional (machine → consumers)"
+    ],
+    [
+     "Topic shape",
+     "{Sender}/{Receiver}/{Resource}/{Id}/{Action}",
+     "{MachineNumber}/telemetry/{category}/{key} or {MachineNumber}/telemetry/{category}/{group}/{instance}/{key}"
+    ],
+    [
+     "Correlation id",
+     "Yes (4th topic segment)",
+     "None — telemetry is state, not a transaction"
+    ],
+    [
+     "Receiver",
+     "A named orchestrator",
+     "A fixed telemetry namespace (broadcast)"
+    ],
+    [
+     "Payload",
+     "GenericPayloadDto (Status + AdditionalProperties)",
+     "Single-value envelope"
+    ],
+    [
+     "Lifecycle / clear",
+     "Retained + explicit empty-payload clear",
+     "Retained latest value; indexed entries removed with an empty retained payload (§6)"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 38
+  },
+  {
+   "id": "sbd-T03",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "3. Topic structure",
+   "titel": "Defined categories",
+   "kopf": [
+    "Category",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "machine",
+     "Machine-related data, order-neutral."
+    ],
+    [
+     "batch-variant",
+     "Data for the currently executing batch variant."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 70
+  },
+  {
+   "id": "sbd-T04",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "4. Payload format",
+   "titel": "All telemetry payloads use the same minimal single-value envelope (JSON):",
+   "kopf": [
+    "Field",
+    "Type",
+    "Required",
+    "Description"
+   ],
+   "zeilen": [
+    [
+     "type",
+     "string",
+     "✅",
+     "\"number\" or \"string\" — any other value is rejected by the consumer."
+    ],
+    [
+     "value",
+     "string",
+     "✅",
+     "The current value of the signal. Always a string on the wire regardless of type."
+    ],
+    [
+     "timestampUtc",
+     "string (ISO 8601, UTC)",
+     "✅",
+     "When the value was captured on the machine."
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 96
+  },
+  {
+   "id": "sbd-T05",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "TelemetryValueType",
+   "titel": "Only two types are valid. The .NET enum TelemetryValueType reflects this constraint exactly — it has no Boolean or other members, so an invalid type on the w…",
+   "kopf": [
+    "Wire value",
+    ".NET enum member",
+    "Used for"
+   ],
+   "zeilen": [
+    [
+     "\"number\"",
+     "TelemetryValueType.Number",
+     "Integers, floats, enum ordinals"
+    ],
+    [
+     "\"string\"",
+     "TelemetryValueType.String",
+     "Text, program names, timestamps, material ids"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 106
+  },
+  {
+   "id": "sbd-T06",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "MachineState enum",
+   "titel": null,
+   "kopf": [
+    "Value",
+    "Name",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "1",
+     "Off",
+     "Machine off / not producing"
+    ],
+    [
+     "2",
+     "Idle",
+     "Powered, waiting (no job running)"
+    ],
+    [
+     "3",
+     "Working",
+     "Production running"
+    ],
+    [
+     "4",
+     "Error",
+     "Fault / stopped on error"
+    ],
+    [
+     "5",
+     "Test",
+     "Test / commissioning mode"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 129
+  },
+  {
+   "id": "sbd-T07",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "Single-value signals (4-segment topics)",
+   "titel": null,
+   "kopf": [
+    "Signal",
+    "Topic",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "state",
+     "{MachineNumber}/telemetry/machine/state",
+     "number",
+     "Current machine state (see §5)"
+    ],
+    [
+     "parts",
+     "{MachineNumber}/telemetry/machine/parts",
+     "number",
+     "Total parts produced (absolute counter)"
+    ],
+    [
+     "cycles",
+     "{MachineNumber}/telemetry/machine/cycles",
+     "number",
+     "Total machine cycles (absolute counter)"
+    ],
+    [
+     "meter",
+     "{MachineNumber}/telemetry/machine/meter",
+     "number",
+     "Total meters processed (absolute counter)"
+    ],
+    [
+     "program",
+     "{MachineNumber}/telemetry/machine/program",
+     "string",
+     "Identifier of the currently loaded program"
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 145
+  },
+  {
+   "id": "sbd-T08",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "Message topics",
+   "titel": null,
+   "kopf": [
+    "Topic",
+    "Group",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "{MachineNumber}/telemetry/machine/error/{instance}/description",
+     "error",
+     "string",
+     "An active error; one topic per error code"
+    ],
+    [
+     "{MachineNumber}/telemetry/machine/warning/{instance}/description",
+     "warning",
+     "string",
+     "An active warning; one topic per warning code"
+    ],
+    [
+     "{MachineNumber}/telemetry/machine/maintenance/{instance}/description",
+     "maintenance",
+     "string",
+     "A pending maintenance item; one topic per key"
+    ],
+    [
+     "{MachineNumber}/telemetry/machine/action/{instance}/description",
+     "action",
+     "string",
+     "An active action; one topic per action key"
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 163
+  },
+  {
+   "id": "sbd-T09",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "Storage topics",
+   "titel": null,
+   "kopf": [
+    "Topic",
+    "Group",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "{MachineNumber}/telemetry/machine/storage/{instance}/level",
+     "storage",
+     "number",
+     "Current fill level of the store"
+    ],
+    [
+     "{MachineNumber}/telemetry/machine/storage/{instance}/capacity",
+     "storage",
+     "number",
+     "Maximum capacity of the store"
+    ],
+    [
+     "{MachineNumber}/telemetry/machine/storage/{instance}/material",
+     "storage",
+     "string",
+     "Material identifier currently loaded"
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 172
+  },
+  {
+   "id": "sbd-T10",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "Tool topics",
+   "titel": null,
+   "kopf": [
+    "Topic",
+    "Group",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "{MachineNumber}/telemetry/machine/tool/{instance}/description",
+     "tool",
+     "string",
+     "The name of the specific tool"
+    ],
+    [
+     "{MachineNumber}/telemetry/machine/tool/{instance}/tool-type",
+     "tool",
+     "number",
+     "Tool type (see ToolType below)"
+    ],
+    [
+     "{MachineNumber}/telemetry/machine/tool/{instance}/counter-type",
+     "tool",
+     "number",
+     "Counter type (see CounterType below)"
+    ],
+    [
+     "{MachineNumber}/telemetry/machine/tool/{instance}/counter",
+     "tool",
+     "number",
+     "Current counter value"
+    ],
+    [
+     "{MachineNumber}/telemetry/machine/tool/{instance}/time",
+     "tool",
+     "number",
+     "Operating time of the tool in seconds"
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 180
+  },
+  {
+   "id": "sbd-T11",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "ToolType enum",
+   "titel": null,
+   "kopf": [
+    "Value",
+    "Name",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "1",
+     "Milling",
+     "Milling tool"
+    ],
+    [
+     "2",
+     "Drilling",
+     "Drilling tool"
+    ],
+    [
+     "3",
+     "Marking",
+     "Marking tool"
+    ],
+    [
+     "4",
+     "Fastening",
+     "Fastening tool"
+    ],
+    [
+     "5",
+     "Sawing",
+     "Sawing tool"
+    ],
+    [
+     "6",
+     "Glueing",
+     "Glueing tool"
+    ],
+    [
+     "7",
+     "Other",
+     "Any other tool. No counter is published, only its operating time"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 193
+  },
+  {
+   "id": "sbd-T12",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "CounterType enum",
+   "titel": "The counter type follows from the tool type.",
+   "kopf": [
+    "Value",
+    "Name",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "1",
+     "Shoots",
+     "Fastening shoots, for fastening tools"
+    ],
+    [
+     "2",
+     "Distance",
+     "Distance in meter, for milling, marking, sawing and glueing tools"
+    ],
+    [
+     "3",
+     "Hits",
+     "Hits, for drilling tools"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 207
+  },
+  {
+   "id": "sbd-T13",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "7. Defined batch-variant telemetry",
+   "titel": "Data for the currently executing batch variant, published under the batch-variant category with current as the instance.",
+   "kopf": [
+    "Signal",
+    "Topic",
+    "Type",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "id",
+     "{MachineNumber}/telemetry/batch-variant/current/id",
+     "string",
+     "Id of the current batch variant"
+    ],
+    [
+     "state",
+     "{MachineNumber}/telemetry/batch-variant/current/state",
+     "number",
+     "Execution state (see BatchState below)"
+    ],
+    [
+     "progress",
+     "{MachineNumber}/telemetry/batch-variant/current/progress",
+     "number",
+     "Progress in percent (0–100)"
+    ],
+    [
+     "meter",
+     "{MachineNumber}/telemetry/batch-variant/current/meter",
+     "number",
+     "Meters processed for this batch variant"
+    ],
+    [
+     "started",
+     "{MachineNumber}/telemetry/batch-variant/current/started",
+     "string",
+     "Start timestamp (ISO 8601, UTC)"
+    ],
+    [
+     "finished",
+     "{MachineNumber}/telemetry/batch-variant/current/finished",
+     "string",
+     "End timestamp (ISO 8601, UTC)"
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 223
+  },
+  {
+   "id": "sbd-T14",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Data_Specification.md",
+   "abschnitt": "BatchState enum",
+   "titel": null,
+   "kopf": [
+    "Value",
+    "Name",
+    "Meaning"
+   ],
+   "zeilen": [
+    [
+     "1",
+     "Inactive",
+     "Not started or paused"
+    ],
+    [
+     "2",
+     "Active",
+     "Currently producing"
+    ],
+    [
+     "3",
+     "Done",
+     "Finished successfully"
+    ],
+    [
+     "4",
+     "Aborted",
+     "Stopped before completion"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 236
+  },
+  {
+   "id": "sbg-T01",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Integration_Guide.md",
+   "abschnitt": "1. The two roles",
+   "titel": "The library provides one service per role. Both are registered with a single call to AddSiteBroker(...) and resolved from dependency injection. You typically…",
+   "kopf": [
+    "Role",
+    "Interface",
+    "Used by",
+    "Responsibility"
+   ],
+   "zeilen": [
+    [
+     "MES / Orchestrator",
+     "ISiteBrokerControllerService",
+     "MES, ERP, productionManager, any upstream system",
+     "Sends commands to a machine; receives status responses & online-mode"
+    ],
+    [
+     "Machine / Client",
+     "ISiteBrokerClientService",
+     "A machine, manual workstation, third-party machine",
+     "Receives commands; sends status responses & online-mode"
+    ]
+   ],
+   "spalten": 4,
+   "mdZeile": 29
+  },
+  {
+   "id": "sbm-T01",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Integration_ManualWorkstation.md",
+   "abschnitt": "3. Important notes",
+   "titel": "The general edge cases apply unchanged (see Integration Guide §5). The points most relevant to a manual workstation are:",
+   "kopf": [
+    "#",
+    "Note"
+   ],
+   "zeilen": [
+    [
+     "1",
+     "Clear retained messages — Every command must be cleared immediately via Clear*Request(), otherwise it is re-delivered after a client restart. See Interface & Method Specification §7."
+    ],
+    [
+     "2",
+     "Online mode is required — The orchestrator only sends PrepareBatch and ExecuteBatchVariant to clients that are in online mode."
+    ],
+    [
+     "3",
+     "Unique machine number — Every client requires a system-wide unique MachineNumber (e.g. HAP-01)."
+    ],
+    [
+     "4",
+     "OrderId in the produce payload — For the manual workstation the SiteBroker/orchestrator must include the OrderId in AdditionalProperties of the produce command."
+    ],
+    [
+     "5",
+     "Error handling — Always respond with the Aborted status on errors so that the orchestrator can record the state correctly."
+    ],
+    [
+     "6",
+     "MQTT QoS — QoS 2 (ExactlyOnce) is used for control commands."
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 55
+  },
+  {
+   "id": "sba-T01",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Demo_Application.md",
+   "abschnitt": "1. The two demos",
+   "titel": null,
+   "kopf": [
+    "Project",
+    "Simulates",
+    "Uses"
+   ],
+   "zeilen": [
+    [
+     "Wup.Works.SiteBroker.Client.Demo.Mes",
+     "an MES / orchestrator that hands out jobs",
+     "ISiteBrokerControllerService"
+    ],
+    [
+     "Wup.Works.SiteBroker.Client.Demo.Machine",
+     "a machine that processes jobs",
+     "ISiteBrokerClientService"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 13
+  },
+  {
+   "id": "sba-T02",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Demo_Application.md",
+   "abschnitt": "MES demo (Demo.Mes)",
+   "titel": null,
+   "kopf": [
+    "Key",
+    "Action"
+   ],
+   "zeilen": [
+    [
+     "1",
+     "Send LoadOrder (OrderId, optional filename)"
+    ],
+    [
+     "2",
+     "Send PrepareBatch (BatchId, optional OrderId, optional PSLV variant)"
+    ],
+    [
+     "3",
+     "Send RunBatchVariant (BatchVariantId, optional BatchId)"
+    ],
+    [
+     "4",
+     "List sent requests with their last status / completion"
+    ],
+    [
+     "5",
+     "Clear a request (publish empty retained command)"
+    ],
+    [
+     "6",
+     "Error scenarios (see §4)"
+    ],
+    [
+     "q",
+     "Quit"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 62
+  },
+  {
+   "id": "sba-T03",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Demo_Application.md",
+   "abschnitt": "Machine demo (Demo.Machine)",
+   "titel": "The machine demo walks the operator linearly through the intended operational flow. Incoming commands are automatically taken over (their retained command is…",
+   "kopf": [
+    "Key",
+    "Action"
+   ],
+   "zeilen": [
+    [
+     "Enter",
+     "Process the next queued command — guided through its lifecycle (see below)"
+    ],
+    [
+     "o",
+     "Toggle Online / Offline mode"
+    ],
+    [
+     "l",
+     "List open (queued) commands with their current lifecycle phase"
+    ],
+    [
+     "u",
+     "Send an unsolicited / foreign response (never-requested id)"
+    ],
+    [
+     "q",
+     "Quit"
+    ]
+   ],
+   "spalten": 2,
+   "mdZeile": 78
+  },
+  {
+   "id": "sba-T04",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Demo_Application.md",
+   "abschnitt": "Machine demo (Demo.Machine)",
+   "titel": "Each command has a lifecycle (Requested -> … -> terminal, with Aborted always available as an escape). The status values come from Interface & Method Specifi…",
+   "kopf": [
+    "Command",
+    "Guided happy path",
+    "Terminal states"
+   ],
+   "zeilen": [
+    [
+     "LoadOrder",
+     "Preparing → Imported",
+     "Imported, Aborted"
+    ],
+    [
+     "PrepareBatch",
+     "Preparing → Ready",
+     "Ready, Aborted"
+    ],
+    [
+     "RunBatchVariant",
+     "Active → Done",
+     "Done, Aborted"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 88
+  },
+  {
+   "id": "sba-T05",
+   "quelle": "sitebroker",
+   "dokument": "sitebroker/Demo_Application.md",
+   "abschnitt": "4. Error scenarios (steerable from the console)",
+   "titel": "The demos intentionally let you trigger the situations an integrator must handle (see Integration Guide §5):",
+   "kopf": [
+    "Scenario",
+    "How to trigger",
+    "What it demonstrates"
+   ],
+   "zeilen": [
+    [
+     "No response / timeout",
+     "MES 6 → 1 (unknown machine) or Machine [Enter] → [i] (ignore)",
+     "MES timeout monitoring and recovery"
+    ],
+    [
+     "Aborted status",
+     "Machine [Enter] → choose Aborted",
+     "Error reporting per spec (always answer Aborted on failure)"
+    ],
+    [
+     "Missing PSLV variant",
+     "MES 6 → 2",
+     "Non-interactive prepare without Variant → machine may abort"
+    ],
+    [
+     "Missing OrderId/BatchId",
+     "MES 6 → 3",
+     "Manual workstation can't locate the document"
+    ],
+    [
+     "Duplicate / replay",
+     "MES 6 → 4",
+     "Receivers must be idempotent (QoS 2 does not guarantee business-level once)"
+    ],
+    [
+     "Offline machine",
+     "Machine o (go Offline), then MES sends a job",
+     "Online mode is a prerequisite for jobs"
+    ],
+    [
+     "Foreign / late response",
+     "Machine u",
+     "MES receives a response it never asked for"
+    ]
+   ],
+   "spalten": 3,
+   "mdZeile": 102
+  }
+ ]
+}

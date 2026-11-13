@@ -1,0 +1,58 @@
+  <section class="canvas-bereich">
+    <div class="werkzeugleiste">
+      <button class="schaltflaeche schaltflaeche-klein schaltflaeche-neben aktiv" data-werkzeug="auswahl" title="Auswahl-Werkzeug (V)">▸ Auswahl</button>
+      <button class="schaltflaeche schaltflaeche-klein schaltflaeche-neben" data-werkzeug="messen" title="Messen mit Punktfang (M)">📏 Messen</button>
+      <button class="schaltflaeche schaltflaeche-klein schaltflaeche-neben" data-werkzeug="kante" title="Verschieben: Kanten parallel + Nagelreihen ziehen (K)">⇆ Verschieben</button>
+      <button class="schaltflaeche schaltflaeche-klein schaltflaeche-neben" data-werkzeug="neue-kontur" title="Neue Kontur: Art+Form waehlen, dann Klicks setzen (Punktfang mit Markierung, Shift = ortho X/Y), Klick auf den Startpunkt oder Doppelklick/Enter schliesst ab, Escape bricht ab (N)">✎ Neue Kontur</button>
+      <select class="eingabefeld eingabefeld-klein" id="neueKonturTyp" title="Art der neuen Kontur" style="width:auto;display:none">
+        <option value="NR">NR — Nagelreihe</option>
+        <option value="PAF">PAF — Fräskontur</option>
+        <option value="PSG">PSG — Sägekontur</option>
+        <option value="PSF">PSF — Sperrfläche</option>
+        <option value="PSZ">PSZ — Sperrzone</option>
+        <option value="PML">PML — Markierlinie</option>
+      </select>
+      <select class="eingabefeld eingabefeld-klein" id="neueKonturForm" title="Form der neuen Kontur" style="width:auto;display:none">
+        <option value="polygon">Polygon (Klicks)</option>
+        <option value="rechteck">Rechteck (2 Ecken)</option>
+        <option value="mp">Kreis (MP)</option>
+      </select>
+      <button class="schaltflaeche schaltflaeche-klein schaltflaeche-neben" id="btnNeuKonturLagen" title="Ziel-Lagen fuer die neue Kontur waehlen" style="display:none">Schichten ▾</button>
+      <span class="kopf-trenner"></span>
+      <button class="schaltflaeche schaltflaeche-klein schaltflaeche-neben" id="btnZoomFit" title="Ansicht einpassen (Leertaste)">⊡ Einpassen</button>
+      <button class="schaltflaeche schaltflaeche-klein schaltflaeche-neben" id="btnMessLoeschen" title="Alle Messungen loeschen">Messungen ✕</button>
+    </div>
+    <div class="werkzeugleiste werkzeugleiste-2">
+      <button class="schaltflaeche schaltflaeche-klein schaltflaeche-neben" id="btnSchnittH" title="Horizontaler Schnitt — Profil entlang X, Linie ziehbar (H)">— Schnitt H</button>
+      <button class="schaltflaeche schaltflaeche-klein schaltflaeche-neben" id="btnSchnittV" title="Vertikaler Schnitt — Profil entlang Y, Linie ziehbar (Umschalt+H)">| Schnitt V</button>
+      <button class="schaltflaeche schaltflaeche-klein schaltflaeche-neben" id="btn3d" title="3D-Schraegansicht des Lagenaufbaus (D)">⬡ 3D</button>
+      <label class="explosion-schalter" id="lbl3dExplosion" hidden>
+        <input type="checkbox" id="chk3dExplosion" checked> Explosion</label>
+      <span class="kopf-trenner"></span>
+      <span class="mini-hinweis">Anzeigen:</span>
+      <span id="opFilterChips"></span>
+      <span id="ansichtChips" title="Anzeige-Umschalter (ehem. Kontrollkaestchen)"></span>
+      <span class="kopf-trenner"></span>
+      <span class="mini-hinweis">Lagen:</span>
+      <span id="lagenChips" title="Lagen ein-/ausblenden — Alt+Klick = Solo"></span>
+    </div>
+    <div class="canvas-wrapper" id="canvasWrapper">
+      <div class="mess-panel versteckt" id="messPanel"></div>
+      <div class="verschieben-overlay versteckt" id="verschiebenOverlay"></div>
+      <svg id="canvas" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="svg-tooltip" id="svgTooltip"></div>
+      <div class="start-overlay" id="startOverlay">
+        <div class="drop-zone" id="dropZone">
+          <div style="font-size:2rem">🪵</div>
+          <div style="font-weight:600;margin:8px 0 4px;color:var(--text)">WUP-Datei hierher ziehen</div>
+          <div class="mini-hinweis">oder klicken zum Auswaehlen · Weinmann-Schnittstelle 3.3–3.5</div>
+        </div>
+        <div class="mini-hinweis">Verarbeitung ausschließlich im Browser — keine Daten verlassen den Rechner.</div>
+        <div class="mini-hinweis" id="haftungsHinweis">Ohne Gewähr: Jede exportierte Datei vor der Fertigung fachlich prüfen.</div>
+        <!-- v2.55: Angebot "Letzte Sitzung wiederherstellen" (nur mit Sicherung) -->
+        <div class="sitzung-karte versteckt" id="sitzungKarte"></div>
+      </div>
+    </div>
+  </section>
+  <div class="splitter" id="splitterRechts"></div>
+

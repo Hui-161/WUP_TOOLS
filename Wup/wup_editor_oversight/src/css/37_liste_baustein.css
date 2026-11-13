@@ -1,0 +1,334 @@
+/* =====================================================================
+   LISTEN-BAUSTEIN (v2.7) — Stil zu liste_baustein.js.
+   Nutzt die Design-Tokens des Werkzeug-Skeletts (--flaeche, --grund, --rand,
+   --text, --text-leise, --akzent, --akzent-text); die Ersatzwerte greifen nur,
+   wenn ein Werkzeug sie nicht setzt.
+   ===================================================================== */
+.liste { position: relative; font-size: .85rem; color: var(--text, #1b1f24); }
+.liste [hidden] { display: none !important; }
+
+.liste-kopfleiste { display: flex; gap: 8px; align-items: stretch; margin-bottom: 4px; }
+.liste-gruppierfeld {
+  flex: 1 1 auto; min-height: 38px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
+  padding: 4px 8px; border: 1px dashed var(--rand, #d6d9dd); border-radius: 6px; background: var(--grund, #f5f6f7);
+}
+.liste-gruppierfeld.ziel { border-color: var(--akzent, #0b6b52); border-style: solid; }
+.liste-gruppierhinweis { color: var(--text-leise, #5a626b); }
+.liste-werkzeuge { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.liste-suche { width: 13em; }
+.liste .schaltflaeche-klein { padding: 3px 8px; font-size: .8rem; }
+
+.liste-gruppenmarke {
+  display: inline-flex; align-items: center; gap: 5px; padding: 3px 4px 3px 9px; cursor: grab; user-select: none; touch-action: none;
+  border: 1px solid var(--rand, #d6d9dd); border-radius: 6px; background: var(--flaeche, #fff);
+}
+.liste-gruppenmarke:hover { border-color: var(--akzent, #0b6b52); }
+.liste-marke-pfeil { color: var(--text-leise, #5a626b); }
+.liste-marke-weg {
+  border: 0; background: none; color: var(--text-leise, #5a626b); cursor: pointer; font: inherit; font-size: .75rem;
+  padding: 2px 5px; border-radius: 4px;
+}
+.liste-marke-weg:hover { background: var(--grund, #f5f6f7); color: var(--text, #1b1f24); }
+
+.liste-rahmen { position: relative; }
+.liste-rollbereich {
+  overflow: auto; max-height: var(--liste-hoehe, 70vh);
+  border: 1px solid var(--rand, #d6d9dd); border-radius: 6px; background: var(--flaeche, #fff);
+}
+.liste-tabelle { table-layout: fixed; border-collapse: separate; border-spacing: 0; }
+.liste-tabelle th, .liste-tabelle td {
+  border: 0; border-right: 1px solid var(--rand, #d6d9dd); border-bottom: 1px solid var(--rand, #d6d9dd);
+  padding: 4px 8px; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.liste-tabelle .zahl { text-align: right; font-variant-numeric: tabular-nums; }
+.liste-tabelle tbody tr:hover td { background: var(--grund, #f5f6f7); }
+
+.liste-kopf {
+  position: sticky; top: 0; z-index: 2; background: var(--grund, #f5f6f7); font-weight: 600;
+  cursor: pointer; user-select: none; touch-action: none; padding-right: 26px !important;
+}
+.liste-kopf:hover { color: var(--akzent, #0b6b52); }
+.liste-kopf:focus-visible, .liste-trichter:focus-visible { outline: 2px solid var(--akzent, #0b6b52); outline-offset: -2px; }
+.sort-pfeil { font-size: .7rem; color: var(--akzent, #0b6b52); margin-left: 4px; }
+.liste-trichter {
+  position: absolute; right: 7px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+  border: 0; border-radius: 4px; background: var(--grund, #f5f6f7); color: var(--text-leise, #5a626b); opacity: 0;
+}
+.liste-kopf:hover .liste-trichter, .liste-kopf:focus-within .liste-trichter, .liste-kopf.gefiltert .liste-trichter { opacity: 1; }
+.liste-trichter:hover { background: var(--rand, #d6d9dd); color: var(--text, #1b1f24); }
+.liste-kopf.gefiltert .liste-trichter { background: var(--akzent, #0b6b52); color: var(--akzent-text, #fff); }
+.liste-griff { position: absolute; right: 0; top: 0; bottom: 0; width: 6px; cursor: col-resize; touch-action: none; }
+.liste-griff:hover, .liste-breite-zieht .liste-griff { background: var(--akzent, #0b6b52); opacity: .45; }
+.liste-zieht, .liste-breite-zieht { user-select: none; }
+.liste-zieht * { cursor: grabbing !important; }
+.liste-breite-zieht * { cursor: col-resize !important; }
+
+.liste-gruppe td { background: var(--grund, #f5f6f7); cursor: pointer; overflow: visible; }
+
+/* Auswahlspalte: fest ganz links, bleibt beim Querrollen stehen */
+.liste-tabelle .liste-wahl {
+  position: sticky; left: 0; z-index: 1; padding: 0; text-align: center; cursor: pointer;
+  background: var(--flaeche, #fff); overflow: visible;
+}
+.liste-tabelle th.liste-wahl { top: 0; z-index: 4; background: var(--grund, #f5f6f7); }
+.liste-tabelle .liste-gruppe .liste-wahl { background: var(--grund, #f5f6f7); }
+.liste-wahl input { width: 16px; height: 16px; margin: 0; vertical-align: middle; cursor: pointer; accent-color: var(--akzent, #0b6b52); }
+.liste-tabelle tbody tr[data-gewaehlt] td { background: color-mix(in srgb, var(--akzent, #0b6b52) 13%, var(--flaeche, #fff)); }
+.liste-mit-wahl .liste-gruppe-inhalt { left: 42px; }
+.liste-tabelle tbody tr[data-posten] { cursor: default; }
+.liste-rollbereich:focus-visible { outline: 2px solid var(--akzent, #0b6b52); outline-offset: 1px; }
+.liste-popup.liste-menue button[data-menue-nr] { display: flex; justify-content: space-between; gap: 18px; }
+.liste-kuerzel { color: var(--text-leise, #5a626b); white-space: nowrap; }
+.liste-wahlknoepfe { display: inline-flex; gap: 6px; }
+.liste-meldung {
+  position: fixed; right: 16px; bottom: 16px; z-index: 9700; max-width: 380px; padding: 8px 12px;
+  background: var(--flaeche, #fff); color: var(--text, #1b1f24); border: 1px solid var(--rand, #d6d9dd);
+  border-left: 4px solid var(--akzent, #0b6b52); border-radius: 6px; box-shadow: 0 4px 16px rgba(0, 0, 0, .18);
+}
+/* Unterzeilen: Pfeilspalte und schlanke Textzeilen (keine Ueberschrift, kein Tabellenkopf) */
+.liste-tabelle .liste-auf { position: sticky; left: 0; z-index: 1; padding: 0; text-align: center; background: var(--flaeche, #fff); overflow: visible; }
+.liste-mit-wahl .liste-tabelle > * > tr > .liste-auf { left: 34px; }
+.liste-tabelle th.liste-auf { top: 0; z-index: 4; background: var(--grund, #f5f6f7); }
+.liste-auf-knopf {
+  width: 22px; height: 22px; padding: 0; font: inherit; font-size: .8rem; line-height: 1; cursor: pointer;
+  border: 0; border-radius: 4px; background: none; color: var(--text-leise, #5a626b);
+}
+.liste-auf-knopf:hover { background: var(--rand, #d6d9dd); color: var(--text, #1b1f24); }
+.liste-auf-knopf[aria-expanded="true"] { color: var(--akzent, #0b6b52); }
+.liste-tabelle tr.liste-unter > td { padding: 0; background: var(--flaeche, #fff); overflow: visible; white-space: normal; }
+.liste-tabelle tbody tr.liste-unter:hover td { background: var(--flaeche, #fff); }
+.liste-unter-inhalt { position: sticky; left: 26px; display: inline-block; vertical-align: top; max-width: 100%; padding: 0 12px 3px 0; }
+.liste-mit-wahl .liste-unter-inhalt { left: 60px; }
+.liste-unterzeilen { font-size: .8rem; line-height: 1.35; color: var(--text-leise, #5a626b); }
+.liste-unterzeilen .liste-unterzeilen { margin-left: 22px; border-left: 1px solid var(--rand, #d6d9dd); padding-left: 6px; }
+.liste-uz { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 14px; padding: 1px 6px 1px 0; border-radius: 4px; }
+.liste-uz:hover { background: var(--grund, #f5f6f7); }
+.liste-uz-feld { white-space: nowrap; color: var(--text, #1b1f24); }
+.liste-uz-name { color: var(--text-leise, #5a626b); }
+.liste-uz .liste-auf-knopf, .liste-uz-luecke { flex: 0 0 16px; width: 16px; height: 16px; margin-right: -8px; align-self: center; font-size: .7rem; }
+/* Feste Spalten: bleiben beim Querrollen links stehen (Abstand als --fest-N an der Tabelle) */
+.liste-tabelle td.liste-fest, .liste-tabelle th.liste-fest { position: sticky; z-index: 1; background: var(--flaeche, #fff); }
+.liste-tabelle th.liste-fest { z-index: 4; background: var(--grund, #f5f6f7); }
+.liste-tabelle .liste-fest-0 { left: var(--fest-0, 0); }
+.liste-tabelle .liste-fest-1 { left: var(--fest-1, 0); }
+.liste-tabelle .liste-fest-2 { left: var(--fest-2, 0); }
+.liste-tabelle .liste-fest-3 { left: var(--fest-3, 0); }
+.liste-tabelle .liste-fest-4 { left: var(--fest-4, 0); }
+.liste-tabelle .liste-fest-rand { border-right: 2px solid var(--text-leise, #5a626b); }
+
+/* Fusszeile mit Summen: bleibt unten stehen */
+.liste-tabelle tfoot td {
+  position: sticky; bottom: 0; z-index: 3; font-weight: 600; cursor: context-menu;
+  background: var(--grund, #f5f6f7); border-top: 2px solid var(--rand, #d6d9dd);
+}
+.liste-tabelle tfoot .liste-wahl, .liste-tabelle tfoot .liste-auf, .liste-tabelle tfoot .liste-fest { z-index: 5; background: var(--grund, #f5f6f7); cursor: default; }
+.liste-fuss-art { font-weight: 400; font-size: .72rem; color: var(--text-leise, #5a626b); }
+.liste-gruppe-summe { margin-left: 10px; color: var(--text-leise, #5a626b); }
+.liste-gruppe-summe b { color: var(--text, #1b1f24); font-variant-numeric: tabular-nums; }
+
+/* Werte aendern: aenderbare Zellen, Eingabefeld in der Zelle, Fenster "Werte aendern" */
+.liste-tabelle td.liste-aenderbar { cursor: text; }
+.liste-tabelle td.liste-aenderbar:hover { box-shadow: inset 0 -2px 0 var(--akzent, #0b6b52); }
+.liste-kopf-stift { font-size: .72rem; font-weight: 400; color: var(--text-leise, #5a626b); margin-right: 3px; }
+.liste-tabelle td.liste-in-eingabe { padding: 0; overflow: visible; box-shadow: none; }
+.liste-eingabe {
+  display: block; width: 100%; box-sizing: border-box; margin: 0; padding: 2px 6px; font: inherit; color: var(--text, #1b1f24);
+  background: var(--flaeche, #fff); border: 2px solid var(--akzent, #0b6b52); border-radius: 0; outline: 0;
+}
+.liste-eingabe.zahl { text-align: right; font-variant-numeric: tabular-nums; }
+.liste-eingabe.fehler { border-color: var(--fehler, #a41d1d); }
+.liste-ms-zeile { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.liste-ms-zeile .eingabefeld { flex: 1 1 9em; min-width: 0; background: var(--flaeche, #fff); }
+.liste-ms-vorschau { margin-top: 10px; padding: 8px 10px; border: 1px solid var(--rand, #d6d9dd); border-left: 4px solid var(--akzent, #0b6b52); border-radius: 8px; background: var(--grund, #f5f6f7); }
+.liste-ms-vorschau p { margin: 0; }
+.liste-ms-fehler { color: var(--fehler, #a41d1d); }
+.liste-ms-beispiele { margin-top: 6px; border-collapse: collapse; font-size: .85rem; }
+.liste-ms-beispiele td { padding: 1px 12px 1px 0; color: var(--text-leise, #5a626b); }
+.liste-ms-beispiele td b { color: var(--text, #1b1f24); }
+
+/* Kreuztabelle */
+.liste-dialog.liste-kreuz { width: min(980px, calc(100vw - 24px)); }
+.liste-kz-wahl { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 10px; }
+.liste-kz-wahl label { display: flex; flex-direction: column; gap: 2px; flex: 1 1 10em; min-width: 0; font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; color: var(--text-leise, #5a626b); }
+.liste-kz-wahl .eingabefeld { font-size: .9rem; text-transform: none; letter-spacing: 0; background: var(--flaeche, #fff); }
+.liste-kz-rahmen { overflow: auto; max-height: min(56vh, 520px); border: 1px solid var(--rand, #d6d9dd); border-radius: 6px; }
+.liste-kz-tabelle { border-collapse: separate; border-spacing: 0; font-size: .85rem; min-width: 100%; }
+.liste-kz-tabelle th, .liste-kz-tabelle td { padding: 4px 10px; white-space: nowrap; text-align: left; border-right: 1px solid var(--rand, #d6d9dd); border-bottom: 1px solid var(--rand, #d6d9dd); background: var(--flaeche, #fff); }
+.liste-kz-tabelle .zahl { text-align: right; font-variant-numeric: tabular-nums; }
+.liste-kz-tabelle thead th { position: sticky; top: 0; z-index: 2; background: var(--grund, #f5f6f7); }
+.liste-kz-tabelle tbody th, .liste-kz-tabelle tfoot th, .liste-kz-tabelle thead th:first-child { position: sticky; left: 0; z-index: 1; background: var(--grund, #f5f6f7); font-weight: 600; }
+.liste-kz-tabelle thead th:first-child { z-index: 3; }
+.liste-kz-tabelle tfoot th, .liste-kz-tabelle tfoot td { position: sticky; bottom: 0; background: var(--grund, #f5f6f7); font-weight: 600; border-top: 2px solid var(--rand, #d6d9dd); }
+.liste-kz-tabelle tfoot th { z-index: 3; }
+.liste-kz-tabelle .liste-kz-gesamt { background: var(--grund, #f5f6f7); font-weight: 600; border-left: 2px solid var(--rand, #d6d9dd); }
+.liste-kz-tabelle td[data-kz-feld] { cursor: pointer; }
+.liste-kz-tabelle td[data-kz-feld]:hover { box-shadow: inset 0 0 0 2px var(--akzent, #0b6b52); }
+
+/* Suchtreffer */
+.liste-treffer { background: var(--liste-treffer, #ffe27a); color: #1b1f24; border-radius: 2px; padding: 0 1px; }
+
+/* Tastatur-Zeiger: nur sichtbar, solange mit der Tastatur bedient wird */
+.liste-tasten .liste-tabelle tr[data-aktiv] > td {
+  box-shadow: inset 0 1px 0 var(--akzent, #0b6b52), inset 0 -1px 0 var(--akzent, #0b6b52);
+  background-image: linear-gradient(color-mix(in srgb, var(--akzent, #0b6b52) 5%, transparent), color-mix(in srgb, var(--akzent, #0b6b52) 5%, transparent));
+}
+.liste-tasten .liste-uz[data-aktiv] { outline: 2px solid var(--akzent, #0b6b52); outline-offset: -1px; background: var(--grund, #f5f6f7); }
+.liste-tasten .liste-tabelle td[data-aktiv-zelle] { outline: 2px solid var(--akzent, #0b6b52); outline-offset: -2px; }
+.liste-popup button:focus-visible { outline: 2px solid var(--akzent, #0b6b52); outline-offset: -2px; background: var(--grund, #f5f6f7); }
+
+.liste-wahlzeile {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: 4px; padding: 4px 8px;
+  border: 1px solid var(--akzent, #0b6b52); border-radius: 6px; background: var(--grund, #f5f6f7);
+}
+.liste-gruppe-inhalt { position: sticky; left: 8px; display: inline-block; }
+.liste-pfeil { display: inline-block; width: 1em; color: var(--text-leise, #5a626b); }
+.liste-gruppe-titel, .liste-anzahl, .liste-gruppe-info { color: var(--text-leise, #5a626b); }
+.liste-mehr td { background: var(--grund, #f5f6f7); color: var(--text-leise, #5a626b); white-space: normal; }
+.liste-leer { padding: 10px; margin: 0; }
+
+.liste-filterzeile {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 4px; padding: 4px 8px;
+  border: 1px solid var(--rand, #d6d9dd); border-radius: 6px; background: var(--grund, #f5f6f7);
+}
+.liste-filter-an { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.liste-filtertext { flex: 1 1 12em; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+.liste-filtertext.aus .liste-filtermarke-text { text-decoration: line-through; color: var(--text-leise, #5a626b); }
+.liste-filtermarke {
+  display: inline-flex; align-items: center; max-width: 100%;
+  border: 1px solid var(--rand, #d6d9dd); border-radius: 999px; background: var(--flaeche, #fff);
+}
+.liste-filtermarke-text {
+  font: inherit; color: inherit; border: 0; background: none; padding: 2px 2px 2px 10px; text-align: left;
+  min-width: 0; overflow-wrap: anywhere; border-radius: 999px 0 0 999px;
+}
+button.liste-filtermarke-text { cursor: pointer; }
+button.liste-filtermarke-text:hover { color: var(--akzent, #0b6b52); text-decoration: underline; }
+.liste-filtermarke:hover { border-color: var(--akzent, #0b6b52); }
+.liste-filter-und, .liste-ed-und span, .liste-ed-vorsatz, .liste-ed-dazu { font-size: .72rem; letter-spacing: .04em; color: var(--text-leise, #5a626b); }
+
+/* Fenster "Filter bearbeiten" */
+.liste-dialog.liste-editor { width: min(640px, calc(100vw - 24px)); max-height: calc(100vh - 32px); display: flex; flex-direction: column; padding: 0; }
+.liste-ed-kopf { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 14px 16px 8px; }
+.liste-ed-kopf h3 { margin: 0; }
+.liste-ed-zahl { color: var(--text-leise, #5a626b); font-size: .85rem; text-align: right; }
+.liste-ed-zahl b { color: var(--akzent, #0b6b52); font-size: 1rem; }
+.liste-ed-rumpf { overflow: auto; padding: 4px 16px 8px; }
+.liste-editor .liste-dialog-knoepfe { margin: 0; padding: 10px 16px 14px; border-top: 1px solid var(--rand, #d6d9dd); }
+.liste-ed-karte {
+  border: 1px solid var(--rand, #d6d9dd); border-left: 4px solid var(--akzent, #0b6b52); border-radius: 8px;
+  background: var(--grund, #f5f6f7); padding: 8px 10px 6px;
+}
+.liste-ed-karte header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.liste-ed-karte header b { flex: 0 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.liste-ed-karte header > span { flex: 1 1 auto; }
+.liste-ed-schalter { display: inline-flex; justify-content: flex-end; }
+.liste-ed-schalter label { cursor: pointer; }
+.liste-ed-schalter input { position: absolute; opacity: 0; pointer-events: none; }
+.liste-ed-schalter span {
+  display: inline-block; padding: 2px 9px; font-size: .78rem; border: 1px solid var(--rand, #d6d9dd); background: var(--flaeche, #fff);
+}
+.liste-ed-schalter label:first-child span { border-radius: 999px 0 0 999px; border-right: 0; }
+.liste-ed-schalter label:last-child span { border-radius: 0 999px 999px 0; }
+.liste-ed-schalter input:checked + span { background: var(--akzent, #0b6b52); color: var(--akzent-text, #fff); border-color: var(--akzent, #0b6b52); }
+.liste-ed-schalter input:focus-visible + span { outline: 2px solid var(--akzent, #0b6b52); outline-offset: 2px; }
+.liste-ed-zeile { display: grid; grid-template-columns: 2.6em minmax(0, 14em) minmax(0, 1fr) auto; gap: 6px; align-items: center; margin: 4px 0; }
+.liste-ed-zeile .eingabefeld { min-width: 0; width: 100%; background: var(--flaeche, #fff); }
+.liste-ed-vorsatz { text-transform: uppercase; text-align: right; }
+.liste-ed-werte { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin: 4px 0; }
+.liste-ed-werte .liste-ed-vorsatz { text-align: left; }
+.liste-ed-werte .eingabefeld { flex: 1 1 10em; min-width: 8em; background: var(--flaeche, #fff); }
+.liste-ed-wert {
+  display: inline-flex; align-items: center; padding: 1px 2px 1px 9px; border-radius: 999px;
+  border: 1px solid var(--rand, #d6d9dd); background: var(--flaeche, #fff);
+}
+.liste-ed-dazu { text-transform: uppercase; margin: 6px 0 2px; }
+.liste-ed-fuss { display: flex; gap: 12px; margin-top: 4px; }
+.liste-ed-plus { font: inherit; font-size: .82rem; border: 0; background: none; cursor: pointer; padding: 2px 0; color: var(--akzent, #0b6b52); }
+.liste-ed-plus:hover { text-decoration: underline; }
+.liste-ed-und { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.liste-ed-und::before, .liste-ed-und::after { content: ""; flex: 1 1 auto; border-top: 1px dashed var(--rand, #d6d9dd); }
+.liste-ed-spalte { margin-top: 10px; width: 100%; }
+.liste-filterzahl { color: var(--text-leise, #5a626b); white-space: nowrap; }
+.liste-summe { margin-top: 4px; }
+
+/* Schwebende Teile */
+.liste-popup {
+  position: fixed; z-index: 9000; min-width: 190px; max-width: 340px; padding: 4px;
+  background: var(--flaeche, #fff); color: var(--text, #1b1f24);
+  border: 1px solid var(--rand, #d6d9dd); border-radius: 6px; box-shadow: 0 6px 20px rgba(0, 0, 0, .2);
+}
+.liste-popup button[data-menue], .liste-popup button[data-menue-nr], .liste-popup button[data-filter-knopf] {
+  display: block; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer;
+  border: 0; background: none; padding: 5px 10px; border-radius: 4px;
+}
+.liste-popup button:hover:not(:disabled) { background: var(--grund, #f5f6f7); }
+.liste-popup button:disabled { opacity: .45; cursor: default; }
+.liste-popup hr { border: 0; border-top: 1px solid var(--rand, #d6d9dd); margin: 4px 0; }
+.liste-aufklapp input[type="search"] { width: 100%; margin-bottom: 4px; }
+.liste-werte { max-height: 300px; overflow: auto; border-top: 1px solid var(--rand, #d6d9dd); margin-top: 4px; padding-top: 4px; }
+.liste-werte label { display: flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 4px; cursor: pointer; }
+.liste-werte label:hover { background: var(--grund, #f5f6f7); }
+.liste-werte label.weg { display: none; }
+.liste-werte label span:nth-child(2) { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.liste-auswahl {
+  position: absolute; right: 10px; top: 34px; z-index: 5; width: 210px; max-height: 320px; overflow: auto; padding: 8px;
+  background: var(--flaeche, #fff); border: 1px solid var(--rand, #d6d9dd); border-radius: 6px; box-shadow: 0 6px 20px rgba(0, 0, 0, .2);
+}
+.liste-auswahl-kopf { display: flex; justify-content: space-between; align-items: center; }
+.liste-auswahl p { margin: 4px 0 6px; }
+.liste-auswahl-feld {
+  display: block; width: 100%; text-align: left; font: inherit; color: inherit; cursor: grab; user-select: none; touch-action: none;
+  margin-top: 3px; padding: 4px 8px; border: 1px solid var(--rand, #d6d9dd); border-radius: 4px; background: var(--grund, #f5f6f7);
+}
+.liste-auswahl-feld:hover { border-color: var(--akzent, #0b6b52); }
+/* v2.6: Spaltenauswahl als Baum (Spalten mit gruppe) */
+.liste-auswahl.liste-auswahl-baum { width: 320px; max-height: min(70vh, 560px); }
+.liste-auswahl-suche { width: 100%; margin-top: 6px; }
+.liste-baum { display: flex; flex-direction: column; }
+.liste-baum-gruppe { display: flex; align-items: center; gap: 2px; padding-left: calc(var(--tiefe, 0) * 16px); }
+.liste-baum-auf, .liste-baum-spalte, .liste-baum-alle {
+  font: inherit; color: inherit; background: none; border: 1px solid transparent; border-radius: 4px; cursor: pointer; text-align: left;
+}
+.liste-baum-auf { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 6px; padding: 3px 4px; font-weight: 600; }
+.liste-baum-pfeil { width: 1em; color: var(--text-leise, #5a626b); }
+.liste-baum-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.liste-baum-alle { flex: 0 0 auto; padding: 1px 5px; color: var(--akzent, #0b6b52); }
+.liste-baum-spalte {
+  display: flex; align-items: center; gap: 6px; width: 100%; padding: 2px 4px 2px calc(4px + var(--tiefe, 0) * 16px + 1em);
+  cursor: grab; user-select: none; touch-action: none;
+}
+.liste-baum-spalte[data-auswahl-stand="aus"] { color: var(--text-leise, #5a626b); }
+.liste-baum-spalte[data-auswahl-stand="gruppiert"] { color: var(--text-leise, #5a626b); font-style: italic; }
+.liste-baum-haken { color: var(--akzent, #0b6b52); }
+.liste-baum-titel { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.liste-baum-auf:hover, .liste-baum-spalte:hover, .liste-baum-alle:hover { border-color: var(--rand, #d6d9dd); background: var(--grund, #f5f6f7); }
+.liste-baum-auf:focus-visible, .liste-baum-spalte:focus-visible, .liste-baum-alle:focus-visible { outline: 2px solid var(--akzent, #0b6b52); outline-offset: -1px; }
+
+.liste-geist {
+  position: fixed; z-index: 9500; pointer-events: none; padding: 4px 10px; font-weight: 600;
+  background: var(--flaeche, #fff); color: var(--text, #1b1f24);
+  border: 1px solid var(--akzent, #0b6b52); border-radius: 6px; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); opacity: .92;
+}
+.liste-geist.entfernen { border-color: var(--fehler, #a41d1d); text-decoration: line-through; }
+.liste-geist.entfernen::after { content: "  ✕ ausblenden"; color: var(--fehler, #a41d1d); display: inline-block; text-decoration: none; padding-left: 6px; }
+.liste-einfuegemarke { position: fixed; z-index: 9400; pointer-events: none; width: 3px; background: var(--akzent, #0b6b52); border-radius: 2px; }
+
+.liste-dialog-huelle {
+  position: fixed; inset: 0; z-index: 9600; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, .45);
+}
+.liste-dialog {
+  width: min(460px, calc(100vw - 24px)); padding: 14px 16px; font-size: .9rem;
+  background: var(--flaeche, #fff); color: var(--text, #1b1f24); border: 1px solid var(--rand, #d6d9dd); border-radius: 8px;
+}
+.liste-dialog h3 { margin: 0 0 6px; font-size: 1rem; }
+.liste-dialog p { margin: 6px 0; }
+.liste-dialog-knoepfe { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.liste-dialog-knoepfe span { flex: 1 1 auto; }
+
+@media print {
+  .liste-kopfleiste, .liste-trichter, .liste-griff, .liste-auswahl, .liste-popup, .liste-mehr button { display: none !important; }
+  .liste-rollbereich { max-height: none; overflow: visible; border: 0; }
+  .liste-kopf, .liste-tabelle .liste-fest, .liste-tabelle tfoot td { position: static; }
+}

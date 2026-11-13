@@ -1,0 +1,54 @@
+/* ===================== ARBEITSPAKET 3: QUELLTEXT/STRUKTUR-PANEL (Muster wup_editor.html .text-panel) ===================== */
+.quelltext-panel {
+  width: 360px; flex: none; background: var(--flaeche); border-right: 1px solid var(--rahmen);
+  display: flex; flex-direction: column; overflow: hidden; transition: width 0.15s ease;
+}
+.quelltext-panel.eingeklappt { width: 38px; }
+.quelltext-panel.eingeklappt .panel-kopf { justify-content: center; padding: 6px 2px; }
+.quelltext-panel.eingeklappt .text-tab, .quelltext-panel.eingeklappt .text-scroller,
+.quelltext-panel.eingeklappt #quelltextPanelInfo { display: none; }
+.panel-kopf {
+  padding: 6px 10px; border-bottom: 1px solid var(--rahmen-weich);
+  font-size: 0.78rem; font-weight: 600; color: var(--text-gedimmt);
+  text-transform: uppercase; letter-spacing: 0.04em;
+  display: flex; align-items: center; gap: 8px; flex: none;
+}
+.panel-kopf .klein { margin-left: auto; font-weight: 400; text-transform: none; letter-spacing: 0; }
+.panel-klapp-knopf {
+  background: none; border: 1px solid var(--rahmen); border-radius: var(--eckenradius-klein);
+  color: var(--text-gedimmt); cursor: pointer; padding: 2px 6px; font-size: 0.8rem; line-height: 1.3;
+}
+.panel-klapp-knopf:hover { background: var(--flaeche-hover); color: var(--text); }
+.text-tab { padding: 2px 8px; border-radius: 5px; cursor: pointer; color: var(--text-gedimmt);
+  font-size: 0.78rem; user-select: none; }
+.text-tab.aktiv { background: var(--akzent-hintergrund); color: var(--text); font-weight: 600; }
+.text-scroller { flex: 1; overflow: auto; font-family: var(--schrift-mono); font-size: 12px; line-height: 18px; }
+.code-zeile { display: flex; height: 18px; white-space: pre; }
+.zeilen-nr {
+  flex: none; width: 48px; text-align: right; padding-right: 8px;
+  color: var(--text-blass); user-select: none;
+  border-right: 1px solid var(--rahmen-weich); margin-right: 8px;
+}
+.kw-psg{color:var(--syn-psg);font-weight:600} .kw-paf{color:var(--syn-paf);font-weight:600}
+.kw-psf{color:var(--syn-psf);font-weight:600} .kw-psz{color:var(--syn-psz);font-weight:600}
+.kw-nr{color:var(--syn-nr);font-weight:600}  .kw-poly{color:var(--syn-poly)}
+.kw-platte{color:var(--syn-platte);font-weight:600} .kw-bauteil{color:var(--syn-bauteil);font-weight:600}
+.kw-kopf{color:var(--syn-kopf);font-weight:600}
+.zl-txt{color:var(--syn-txt);font-style:italic}
+.p-x{color:var(--syn-x)} .p-y{color:var(--syn-y)} .p-z{color:var(--syn-z)}
+.p-t{color:var(--syn-t)} .p-a{color:var(--syn-a)} .p-mat{color:var(--syn-mat)}
+.sc-t{color:var(--sc-tausend);font-weight:700} .sc-h{color:var(--sc-hundert);font-weight:700}
+.sc-z{color:var(--sc-zehn);font-weight:700} .sc-e{color:var(--sc-eins);font-weight:700}
+/* Struktur-Baum (v1: nur Anzeige, kein Edit — siehe strukturRendern) */
+.baum-wurzel { padding: 6px 8px; font-size: 0.74rem; color: var(--text-gedimmt);
+  border-bottom: 1px solid var(--rahmen-weich); line-height: 1.5; }
+.baum-knoten { font-size: 0.76rem; }
+.baum-kopf { display: flex; align-items: center; gap: 5px; padding: 3px 8px; cursor: pointer;
+  user-select: none; font-weight: 600; }
+.baum-kopf:hover { background: var(--flaeche-hover); }
+.baum-kinder { margin-left: 14px; border-left: 1px dashed var(--rahmen-weich); }
+.baum-blatt { display: flex; align-items: center; gap: 5px; padding: 1px 8px;
+  font-family: var(--schrift-mono); font-size: 0.7rem; white-space: nowrap; }
+.baum-punkt { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.mini-hinweis { font-size: 0.72rem; color: var(--text-blass); }
+

@@ -1,0 +1,144 @@
+/* ===================== HINWEIS / BESTAETIGUNG / MODAL (wie Editor) ===================== */
+.hinweis {
+  position: fixed; bottom: 24px; right: 24px;
+  padding: 12px 20px; border-radius: var(--eckenradius);
+  font-size: 0.85rem; z-index: 9999;
+  background: var(--flaeche); border: 1px solid var(--rahmen);
+  box-shadow: var(--schatten-gross); color: var(--text);
+  animation: einblenden 0.3s ease; max-width: 420px;
+}
+.hinweis-erfolg { border-color: var(--erfolg); color: var(--erfolg); }
+.hinweis-fehler { border-color: var(--fehler); color: var(--fehler); }
+.hinweis-warnung { border-color: var(--warnung); color: var(--warnung); }
+@keyframes einblenden { from { transform: translateY(20px); opacity: 0; } }
+
+.modal-hintergrund {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+  display: flex; align-items: center; justify-content: center; z-index: 10000;
+}
+.modal-fenster {
+  background: var(--flaeche); border: 1px solid var(--rahmen);
+  border-radius: var(--eckenradius); box-shadow: var(--schatten-gross);
+  width: min(520px, 92vw); max-height: 88vh; overflow: auto; padding: 20px 22px;
+}
+.modal-fenster h2 { margin: 0 0 12px; font-size: 1.05rem; color: var(--ueberschrift); }
+.modal-fuss { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; }
+.modal-vorschau { font-size: 0.8rem; color: var(--text-gedimmt); margin-top: 10px; }
+
+/* WP-J: Befunde-Tabelle MIT RASTER (Anwenderwunsch — ohne Gitternetz
+   verrutschen die Zahlen optisch unter die falschen Spaltenkoepfe). */
+.modal-tabelle { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.modal-tabelle th, .modal-tabelle td {
+  border: 1px solid var(--rahmen); padding: 5px 10px; text-align: center;
+}
+.modal-tabelle th:first-child, .modal-tabelle td:first-child { text-align: left; }
+.modal-tabelle th {
+  background: var(--flaeche-2); color: var(--text-gedimmt); font-weight: 600;
+  position: sticky; top: 0; z-index: 1;
+}
+.modal-tabelle tr:nth-child(even) td { background: var(--flaeche-2); }
+
+/* WP-J: kurze Befund-Zeile mit ?-Knopf, ausfuehrliche Erklaerung klappt aus */
+.grav-hilfe {
+  width: 17px; height: 17px; border-radius: 50%; border: 1px solid var(--rahmen);
+  background: var(--flaeche-2); color: var(--akzent); font-size: 0.72rem; font-weight: 700;
+  cursor: pointer; padding: 0; line-height: 1; vertical-align: middle;
+}
+.grav-hilfe:hover { border-color: var(--akzent); }
+.grav-hilfe-text {
+  display: block; margin: 4px 0 2px; padding: 6px 8px; background: var(--flaeche-2);
+  border-left: 3px solid var(--akzent);
+  border-radius: 0 var(--eckenradius-klein) var(--eckenradius-klein) 0;
+}
+
+/* --- AP-WE3: Suchen & Ersetzen zweispaltig mit Quelltext-Vorschau
+   (Klassen/Aufbau synchron zu wup_editor.html halten) --- */
+.we-fenster { width: min(1180px, 95vw); display: flex; flex-direction: column; }
+.we-fenster.ohne-vorschau { width: min(620px, 92vw); }
+.we-layout { display: flex; gap: 18px; min-height: 0; flex: 1; }
+.we-formular { flex: 0 0 400px; min-width: 0; overflow-y: auto; padding-right: 2px; }
+.we-fenster.ohne-vorschau .we-formular { flex: 1; }
+.we-vorschau {
+  flex: 1; min-width: 0; display: flex; flex-direction: column;
+  border: 1px solid var(--rahmen); border-radius: var(--eckenradius-klein);
+  background: var(--flaeche-2); overflow: hidden; max-height: 62vh;
+}
+.we-vorschau.zu { display: none; }
+.we-vorschau-kopf {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  padding: 6px 10px; border-bottom: 1px solid var(--rahmen);
+  font-size: 0.78rem; font-weight: 600; color: var(--text-gedimmt); flex: none;
+}
+.we-vorschau-liste { overflow: auto; flex: 1; }
+.we-vorschau-leer { padding: 12px; font-size: 0.8rem; color: var(--text-gedimmt); }
+.we-datei-kopf {
+  padding: 4px 10px; font-size: 0.74rem; font-weight: 700;
+  background: var(--flaeche-hover); border-top: 1px solid var(--rahmen);
+  position: sticky; top: 0; z-index: 2;
+}
+.we-hunk { border-bottom: 1px solid var(--rahmen); }
+.we-hunk-kopf {
+  padding: 4px 10px; font-size: 0.72rem; font-weight: 600;
+  font-family: var(--schrift-mono); color: var(--text-gedimmt);
+}
+.diff-zeile { font-family: var(--schrift-mono); font-size: 0.78rem; padding: 1px 10px; white-space: pre; overflow-x: auto; }
+.diff-zeile-alt { background: var(--fehler-hintergrund); color: var(--fehler); text-decoration: line-through; }
+.diff-zeile-neu { background: var(--erfolg-hintergrund); color: var(--erfolg); }
+.we-zeile-dim { padding: 1px 10px; font-size: 0.72rem; color: var(--text-gedimmt); font-style: italic; }
+.we-zeile-fund { background: var(--flaeche); color: var(--text); }
+.we-mark {
+  background: var(--warnung-hintergrund); color: var(--warnung);
+  border-radius: 2px; font-weight: 700; text-decoration: inherit;
+}
+.diff-zeile-neu .we-mark { background: var(--erfolg); color: var(--flaeche); }
+/* AP-WE6: klickbare Wert-Vorschlaege (synchron zum Editor-CSS) */
+.we-vorschlaege { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; margin-top: 8px; }
+.we-chip-label { font-size: 0.72rem; color: var(--text-blass); margin-right: 2px; flex-basis: 100%; }
+.we-chip {
+  display: inline-flex; align-items: center; gap: 5px; max-width: 100%;
+  padding: 2px 8px; font-size: 0.74rem; cursor: pointer;
+  background: var(--flaeche-2); color: var(--text);
+  border: 1px solid var(--rahmen); border-radius: 999px;
+}
+.we-chip:hover { background: var(--flaeche-hover); border-color: var(--akzent); }
+.we-chip b { font-weight: 700; }
+.we-chip-anzahl { color: var(--text-blass); font-size: 0.68rem; }
+.we-chip-text {
+  color: var(--text-gedimmt); font-size: 0.7rem; max-width: 230px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+@media (max-width: 1100px) {
+  .we-layout { flex-direction: column; }
+  .we-formular { flex: none; max-height: 40vh; }
+}
+
+.fortschritt-hintergrund {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 10002;
+  display: flex; align-items: center; justify-content: center;
+}
+.fortschritt-fenster {
+  background: var(--flaeche); border-radius: var(--eckenradius); box-shadow: var(--schatten-gross);
+  padding: 22px 26px; width: min(420px, 90vw);
+}
+.fortschritt-titel { font-size: 0.92rem; margin-bottom: 10px; }
+.fortschritt-balken-aussen { background: var(--flaeche-2); border: 1px solid var(--rahmen); border-radius: 999px; height: 10px; overflow: hidden; }
+.fortschritt-balken-innen { background: var(--akzent); height: 100%; transition: width 0.15s; }
+.fortschritt-status { margin-top: 8px; font-size: 0.76rem; color: var(--text-gedimmt); }
+
+/* Kern-Quelle-Auswahl (Fallback fuer file://, wenn fetch scheitert) */
+.kernquelle-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 10003;
+  display: flex; align-items: center; justify-content: center;
+}
+.kernquelle-fenster {
+  background: var(--flaeche); border-radius: var(--eckenradius); box-shadow: var(--schatten-gross);
+  padding: 26px 30px; width: min(480px, 92vw); text-align: center;
+}
+.kernquelle-fenster h2 { margin-bottom: 10px; color: var(--ueberschrift); }
+.kernquelle-fenster p { color: var(--text-gedimmt); font-size: 0.86rem; margin-bottom: 16px; }
+.kernquelle-dropzone {
+  border: 2px dashed var(--rahmen); border-radius: var(--eckenradius);
+  padding: 30px 16px; cursor: pointer; color: var(--text-gedimmt);
+}
+.kernquelle-dropzone.ueber-drag { border-color: var(--akzent); color: var(--akzent); background: var(--akzent-hintergrund); }
+

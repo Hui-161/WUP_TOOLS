@@ -1,0 +1,52 @@
+</head>
+<body>
+<header class="app-kopfzeile">
+  <h1 class="app-titel">WUP-Editor</h1>
+  <span class="versions-badge" id="versionsBadge">v–</span>
+  <span class="kopf-trenner"></span>
+  <button class="schaltflaeche schaltflaeche-neben" id="btnOeffnen" title="WUP-Datei oeffnen">📂 Datei</button>
+  <span class="kopf-trenner"></span>
+  <div class="fehler-zaehler" id="fehlerZaehler" title="Pruefergebnisse — Klick springt zum Fehler-Log"></div>
+  <div class="kopf-meta" id="kopfMeta" hidden></div>
+  <div class="kopf-rechts">
+    <button class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnUndo" title="Rueckgaengig (Alt+Z)" disabled>↶</button>
+    <button class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnRedo" title="Wiederholen (Alt+Y)" disabled>↷</button>
+    <span class="kopf-trenner"></span>
+    <div class="menue-wrap">
+      <button class="schaltflaeche schaltflaeche-neben" id="btnAutomatiken" title="Automatiken — mehrschrittige Helfer ueber den ganzen Datensatz (Alt+A oeffnet, Ziffer 1–7 startet den Eintrag)" disabled>⚙ Automatiken ▾</button>
+      <div class="menue-panel versteckt" id="automatikMenue">
+        <button class="menue-eintrag" id="btnAutoSchnitt" disabled>
+          <span class="menue-titel">Auto-Über-/Unterschnitt <kbd>1</kbd></span>
+          <span class="menue-hinweis">Alle Konturen pruefen und fehlende Schnitt-Korrekturen setzen</span></button>
+        <button class="menue-eintrag" id="btnAutoPsf" disabled>
+          <span class="menue-titel">Auto-Sperrflächen <kbd>2</kbd></span>
+          <span class="menue-hinweis">Sperrflaechen unter zerspanenden Bearbeitungen erzeugen</span></button>
+        <button class="menue-eintrag" id="btnAutoKontur" disabled>
+          <span class="menue-titel">⛓ Auto-Kontur <kbd>3</kbd></span>
+          <span class="menue-hinweis">PAF/PSF mit gemeinsamen Endpunkten verketten, PSG-Linien in gleicher Achse zusammenfassen — spart Maschinen-Absetzen</span></button>
+        <button class="menue-eintrag" id="btnAutoRichtung" disabled>
+          <span class="menue-titel">◎ Richtung <kbd>4</kbd></span>
+          <span class="menue-hinweis">Richtungs-Bohrung BOZ Ø40/t2 in Ober-/Untergurten ohne Bohrung erzeugen (Abgleich mit BVN/BVX — dort separat ergaenzen!)</span></button>
+        <button class="menue-eintrag" id="btnEckenPml" disabled>
+          <span class="menue-titel">⌐ Ecken-PML <kbd>5</kbd></span>
+          <span class="menue-hinweis">Zwei 50-mm-Markierlinien zum Winkelpunkt vor einer Riegelwerk-Ecke — Ruecksprung automatisch aus der Platte (nie auf einer Plattenkante; 0 nur bei Ueberstand) oder als fester Wert</span></button>
+        <button class="menue-eintrag" id="btnAutoFreistich" disabled>
+          <span class="menue-titel">◷ Freistiche <kbd>6</kbd></span>
+          <span class="menue-hinweis">Freistich an jeder unterschnittenen Innenecke ohne Freistich (klassisch: Enden 212, Ecke 222) — vorhandene Freistiche, auch aus Granit, werden erkannt</span></button>
+        <div class="menue-trenner"></div>
+        <button class="menue-eintrag" id="btnPsfEinstell" disabled>
+          <span class="menue-titel">⚙ Automatik-Einstellungen… <kbd>7</kbd></span>
+          <span class="menue-hinweis">Parameter aller sechs Automatiken</span></button>
+      </div>
+    </div>
+    <button class="schaltflaeche schaltflaeche-neben" id="btnWerteErsetzen" title="Suchen & Ersetzen ueber Datenfelder (Koordinaten, Indizes, Steuercodes, Platten-Werte) mit Quelltext-Vorschau" disabled>🔁 Werte ersetzen… (Strg+H)</button>
+    <span class="kopf-trenner"></span>
+    <button class="schaltflaeche schaltflaeche-haupt" id="btnExport" title="Als WUP-Datei exportieren (Alt+E)" disabled>💾 Export</button>
+    <button class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnWupworksSenden" title="Direkt an WupWorks5 senden (HTTP)" disabled>⇪ An WupWorks5</button>
+    <button class="schaltflaeche schaltflaeche-neben schaltflaeche-klein schaltflaeche-icon" id="btnExportEinstell" title="Export-Einstellungen (Dateiname, Diff-Ansicht, WupWorks5)" disabled>⚙</button>
+    <button class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnFeedbackModus"
+      title="Feedback-Modus: auf ein beliebiges Feld/Element klicken, um einen Kommentar zu hinterlassen — am Ende als Text kopierbar">💬 Feedback</button>
+    <button class="design-wechsler" onclick="designWechseln()" title="Hell/Dunkel wechseln">🌓</button>
+  </div>
+</header>
+

@@ -1,0 +1,43 @@
+/* ===================== ARBEITSPAKET 2: FEEDBACK-MODUS (1:1 aus wup_editor.html portiert) ===================== */
+body.feedback-modus, body.feedback-modus * { cursor: help !important; }
+body.feedback-modus #feedbackPanel, body.feedback-modus #feedbackPopover,
+body.feedback-modus #feedbackPanel *, body.feedback-modus #feedbackPopover * { cursor: auto !important; }
+body.feedback-modus #feedbackPanel button, body.feedback-modus #feedbackPopover button,
+body.feedback-modus .fp-aktionen span { cursor: pointer !important; }
+#btnFeedbackModus.aktiv { background: var(--akzent-hintergrund); color: var(--akzent); border-color: var(--akzent); }
+.feedback-hover-highlight { outline: 2px dashed var(--akzent) !important; outline-offset: 1px; }
+.feedback-panel, .feedback-popover { position: fixed; z-index: 10010; background: var(--flaeche);
+  border: 1px solid var(--rahmen); border-radius: var(--eckenradius-klein); box-shadow: var(--schatten-gross);
+  padding: 8px 10px; font-size: 0.76rem; }
+.feedback-panel { top: 66px; right: 10px; width: 300px; max-height: calc(100vh - 100px); overflow: auto; }
+.feedback-panel.eingeklappt { width: auto; max-height: none; overflow: visible; padding: 6px 10px; opacity: 0.92; }
+.feedback-popover { width: 280px; }
+.feedback-panel .fp-titel, .feedback-popover .fp-titel { font-weight: 700; color: var(--ueberschrift); margin-bottom: 4px; }
+.feedback-panel .fp-bereich, .feedback-popover .fp-bereich { color: var(--text-gedimmt); font-size: 0.7rem; margin-bottom: 4px; }
+.feedback-popover textarea, .feedback-popover textarea#fpKopierText { width: 100%; min-height: 64px; resize: vertical;
+  font-family: var(--schrift-standard); font-size: 0.78rem; padding: 4px 6px; border: 1px solid var(--rahmen);
+  border-radius: var(--eckenradius-klein); background: var(--flaeche-2); color: var(--text); box-sizing: border-box; }
+.feedback-popover textarea#fpKopierText { font-family: var(--schrift-mono); font-size: 0.7rem; }
+.feedback-popover .fp-zeile, .feedback-panel .fp-zeile { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+.feedback-popover .fp-zeile { justify-content: flex-end; }
+.feedback-panel .fp-liste { margin-top: 4px; }
+.feedback-panel .fp-eintrag { border-top: 1px solid var(--rahmen-weich); padding: 5px 0; }
+.feedback-panel .fp-eintrag:first-child { border-top: none; }
+.feedback-panel .fp-eintrag .fp-label { font-weight: 600; }
+.feedback-panel .fp-eintrag .fp-text { white-space: pre-wrap; margin: 3px 0; }
+.feedback-panel .fp-eintrag .fp-aktionen { display: flex; gap: 10px; font-size: 0.68rem; }
+.feedback-panel .fp-eintrag .fp-aktionen span { cursor: pointer; color: var(--akzent); }
+.feedback-panel .fp-eintrag .fp-aktionen span:hover { text-decoration: underline; }
+
+/* ===================== ARBEITSPAKET 5: FUSSZEILE MIT KUERZELN ===================== */
+.fusszeile {
+  background: var(--flaeche); border-top: 1px solid var(--rahmen);
+  padding: 4px 14px; display: flex; gap: 18px; align-items: center;
+  font-size: 0.75rem; color: var(--text-gedimmt); flex-wrap: wrap;
+}
+kbd {
+  display: inline-block; padding: 0 5px;
+  font-family: var(--schrift-mono); font-size: 0.7rem;
+  border: 1px solid var(--rahmen); border-radius: 4px; background: var(--flaeche-2); color: var(--text);
+}
+#auswahlHinweis { font-size: 0.76rem; color: var(--akzent); }

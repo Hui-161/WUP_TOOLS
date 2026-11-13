@@ -1,0 +1,100 @@
+{
+  "werkzeug": "WUP-Editor",
+  "ziel": "wup_editor.html",
+  "gross": {
+    "html/00_kopf.html": "Doctype, <head> und der Dateikopf sind EIN HTML-Kommentar (Z. 7-1000): Version, Grundlagen und die vollstaendige Changelog-Historie bis v2.53. Ein Schnitt liefe mitten durch den Kommentar - Version und Historie gehoeren zusammen."
+  },
+  "bloecke": [
+    {
+      "art": "html",
+      "datei": "html/00_kopf.html"
+    },
+    {
+      "art": "erzeugt"
+    },
+    {
+      "art": "style",
+      "teile": [
+        "css/10_design_tokens.css",
+        "css/20_kopfzeile.css",
+        "css/30_hauptlayout_panels.css",
+        "css/40_hinweise_bestaetigung_dialog.css",
+        "css/50_suchen_ersetzen.css",
+        "css/60_overlays_ladebalken_export.css",
+        "css/70_feedback_popover.css",
+        "css/80_rechte_karten_log_palette.css"
+      ]
+    },
+    {
+      "art": "html",
+      "datei": "html/10_kopfzeile.html"
+    },
+    {
+      "art": "html",
+      "datei": "html/20_text_panel.html"
+    },
+    {
+      "art": "html",
+      "datei": "html/30_zeichenflaeche.html"
+    },
+    {
+      "art": "html",
+      "datei": "html/40_seitenleiste.html"
+    },
+    {
+      "art": "html",
+      "datei": "html/50_fusszeile_dialoge.html"
+    },
+    {
+      "art": "script",
+      "teile": [
+        "js/10_grundlagen/00_konstanten_speicher.js",
+        "js/10_grundlagen/02_maschinenprofil.js",
+        "js/10_grundlagen/04_steuercode_geometrie.js",
+        "js/20_wup_lesen_schreiben/06_parser.js",
+        "js/10_grundlagen/08_op_hilfen_mehrfachauswahl_undo.js",
+        "js/30_automatiken_pruefregeln/10_automatik_ueberschnitt_freistich.js",
+        "js/30_automatiken_pruefregeln/12_automatik_sperrflaechen.js",
+        "js/30_automatiken_pruefregeln/14_reihenfolge_richtung_materialindex.js",
+        "js/30_automatiken_pruefregeln/16_pruefungen.js",
+        "js/20_wup_lesen_schreiben/18_export_serialisierung.js",
+        "js/20_wup_lesen_schreiben/20_wupworks5_anbindung.js",
+        "js/40_zeichenflaeche/22_canvas_grundlagen_transformation.js",
+        "js/40_zeichenflaeche/24_canvas_rendern.js",
+        "js/50_eigenschaften_bearbeiten/26_text_panel.js",
+        "js/50_eigenschaften_bearbeiten/28_kanten_verschieben_messen.js",
+        "js/50_eigenschaften_bearbeiten/30_auswahl_eigenschaften.js",
+        "js/50_eigenschaften_bearbeiten/32_suchen_ersetzen.js",
+        "js/50_eigenschaften_bearbeiten/34_wert_vorschlaege.js",
+        "js/50_eigenschaften_bearbeiten/36_eigenschaften_panel.js",
+        "js/50_eigenschaften_bearbeiten/38_bearbeitungen_aendern_auto_kontur.js",
+        "js/50_eigenschaften_bearbeiten/40_rechts_panels.js",
+        "js/50_eigenschaften_bearbeiten/42_render_orchestrierung_datei_laden.js",
+        "js/40_zeichenflaeche/44_canvas_interaktion_gruppen_verschieben.js",
+        "js/40_zeichenflaeche/46_canvas_zeiger_druecken.js",
+        "js/40_zeichenflaeche/48_canvas_zeiger_bewegen.js",
+        "js/40_zeichenflaeche/50_canvas_zeiger_loslassen.js",
+        "js/40_zeichenflaeche/52_tooltip_messpanel_fangsuche.js",
+        "js/60_ansichten_bedienung/54_neue_bearbeitungen_ecken_markierung.js",
+        "js/60_ansichten_bedienung/56_seiten_wahl.js",
+        "js/60_ansichten_bedienung/58_lagenstapel_schnittprofil.js",
+        "js/60_ansichten_bedienung/60_ansicht_3d.js",
+        "js/60_ansichten_bedienung/62_ui_verdrahtung_tastenkuerzel.js",
+        "js/60_ansichten_bedienung/64_schicht_auswahl.js",
+        "js/60_ansichten_bedienung/65_neu_kontur_vorgaben.js",
+        "js/60_ansichten_bedienung/66_befehlspalette.js",
+        "js/60_ansichten_bedienung/67_geraetebelegung.js",
+        "js/60_ansichten_bedienung/68_kontextmenue.js",
+        "js/60_ansichten_bedienung/70_feedback_modus.js",
+        "js/60_ansichten_bedienung/71_kopf_metadaten.js",
+        "js/70_uebergabe_start/72_oversight_uebergabe.js",
+        "js/70_uebergabe_start/73_sitzung_wiederherstellen.js",
+        "js/70_uebergabe_start/74_init.js"
+      ]
+    },
+    {
+      "art": "html",
+      "datei": "html/90_fuss.html"
+    }
+  ]
+}

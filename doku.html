@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doku — WUP-Werkzeuge</title>
+<meta name="description" content="Anleitung zu WUP-Editor, Übersicht und MCP-Server: Einrichten, Prüfregeln, Automatiken, Export.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="seite.css">
+</head>
+<body>
+<div class="seite">
+<header class="kopf">
+  <a class="marke" href="./">WUP-Werkzeuge</a>
+  <nav><a href="./">Übersicht</a><a href="doku.html" aria-current="page">Doku</a><a href="mcp.html">MCP</a><a href="https://github.com/Hui-161/WUP_TOOLS">Quelltext</a><a href="en/" lang="en">English</a></nav>
+</header>
+<main>
+<h1>Doku</h1>
+<p class="vorspann">Einrichten, Arbeiten mit Editor und Übersicht, die 25 Prüfregeln und der MCP-Server.</p>
+<p class="leise"><a href="#einrichten">Einrichten</a> · <a href="#editor">Editor</a> · <a href="#regeln">Prüfregeln</a> · <a href="#uebersicht">Übersicht</a> · <a href="#mcp">MCP-Server</a> · <a href="#grenzen">Grenzen</a></p>
+
+<h2 id="einrichten">Einrichten</h2>
+<h3>Starten</h3>
+<p>Die Werkzeuge laufen direkt von dieser Seite: <a href="werkzeuge.html#editor">Editor</a>, <a href="werkzeuge.html#uebersicht">Übersicht</a>. Wer ohne Netz arbeiten will, lädt beide Werkzeuge über <a href="./#herunterladen">Herunterladen</a> in denselben Ordner und öffnet sie per Doppelklick; der Dateiname nennt Version und Tag des Herunterladens. Die Übersicht fragt dann einmal nach der Editor-Datei. Geladene WUP-Dateien bleiben in beiden Fällen im Browser; es wird nichts übertragen.</p>
+<p>Auf dieser Seite laufen Editor und Übersicht nebeneinander unter dem Website-Kopf. Die Reiter „Editor“ und „Übersicht“ wechseln zwischen beiden, ohne dass etwas neu geladen wird oder verloren geht. „Im Editor öffnen“ in der Übersicht wechselt zum Editor und übergibt die Datei; Änderungen kommen in die Übersicht zurück. „Ohne Rahmen“ öffnet das gerade gezeigte Werkzeug im ganzen Fenster.</p>
+
+<h3>Gerätebelegung</h3>
+<p>In einer WUP-Datei steht am Ende jeder Nagelreihe (<code>NR</code>) ein Index. Welches Nagel- oder Klammergerät dahinter steht, legt die Anlage fest. Der Editor braucht diese Zuordnung für zwei Dinge: Er meldet Nagelreihen mit einem Index, den die Anlage nicht kennt, und er rechnet für jedes Gerät den Sperrflächen-Abstand, also den Sicherheitsabstand zwischen Nagelreihe und Säge oder Fräse.</p>
+<p>Beim ersten Start öffnet sich dazu der Dialog <em>Gerätebelegung</em>. Je Gerät werden Index, Bezeichnung und Sperrflächen-Abstand in Millimetern eingetragen; es sind beliebig viele Geräte möglich. „Beispiel einsetzen“ füllt die Liste mit den Geräten einer Anlage. Sie ist als Vorlage gedacht und muss vor dem Speichern an die eigene Anlage angepasst werden. Die richtigen Werte stehen in den Herstellerunterlagen der Anlage.</p>
+<p>Später ist der Dialog über die Befehlspalette (<kbd>Strg</kbd>+<kbd>K</kbd>, „Gerätebelegung“) und über die Automatik-Einstellungen erreichbar.</p>
+
+<h3>Maschinenwerte</h3>
+<p>Unter dem Zahnrad neben den Automatiken stehen die übrigen Werte, mit denen geprüft und gerechnet wird: Sperrflächen-Abstände, Freistich-Radien und -Steuercodes, die Lücke für das Zusammenfassen von Sägelinien, die Richtungsbohrung. Die Vorgaben stammen von einer Anlage. Bitte durchsehen, bevor man sich auf die Prüfungen verlässt.</p>
+
+<h3>Wo die Einstellungen liegen</h3>
+<p>Die Einstellungen liegen im Speicher des Browsers auf dem eigenen Rechner. Editor und Übersicht teilen sie, wenn beide im selben Browser laufen: Wird die Gerätebelegung im Editor gespeichert, übernimmt die Übersicht sie sofort. Ein anderer Browser oder ein anderer Rechner fängt mit leeren Einstellungen an.</p>
+
+<h2 id="editor">Editor</h2>
+<h3>Datei laden und ansehen</h3>
+<p>Eine WUP-Datei über „Datei“ öffnen oder in das Fenster ziehen. Der Editor zeigt die Wand von oben; „Schnitt H“, „Schnitt V“ und „3D“ zeigen sie im Schnitt und räumlich. Über die farbigen Marken lassen sich Bearbeitungsarten (Nagelreihen, Fräsen, Sägen, Sperrflächen, Markierungen, Bohrungen) und einzelne Lagen ein- und ausblenden. Ein Klick auf ein Element zeigt rechts seine Werte und links die zugehörige Zeile der Datei.</p>
+
+<h3>Prüfen</h3>
+<p>Beim Laden und nach jeder Änderung laufen alle <a href="#regeln">Prüfregeln</a>. Die Befunde stehen rechts im Fehler-Log; ein Klick springt zur betroffenen Bearbeitung. Schwerwiegende Befunde, zum Beispiel Platten ohne Materialindex oder geneigte Schnitte, erscheinen zusätzlich in einem eigenen Fenster mit Korrekturvorschlag.</p>
+
+<h3>Ändern</h3>
+<ul>
+  <li>Werte einer Bearbeitung rechts in den Eigenschaften ändern.</li>
+  <li>Mit „Verschieben“ Bearbeitungen oder einzelne Kanten versetzen, mit „Neue Kontur“ Säge-, Fräs- und Sperrflächen-Konturen sowie Nagelreihen anlegen.</li>
+  <li>„Werte ersetzen“ (<kbd>Strg</kbd>+<kbd>H</kbd>) ändert einen Wert in vielen Bearbeitungen zugleich, auf Wunsch nur in bestimmten Lagen oder Platten.</li>
+  <li>Jeder Schritt lässt sich zurücknehmen.</li>
+</ul>
+
+<h3>Automatiken</h3>
+<p>Das Menü „Automatiken“ enthält diese Rechenläufe:</p>
+<ul>
+  <li><strong>Über- und Unterschnitt:</strong> setzt an Innenecken Unterschnitt und an Außenecken Überschnitt.</li>
+  <li><strong>Auto-Sperrflächen:</strong> legt Sperrflächen dort an, wo Säge, Fräse oder Bohrung über Nagelreihen fahren würden.</li>
+  <li><strong>Auto-Kontur:</strong> verkettet Konturen mit gemeinsamen Endpunkten und fasst Sägelinien in einer Flucht zusammen.</li>
+  <li><strong>Freistich:</strong> ergänzt Freistiche an Innenecken.</li>
+  <li><strong>Richtung:</strong> setzt die Richtungsbohrung in Ober- und Untergurt.</li>
+  <li><strong>Ecken-PML:</strong> zeichnet Markierlinien an den Wandecken.</li>
+</ul>
+<p>Jede Automatik sagt, was sie geändert und was sie übersprungen hat. Das Ergebnis bleibt ein Vorschlag und ist vor dem Export anzusehen.</p>
+
+<h3>Exportieren</h3>
+<p>„Export“ schreibt die Datei zurück. Wurde etwas geändert, zeigt der Editor vorher die geänderten Zeilen im Vergleich. Kodierung und Zeilenenden der Ausgangsdatei bleiben erhalten; eine unveränderte Datei kommt Byte für Byte gleich heraus.</p>
+
+<h2 id="regeln">Prüfregeln</h2>
+<p>Drei Stufen: Ein <span class="s-fehler">Fehler</span> stört die Fertigung, eine <span class="s-warnung">Warnung</span> sollte angesehen werden, ein <span class="s-hinweis">Hinweis</span> ist eine Beobachtung. Grenzwerte kommen aus den Maschinenwerten.</p>
+<div class="rollen">
+<table>
+<thead><tr><th>Regel</th><th>Stufe</th><th>Meldet</th></tr></thead>
+<tbody>
+<tr><td class="nr">P-01</td><td class="stufe s-fehler">Fehler</td><td>Sägeschnitt tiefer als die größte Sägetiefe.</td></tr>
+<tr><td class="nr">P-02</td><td class="stufe s-fehler">Fehler</td><td>Fräsung tiefer als die größte Frästiefe.</td></tr>
+<tr><td class="nr">P-03</td><td class="stufe s-fehler">Fehler</td><td>Säge, Fräse oder Bohrung fährt über Nagelreihen, ohne dass eine Sperrfläche sie abdeckt. Kollisionsgefahr.</td></tr>
+<tr><td class="nr">P-04</td><td class="stufe s-fehler">Fehler</td><td>Element größer als die größte Wand der Anlage.</td></tr>
+<tr><td class="nr">P-05</td><td class="stufe s-warnung">Warnung</td><td>Nagelpunkte liegen in einer Sperrfläche; die Maschine lässt sie aus, dort fehlt die Befestigung.</td></tr>
+<tr><td class="nr">P-06</td><td class="stufe s-warnung">Warnung</td><td>Bearbeitung ragt mehr als 50 mm über das Element hinaus.</td></tr>
+<tr><td class="nr">P-07</td><td class="stufe s-warnung">Warnung</td><td>Platten einer Lage haben unterschiedliche Höhen; die geringste gilt für die ganze Lage.</td></tr>
+<tr><td class="nr">P-08</td><td class="stufe s-fehler">Fehler</td><td>Sperrflächen-Polygon ist nicht geschlossen.</td></tr>
+<tr><td class="nr">P-09</td><td class="stufe s-hinweis">Hinweis</td><td>Kontur mit Radiuskorrektur 300: Gutteil und Abfall sind nicht unterscheidbar.</td></tr>
+<tr><td class="nr">P-10</td><td class="stufe s-hinweis">Hinweis</td><td>Innenecke ohne Freistich.</td></tr>
+<tr><td class="nr">P-11</td><td class="stufe s-warnung">Warnung</td><td>Innenecke ist überschnitten; der Schnitt läuft ins Gutteil.</td></tr>
+<tr><td class="nr">P-12</td><td class="stufe s-hinweis">Hinweis</td><td>Außenecke ist unterschnitten; Material bleibt stehen.</td></tr>
+<tr><td class="nr">P-13</td><td class="stufe s-hinweis">Hinweis</td><td>Nagelabstand außerhalb des üblichen Bereichs von 20 bis 300 mm.</td></tr>
+<tr><td class="nr">P-14</td><td class="stufe s-hinweis">Hinweis</td><td>Schnitttiefe gleich der Lagenhöhe über einer OSB-Lage; Korrektur für die Luftdichtheit prüfen.</td></tr>
+<tr><td class="nr">P-15</td><td class="stufe s-hinweis">Hinweis</td><td>Lage enthält Sperrflächen, aber keine Nagelreihen.</td></tr>
+<tr><td class="nr">P-16</td><td class="stufe s-warnung">Warnung</td><td>Dieselbe Kontur ist doppelt vorhanden.</td></tr>
+<tr><td class="nr">P-17</td><td class="stufe s-hinweis">Hinweis</td><td>Ein Materialindex wird mit verschiedenen Namen verwendet.</td></tr>
+<tr><td class="nr">P-18</td><td class="stufe s-warnung">Warnung</td><td>Ober- oder Untergurt ohne Richtungsbohrung; als Hinweis, wenn sie zu nah an der Bauteilmitte liegt. Die Richtungsbohrung ist eine Hauskonvention und in den Maschinenwerten einstellbar.</td></tr>
+<tr><td class="nr">P-19</td><td class="stufe s-fehler">Fehler</td><td>Platten ohne Materialindex.</td></tr>
+<tr><td class="nr">P-20</td><td class="stufe s-fehler">Fehler</td><td>Nagelreihe mit einem Geräteindex, der nicht in der Gerätebelegung steht.</td></tr>
+<tr><td class="nr">P-21</td><td class="stufe s-fehler">Fehler</td><td>Säge- oder Fräskontur mit Neigungswinkel ungleich 0°.</td></tr>
+<tr><td class="nr">P-22</td><td class="stufe s-fehler">Fehler</td><td>Geräteindex 25 in einer Außenlage. Die Regel stammt von einer Anlage, deren Maschine in Außenlagen selbst von 20 auf 25 umstellt.</td></tr>
+<tr><td class="nr">P-23</td><td class="stufe s-fehler">Fehler</td><td>Kontur mit zu wenigen Punkten.</td></tr>
+<tr><td class="nr">P-24</td><td class="stufe s-warnung">Warnung</td><td>Bohrung <code>BOZ</code> in einer Plattenlage; seit WUP 3.4 durch <code>PAF</code> mit <code>MP</code> ersetzt.</td></tr>
+<tr><td class="nr">P-25</td><td class="stufe s-warnung">Warnung</td><td>Nagelreihe liegt genau auf einer Plattenkante oder einem Plattenstoß.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="leise">P-18 und P-22 bilden die Arbeitsweise einer bestimmten Anlage ab und passen nicht auf jede.</p>
+
+<h2 id="uebersicht">Übersicht</h2>
+<p>Die Übersicht ist für ganze Aufträge gedacht. „Dateien öffnen“ oder Ablegen im Fenster lädt beliebig viele WUP-Dateien; jede Wand bekommt eine Karte mit Vorschau, Zahl der Lagen und Bearbeitungen und der Zahl der Fehler.</p>
+<ul>
+  <li><strong>Suchen, filtern, sortieren:</strong> nach Wandname, nach Befunden, als Karten, kompakt oder als Liste.</li>
+  <li><strong>Über alle rechnen:</strong> Automatiken und „Werte ersetzen“ laufen über alle geladenen Dateien; „Befunde prüfen“ fasst die schwerwiegenden Befunde zusammen.</li>
+  <li><strong>Im Editor öffnen:</strong> übergibt eine Wand an den Editor. Was dort geändert wird, kommt in die Übersicht zurück.</li>
+  <li><strong>Alle exportieren:</strong> lädt die Dateien einzeln herunter, auf Wunsch nur die geänderten.</li>
+</ul>
+<p>Die Übersicht rechnet mit dem Kern des Editors. Auf dieser Seite findet sie ihn selbst. Lokal per Doppelklick geöffnet, fragt sie einmal nach der Datei <code>wup_editor.html</code>, weil der Browser das Nachladen lokaler Dateien sperrt.</p>
+
+<h2 id="mcp">MCP-Server</h2>
+<p>Der MCP-Server macht die Prüfungen und Automatiken des Editors für KI-Assistenten nutzbar. Installation, Gerätebelegung, Anbindung an Claude und andere Programme und die Liste seiner Werkzeuge stehen auf einer eigenen Seite: <a href="mcp.html">MCP-Server einrichten</a>.</p>
+
+<h2 id="grenzen">Grenzen</h2>
+<ul>
+  <li><strong>Übergabe an die Maschinensoftware:</strong> Der Knopf „An WupWorks5“ spricht die Maschinensoftware im lokalen Netz an. Von dieser Seite aus sperrt der Browser diese Verbindung. Wer die Funktion braucht, öffnet den Editor als lokale Datei.</li>
+  <li><strong>Sprache:</strong> Die Oberfläche der Werkzeuge ist deutsch.</li>
+  <li><strong>WUP-Version:</strong> Die Werkzeuge sind mit Dateien der Versionen 3.4 und 3.5 entstanden. Welche Version die eigene Anlage verarbeitet, steht in ihren Unterlagen.</li>
+  <li><strong>Keine Gewähr:</strong> Die Prüfregeln finden bekannte Fehlerbilder. Dass eine Datei ohne Befund ist, heißt nicht, dass sie richtig ist.</li>
+</ul>
+</main>
+<footer class="fuss">
+  <p>Freie Software unter der <a href="https://github.com/Hui-161/WUP_TOOLS/blob/main/LICENSE">GPL-3.0</a>, ohne jede Gewährleistung. Kein Produkt der WEINMANN Holzbautechnik GmbH oder von HOMAG.</p>
+  <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+</footer>
+</div>
+</body>
+</html>

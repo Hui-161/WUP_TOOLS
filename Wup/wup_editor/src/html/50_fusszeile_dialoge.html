@@ -1,0 +1,27 @@
+<div id="kuerzelPanel" class="kuerzel-panel versteckt"></div>
+<footer class="fusszeile">
+  <span class="koord-anzeige" id="koordAnzeige">x: — · y: —</span>
+  <span id="statistik"></span>
+  <span style="margin-left:auto" id="kuerzelLeiste"></span>
+</footer>
+
+<!-- Feedback-Modus: schwebt fixed ueber der gesamten App (funktioniert unabhaengig
+     davon, in welchem Panel gerade kommentiert wird) -->
+<div class="feedback-panel versteckt" id="feedbackPanel"></div>
+<div class="feedback-popover versteckt" id="feedbackPopover"></div>
+
+<!-- WP3-P3: Schicht-Auswahl fuer 'neue-kontur' -->
+<div class="neu-kontur-lagen-popover versteckt" id="neuKonturLagenPopover"></div>
+<!-- WP3-P1: Seiten-Wahl (Radiuskorrektur links/rechts/mitte) nach PAF/PSG-Erzeugung -->
+<div class="seiten-wahl-popup versteckt" id="seitenWahlPopup"></div>
+
+<input type="file" id="dateiInput" accept=".wup,.txt" class="versteckt">
+
+<div class="kontextmenue versteckt" id="kontextmenue" role="menu"></div>
+<!-- GUI-F: Befehlspalette (Strg+K) -->
+<div class="palette versteckt" id="palette">
+  <input id="paletteEingabe" class="eingabefeld" autocomplete="off" spellcheck="false"
+    placeholder="Befehl tippen … (↑/↓ wählen · Enter ausführen · Esc schließen)">
+  <div id="paletteListe"></div>
+</div>
+

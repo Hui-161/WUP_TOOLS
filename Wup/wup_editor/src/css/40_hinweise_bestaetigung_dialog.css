@@ -1,0 +1,70 @@
+/* --- Hinweis-Einblendung --- */
+.hinweis {
+  position: fixed; bottom: 24px; right: 24px;
+  padding: 12px 20px; border-radius: var(--eckenradius);
+  font-size: 0.85rem; z-index: 9999;
+  background: var(--flaeche); border: 1px solid var(--rahmen);
+  box-shadow: var(--schatten-gross); color: var(--text);
+  animation: einblenden 0.3s ease; max-width: 420px;
+}
+.hinweis-erfolg { border-color: var(--erfolg); color: var(--erfolg); }
+.hinweis-fehler { border-color: var(--fehler); color: var(--fehler); }
+.hinweis-warnung { border-color: var(--warnung); color: var(--warnung); }
+@keyframes einblenden { from { transform: translateY(20px); opacity: 0; } }
+
+/* --- Bestaetigungs-Leiste (statt confirm()) --- */
+.bestaetigung {
+  position: fixed; inset: 0; z-index: 10001;
+  background: rgba(0,0,0,0.45);
+  display: flex; align-items: center; justify-content: center;
+}
+.bestaetigung-fenster {
+  background: var(--flaeche); border: 1px solid var(--warnung);
+  border-radius: var(--eckenradius); box-shadow: var(--schatten-gross);
+  padding: 24px 28px; width: min(440px, 90vw);
+}
+.bestaetigung-frage { margin: 0 0 20px; font-size: 1rem; line-height: 1.45; }
+.bestaetigung-knoepfe { display: flex; gap: 10px; justify-content: flex-end; }
+.bestaetigung-knoepfe .schaltflaeche { min-width: 96px; }
+.schaltflaeche-icon { padding-left: 8px; padding-right: 8px; font-size: 1rem; line-height: 1; }
+
+/* --- Modal-Dialog (PSF-Einstellungen) --- */
+.modal-hintergrund {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+  display: flex; align-items: center; justify-content: center; z-index: 10000;
+}
+.modal-hintergrund.versteckt { display: none; }
+.modal-fenster {
+  background: var(--flaeche); border: 1px solid var(--rahmen);
+  border-radius: var(--eckenradius); box-shadow: var(--schatten-gross);
+  width: min(560px, 92vw); max-height: 88vh; overflow: auto; padding: 20px 22px;
+}
+.modal-fenster h2 { margin: 0 0 4px; font-size: 1.05rem; }
+.modal-fenster .modal-untertitel { color: var(--text-gedimmt); font-size: 0.8rem; margin-bottom: 14px; }
+.modal-tabelle { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.modal-tabelle th, .modal-tabelle td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rahmen); }
+.modal-tabelle th { color: var(--text-gedimmt); font-weight: 600; }
+.modal-tabelle input[type="number"] { width: 80px; }
+.modal-tabelle .idx-name { color: var(--text-gedimmt); font-size: 0.78rem; }
+/* WP-J: kurze Befund-Zeile mit ?-Knopf, genaue Erklaerung klappt aus */
+.grav-hilfe {
+  width: 17px; height: 17px; border-radius: 50%; border: 1px solid var(--rahmen);
+  background: var(--flaeche-2); color: var(--akzent); font-size: 0.72rem; font-weight: 700;
+  cursor: pointer; padding: 0; line-height: 1; vertical-align: middle;
+}
+.grav-hilfe:hover { border-color: var(--akzent); }
+.grav-hilfe-text {
+  display: block; margin: 6px 0 2px; padding: 6px 8px; background: var(--flaeche-2);
+  border-left: 3px solid var(--akzent);
+  border-radius: 0 var(--eckenradius-klein) var(--eckenradius-klein) 0;
+}
+.modal-fuss { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; }
+.modal-abschnitt { margin-top: 16px; }
+.modal-abschnitt label { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; }
+/* v2.57 P-23: Fundstellen-Liste im Befunde-Popup */
+.grav-liste { margin: 6px 0 0 18px; padding: 0; font-size: 0.8rem; font-family: var(--schrift-mono); color: var(--fehler); }
+.grav-liste li { margin: 1px 0; }
+/* v2.58 Automatik-Einstellungen: Zeilen im Abschnitt etwas absetzen */
+.modal-abschnitt label + label, .modal-abschnitt label + .mini-hinweis,
+.modal-abschnitt .mini-hinweis + label { margin-top: 6px; }
+.modal-fenster .karten-titel kbd { font-weight: 400; font-size: 0.72rem; margin-left: 4px; }

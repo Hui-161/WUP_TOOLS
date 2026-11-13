@@ -1,0 +1,79 @@
+{
+ "werkzeuge": [
+  {
+   "id": "editor",
+   "name": "wup_editor",
+   "datei": "Wup/wup_editor/wup_editor.html",
+   "version": "2.66"
+  },
+  {
+   "id": "uebersicht",
+   "name": "wup_editor_oversight",
+   "datei": "Wup/wup_editor_oversight/wup_editor_oversight.html",
+   "version": "0.23"
+  },
+  {
+   "id": "mcp",
+   "name": "wup_mcp_server",
+   "datei": "Wup/Mcp/wup_mcp_server.js",
+   "version": "1.8.0"
+  }
+ ],
+ "beispielOrdner": "Wup/03_Beispiel-synthetisch",
+ "beispiele": [
+  {
+   "pfad": "SEMA/IW01.WUP",
+   "stil": "SEMA, 3.5",
+   "inhalt": "kleine Innenwand ohne Öffnung, eine Lage, reines ASCII",
+   "bytes": 2568
+  },
+  {
+   "pfad": "SEMA/IW02.WUP",
+   "stil": "SEMA, 3.5",
+   "inhalt": "Innenwand mit Tür (unten offene Sägekontur), zwei Balkentaschen mit Sperrflächen, Markierlinie",
+   "bytes": 7211
+  },
+  {
+   "pfad": "SEMA/AW01.WUP",
+   "stil": "SEMA, 3.5",
+   "inhalt": "Außenwand mit Fenster: Einblasdämmung, Innen- und Außenbeplankung, Lattung, Rundfräsung mit runder Sperrfläche",
+   "bytes": 15743
+  },
+  {
+   "pfad": "SEMA/GW01.WUP",
+   "stil": "SEMA, 3.5",
+   "inhalt": "Giebelwand mit schrägem Rähm, Stiele als BT4, schräge Sägelinie",
+   "bytes": 4022
+  },
+  {
+   "pfad": "Granit/syn0001.wup",
+   "stil": "Granit, 3.4",
+   "inhalt": "nur Riegelwerk, mit Strebe",
+   "bytes": 1049
+  },
+  {
+   "pfad": "Granit/syn0002.wup",
+   "stil": "Granit, 3.4",
+   "inhalt": "Innenwand mit Tür, beidseitig beplankt, Freistiche",
+   "bytes": 6406
+  },
+  {
+   "pfad": "Granit/syn0003.wup",
+   "stil": "Granit, 3.4",
+   "inhalt": "Außenwand mit Fenster, fünf Lagen, Bearbeitungen am Holz (BOY, FRZ, SG), Sperrflächen",
+   "bytes": 14643
+  },
+  {
+   "pfad": "Granit/syn0004.wup",
+   "stil": "Granit, 3.4",
+   "inhalt": "lange Wand, 18 Sparrenausschnitte als eine Sägekontur mit 77 Punkten, 36 Sperrflächen",
+   "bytes": 13938
+  },
+  {
+   "pfad": "Granit/syn_mit_fehlern.wup",
+   "stil": "Granit, 3.4",
+   "inhalt": "absichtlich fehlerhaft",
+   "bytes": 6330
+  }
+ ]
+}

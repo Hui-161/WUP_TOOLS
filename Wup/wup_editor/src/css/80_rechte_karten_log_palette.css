@@ -1,0 +1,134 @@
+/* Tabs + Baumstruktur (I-01) */
+.text-tab { padding: 2px 8px; border-radius: 5px; cursor: pointer; color: var(--text-gedimmt);
+  font-size: 0.78rem; user-select: none; }
+.text-tab.aktiv { background: var(--akzent-hintergrund); color: var(--text); font-weight: 600; }
+.baum-wurzel { padding: 6px 8px; font-size: 0.74rem; color: var(--text-gedimmt);
+  border-bottom: 1px solid var(--rahmen-weich); line-height: 1.5; }
+.baum-knoten { font-size: 0.76rem; }
+.baum-kopf { display: flex; align-items: center; gap: 5px; padding: 3px 8px; cursor: pointer;
+  user-select: none; font-weight: 600; }
+.baum-kopf:hover { background: var(--flaeche-hover); }
+.baum-kinder { margin-left: 14px; border-left: 1px dashed var(--rahmen-weich); }
+.baum-blatt { display: flex; align-items: center; gap: 5px; padding: 1px 8px; cursor: pointer;
+  font-family: var(--schrift-mono); font-size: 0.7rem; white-space: nowrap; }
+.baum-blatt:hover { background: var(--flaeche-hover); }
+.baum-blatt.ausgewaehlt, .baum-kopf.ausgewaehlt { background: var(--akzent-hintergrund); }
+.baum-punkt { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+/* Log-Gruppen (A-04) */
+.log-titel { cursor: pointer; user-select: none; }
+.log-gruppe-kopf { display: flex; align-items: center; gap: 6px; padding: 3px 6px; cursor: pointer;
+  border-radius: 5px; font-size: 0.74rem; font-weight: 600; }
+.log-gruppe-kopf:hover { background: var(--flaeche-hover); }
+.log-anzahl { background: var(--flaeche-hover); border-radius: 999px; padding: 0 7px;
+  font-size: 0.68rem; font-weight: 700; }
+.sc-mini { width: 100%; min-width: 38px; padding: 1px 1px; font-size: 0.68rem;
+  border: 1px solid transparent; background: transparent; color: var(--text); }
+.sc-mini:focus { border-color: var(--akzent); background: var(--flaeche); outline: none; }
+.sc-ueber select, td.sc-ueber { background: color-mix(in srgb, var(--erfolg) 16%, transparent); border-radius: 4px; }
+.sc-unter select, td.sc-unter { background: color-mix(in srgb, var(--fehler) 16%, transparent); border-radius: 4px; }
+.seg-markiert td { background: var(--akzent-hintergrund); }
+.seg-markiert td:first-child { box-shadow: inset 3px 0 0 var(--akzent); }
+/* Kontextmenue (Rechtsklick) */
+.kontextmenue { position: fixed; z-index: 50; min-width: 196px; max-width: 280px;
+  background: var(--flaeche); border: 1px solid var(--rahmen); border-radius: var(--eckenradius-klein);
+  box-shadow: var(--schatten-gross); padding: 4px; font-size: 0.8rem; user-select: none; }
+.km-kopf { padding: 4px 10px 6px; color: var(--text-gedimmt); font-size: 0.7rem;
+  border-bottom: 1px solid var(--rahmen-weich); margin-bottom: 4px; }
+.km-eintrag { display: flex; align-items: center; gap: 8px; padding: 5px 10px;
+  border-radius: 5px; cursor: pointer; color: var(--text); white-space: nowrap; }
+.km-eintrag:hover { background: var(--akzent-hintergrund); }
+/* GUI-C: editierbare Eigenschaften direkt im Kontextmenue */
+.km-form { padding: 4px 10px 8px; border-bottom: 1px solid var(--rahmen-weich);
+  margin-bottom: 4px; display: grid; gap: 6px; user-select: text; }
+.km-feld { display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  font-size: 0.76rem; color: var(--text-gedimmt); }
+.km-feld input { width: 82px; text-align: right; }
+.km-eintrag.gefahr { color: var(--fehler); }
+.km-eintrag.deaktiviert { color: var(--text-gedimmt); opacity: 0.5; cursor: default; }
+.km-eintrag.deaktiviert:hover { background: transparent; }
+.km-icon { width: 16px; text-align: center; flex: none; }
+.km-kuerzel { margin-left: auto; color: var(--text-gedimmt); font-size: 0.7rem; }
+.km-trenner { height: 1px; background: var(--rahmen-weich); margin: 4px 0; }
+/* Eigenschaften-Panel */
+.werkzeugleiste-2 { border-top: 1px dashed var(--rahmen-weich); }
+.filter-chip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; margin: 0 2px;
+  border-radius: 999px; border: 1px solid var(--rahmen); font-size: 0.72rem; cursor: pointer;
+  user-select: none; color: var(--text-gedimmt); background: var(--flaeche); }
+.filter-chip.an { color: var(--text); border-color: var(--akzent); background: var(--akzent-hintergrund); }
+.filter-chip .chip-punkt { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.schaltflaeche.umschalt-aktiv { background: var(--akzent-hintergrund); border-color: var(--akzent); color: var(--text); }
+/* GUI-H: rechte Karten ein-/ausklappbar (wie Fehler-Log) */
+.karten-klapp { cursor: pointer; user-select: none; }
+/* Explosion-Schalter: Klasse statt Inline-Style — inline display:flex hatte
+   das hidden-Attribut ausgehebelt, die Checkbox war IMMER sichtbar (Altbug) */
+.explosion-schalter { font-size: 0.76rem; display: flex; gap: 4px; align-items: center; color: var(--text-gedimmt); }
+.explosion-schalter[hidden] { display: none; }
+.eig-kopf { margin-bottom: 6px; font-size: 0.84rem; }
+.eig-zeile { display: flex; gap: 6px; flex-wrap: wrap; align-items: flex-end; margin: 6px 0; }
+.eig-feld { display: flex; flex-direction: column; gap: 2px; font-size: 0.7rem; color: var(--text-gedimmt); }
+.eingabefeld-klein { width: 78px; padding: 3px 6px; font-size: 0.78rem; }
+.eingabefeld-zelle { width: 100%; min-width: 40px; padding: 2px 4px; font-size: 0.74rem;
+  border: 1px solid transparent; background: transparent; color: var(--text); }
+.eingabefeld-zelle:focus { border-color: var(--akzent); background: var(--flaeche); outline: none; }
+.eig-tabelle-wrap { max-height: 260px; overflow: auto; border: 1px solid var(--rahmen);
+  border-radius: 6px; margin: 6px 0; }
+.eig-tabelle { width: 100%; border-collapse: collapse; font-size: 0.74rem;
+  font-family: 'JetBrains Mono', 'Consolas', monospace; }
+.eig-tabelle th { position: sticky; top: 0; background: var(--flaeche-hover);
+  color: var(--text-gedimmt); font-weight: 500; text-align: left; padding: 3px 6px; }
+.eig-tabelle td { padding: 1px 4px; border-top: 1px solid var(--rahmen); }
+/* GUI-I: Stellen-Dropdowns als Detail-Zeile unter dem markierten Punkt.
+   sc-mini hat width:100% (fuer Tabellenzellen) — hier auf auto, sonst
+   nimmt JEDES Dropdown die volle Panelbreite und die Zeile laeuft ueber. */
+.eig-tabelle .sc-detail td { background: var(--akzent-hintergrund); padding: 3px 6px;
+  font-size: 0.7rem; color: var(--text-gedimmt); white-space: normal; }
+.eig-tabelle .sc-detail select.sc-mini { width: auto; border-color: var(--rahmen); background: var(--flaeche); }
+.schaltflaeche-gefahr { color: var(--fehler); border-color: var(--fehler); }
+/* Lagen-Liste */
+.lagen-name { font-weight: 600; font-size: 0.78rem; min-width: 46px; }
+/* Fehler-Log */
+/* GUI-F: Befehlspalette (Strg+K) — EIN Suchfeld ueber alle Funktionen,
+   damit der wachsende Funktionsumfang zugaenglich bleibt */
+.palette {
+  position: fixed; top: 12vh; left: 50%; transform: translateX(-50%);
+  width: min(520px, 92vw); z-index: 10001;
+  background: var(--flaeche); border: 1px solid var(--rahmen);
+  border-radius: var(--eckenradius-klein); box-shadow: var(--schatten-gross);
+  padding: 10px; display: flex; flex-direction: column; gap: 8px;
+}
+.palette input { width: 100%; font-size: 0.95rem; padding: 9px 12px; }
+#paletteListe { max-height: 46vh; overflow-y: auto; display: flex; flex-direction: column; gap: 1px; }
+.palette-eintrag {
+  display: flex; align-items: center; gap: 8px; padding: 7px 10px;
+  border-radius: var(--eckenradius-klein); cursor: pointer; font-size: 0.85rem;
+}
+.palette-eintrag.aktiv, .palette-eintrag:hover { background: var(--akzent-hintergrund); }
+.palette-eintrag .palette-hinweis { color: var(--text-gedimmt); font-size: 0.72rem; }
+.palette-eintrag .palette-kuerzel { margin-left: auto; color: var(--text-blass); font-size: 0.72rem; flex: none; }
+
+/* GUI-D: aufklappbare Abschnitte im Eigenschaften-Panel — entzerrt den
+   frueher durchgehend gestapelten Inhalt (Anwenderwunsch "zu zugepackt") */
+.eig-abschnitt { border: 1px solid var(--rahmen-weich); border-radius: var(--eckenradius-klein);
+  margin: 6px 0; overflow: hidden; }
+.eig-abschnitt-kopf { display: flex; align-items: center; gap: 6px; padding: 5px 8px;
+  cursor: pointer; font-size: 0.74rem; font-weight: 600; color: var(--text-gedimmt);
+  background: var(--flaeche-2); user-select: none; }
+.eig-abschnitt-kopf:hover { color: var(--text); }
+.eig-abschnitt-inhalt { padding: 6px 8px; }
+
+/* GUI-E: Level-Filter-Chips ueber dem Fehler-Log */
+.log-filter { display: flex; gap: 6px; margin-bottom: 6px; }
+.log-filter-chip {
+  display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px;
+  border-radius: 999px; border: 1px solid var(--rahmen); background: var(--flaeche-2);
+  font-size: 0.72rem; cursor: pointer; color: var(--text-gedimmt); user-select: none;
+}
+.log-filter-chip.aktiv { border-color: var(--akzent); color: var(--text); background: var(--akzent-hintergrund); }
+.log-filter-chip .zaehler-fehler, .log-filter-chip .zaehler-warnung { background: none; padding: 0; }
+/* Feedback K: Handlungs-Leiste unter dem angeklickten Befund */
+.log-aktionen { display: flex; flex-wrap: wrap; gap: 4px; margin: 2px 0 6px 14px; }
+.log-zeile { padding: 4px 6px; border-radius: 5px; margin-bottom: 3px; cursor: pointer;
+  font-size: 0.74rem; line-height: 1.35; border-left: 3px solid var(--rahmen); }
+.log-zeile:hover { background: var(--flaeche-hover); }
+.zaehler-ok { color: var(--erfolg); font-weight: 700; }
+/* Element-Info & Profil */

@@ -1,0 +1,81 @@
+/* wup.hui161.de — eine Spalte, Systemschrift, keine externen Ressourcen */
+:root {
+  --papier: #fbfaf7; --text: #1c1b19; --leise: #6b675f; --linie: #dedad2;
+  --akzent: #1f4f8f; --feld: #f1eee8;
+  --fehler: #a4281f; --warnung: #8a5a00; --hinweis: #4a5560;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --papier: #171614; --text: #e9e6df; --leise: #9a958b; --linie: #34312c;
+          --akzent: #8fb6ea; --feld: #211f1c;
+          --fehler: #ee8a80; --warnung: #e0b060; --hinweis: #a9b3bd; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--papier); color: var(--text);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.seite { max-width: 46rem; margin: 0 auto; padding: 0 1.25rem 4rem; }
+header.kopf { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; align-items: baseline;
+  padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--linie); }
+header.kopf .marke { font-weight: 650; letter-spacing: .01em; color: var(--text); text-decoration: none; margin-right: auto; }
+header.kopf nav a { color: var(--leise); text-decoration: none; margin-left: 1.1rem; font-size: .95rem; }
+header.kopf nav a:first-child { margin-left: 0; }
+header.kopf nav a:hover, header.kopf nav a[aria-current] { color: var(--text); }
+h1 { font-size: 2.1rem; line-height: 1.2; font-weight: 650; margin: 3rem 0 .75rem; letter-spacing: -.01em; }
+h2 { font-size: 1.25rem; font-weight: 650; margin: 3rem 0 .5rem; padding-top: 1rem; border-top: 1px solid var(--linie); }
+h3 { font-size: 1.02rem; font-weight: 650; margin: 1.75rem 0 .25rem; }
+p, ul, ol, table, pre, figure { margin: 0 0 1rem; }
+.vorspann { font-size: 1.15rem; color: var(--text); max-width: 38rem; }
+.leise { color: var(--leise); }
+a { color: var(--akzent); text-underline-offset: .15em; }
+ul, ol { padding-left: 1.25rem; }
+li { margin: .2rem 0; }
+code, kbd, pre { font-family: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace; font-size: .88em; }
+code { background: var(--feld); padding: .08em .3em; border-radius: 3px; }
+pre { background: var(--feld); padding: .8rem 1rem; overflow-x: auto; border-radius: 4px; line-height: 1.45; }
+pre code { background: none; padding: 0; }
+.start { display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: center; margin: 1.5rem 0 .5rem; }
+.knopf { display: inline-block; padding: .55rem 1.05rem; border: 1px solid var(--text); border-radius: 4px;
+  color: var(--text); text-decoration: none; font-weight: 600; }
+.knopf.voll { background: var(--text); color: var(--papier); }
+.knopf:hover { border-color: var(--akzent); }
+.knopf.voll:hover { background: var(--akzent); }
+figure { margin: 2rem 0 1.5rem; }
+figure img { display: block; width: 100%; height: auto; border: 1px solid var(--linie); border-radius: 4px; }
+figcaption { color: var(--leise); font-size: .88rem; margin-top: .4rem; }
+dl.werkzeuge { margin: 0 0 1rem; }
+dl.werkzeuge dt { font-weight: 650; margin-top: 1.1rem; }
+dl.werkzeuge dd { margin: .1rem 0 0; }
+dl.werkzeuge dd .weiter { font-size: .95rem; }
+.kasten { border-left: 3px solid var(--text); padding: .1rem 0 .1rem 1rem; margin: 1.5rem 0; }
+.kasten p:last-child { margin-bottom: 0; }
+.rollen { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { text-align: left; vertical-align: top; padding: .4rem .6rem .4rem 0; border-bottom: 1px solid var(--linie); }
+th { font-weight: 650; color: var(--leise); font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; }
+td.nr { white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 600; }
+td.stufe { white-space: nowrap; }
+.s-fehler { color: var(--fehler); } .s-warnung { color: var(--warnung); } .s-hinweis { color: var(--hinweis); }
+footer.fuss { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--linie); color: var(--leise); font-size: .88rem; }
+footer.fuss a { color: var(--leise); }
+footer.fuss p { margin: 0 0 .35rem; }
+@media (max-width: 34rem) { body { font-size: 16px; } h1 { font-size: 1.7rem; margin-top: 2rem; } }
+
+/* Werkzeug im Rahmen: Website-Kopf oben, Werkzeug füllt den Rest */
+html.rahmen, html.rahmen body { height: 100%; }
+html.rahmen body { display: flex; flex-direction: column; overflow: hidden; }
+html.rahmen header.kopf { padding: .55rem 1.25rem; border-bottom: 1px solid var(--linie); flex: none; }
+html.rahmen header.kopf .marke { font-size: .98rem; }
+html.rahmen header.kopf nav a { font-size: .9rem; }
+html.rahmen iframe { flex: 1; width: 100%; border: 0; display: block; background: #fff; min-height: 0; }
+html.rahmen iframe[hidden] { display: none; }
+html.rahmen .reiter { display: inline-flex; gap: 0; margin-left: 1.25rem; vertical-align: baseline; }
+html.rahmen .reiter button { font: inherit; font-size: .9rem; background: none; border: 0; padding: 0 .1rem .15rem;
+  margin-right: 1rem; color: var(--leise); cursor: pointer; border-bottom: 2px solid transparent; }
+html.rahmen .reiter button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--text); }
+html.rahmen .reiter button:focus-visible { outline: 2px solid var(--akzent); outline-offset: 2px; }
+
+/* Herunterladen */
+table.laden td { vertical-align: middle; }
+button.knopf { font: inherit; background: none; cursor: pointer; }
+button.knopf:disabled { opacity: .55; cursor: progress; }
+#beispiele td:nth-child(2), #beispiele td.nr { white-space: nowrap; }

@@ -1,0 +1,30 @@
+  <section class="rechts-panel">
+    <div class="rechts-scroller" id="rechtsScroller">
+      <div class="karte" id="karteLagen">
+        <div class="karten-titel">Ansicht</div>
+        <div class="eig-zeile" style="margin-top:0">
+          <select class="eingabefeld eingabefeld-klein" id="selAnsicht" style="width:auto"
+            title="Darstellung spiegeln — Daten bleiben unveraendert. Anschlag: rgw/pla unten links, pli oben links">
+            <option value="innen">rgw_Innenansicht</option>
+            <option value="aussen">pla_Außenansicht (X-Spiegel)</option>
+            <option value="spiegel-y">pli_Innenansicht (Y-Spiegel)</option>
+            <option value="spiegel-xy">XY-Spiegel (180°)</option>
+          </select>
+        </div>
+      </div>
+      <div class="karte" id="karteEigenschaften">
+        <div class="karten-titel karten-klapp" data-karte-klapp="eigenschaften" title="Klick: ein-/ausklappen">
+          <span class="karten-pfeil">▾</span> Eigenschaften</div>
+        <div id="eigenschaften" class="mini-hinweis">Nichts ausgewaehlt. Klick auf ein Element im Canvas oder im Text-Panel.</div>
+      </div>
+      <div class="karte" id="karteLog">
+        <div class="karten-titel log-titel" id="logTitel" title="Klick: ein-/ausklappen">
+          <span id="logPfeil">▾</span> Fehler-Log <span class="klein" id="logZusammenfassung"></span>
+          <button type="button" class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnGravPopup"
+            title="Gravierende Befunde (P-19/P-21/P-22/P-23/P-24) erneut pruefen und das Popup wieder oeffnen">⚠ Befunde</button></div>
+        <div id="fehlerLog" class="mini-hinweis">—</div>
+      </div>
+    </div>
+  </section>
+</main>
+

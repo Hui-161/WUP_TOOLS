@@ -1,0 +1,90 @@
+/* ===================== §4 DESIGN-TOKENS ===================== */
+:root {
+  --hintergrund: #eef2f6;
+  --flaeche: #ffffff;
+  --flaeche-2: #f7f9fc;
+  --flaeche-hover: #edf2f7;
+  --rahmen: #d6dde5;
+  --rahmen-weich: #e5e9ef;
+  --text: #1f2937;
+  --text-gedimmt: #64748b;
+  --text-blass: #94a3b8;
+  --ueberschrift: #1e3a5f;
+  --akzent: #2563eb;            /* Abweichung erlaubt (§4): Blau fuer Daten-Editor */
+  --akzent-hover: #1d4ed8;
+  --akzent-hintergrund: rgba(37, 99, 235, 0.12);
+  --erfolg: #059669;
+  --erfolg-hintergrund: rgba(5, 150, 105, 0.10);
+  --fehler:  #dc2626;
+  --fehler-hintergrund:  rgba(220, 38, 38, 0.10);
+  --warnung: #f59e0b;
+  --warnung-hintergrund: rgba(245, 158, 11, 0.12);
+  --hinweis: #2563eb;
+  --hinweis-hintergrund: rgba(37, 99, 235, 0.10);
+  --eckenradius: 8px;
+  --eckenradius-klein: 4px;
+  --schatten: 0 2px 4px rgba(0,0,0,0.08);
+  --schatten-gross: 0 4px 12px rgba(0,0,0,0.12);
+  --schrift-standard: Arial, Helvetica, sans-serif;
+  --schrift-mono: 'Consolas', 'Courier New', monospace;
+  /* Syntax-Farben Text-Panel (Notepad++-UDL-nah) */
+  --syn-psg: #8e44ad;  --syn-paf: #d35400;  --syn-psf: #c0392b; --syn-psz: #7b1d1d;
+  --syn-nr:  #2563eb;  --syn-poly:#94a3b8;  --syn-platte:#0e9594; --syn-bauteil:#8a5a2b;
+  --syn-kopf:#64748b;  --syn-txt: #8b90a5;
+  --syn-x:#c0392b; --syn-y:#2563eb; --syn-z:#0a8a3a; --syn-t:#8e44ad;
+  --syn-a:#d35400; --syn-mat:#b8860b;
+  --sc-tausend:#0e9594; --sc-hundert:#c0392b; --sc-zehn:#2563eb; --sc-eins:#d35400;
+  /* SVG-Farben */
+  --svg-riegel: #c9a877; --svg-riegel-rand: #8a5a2b;
+  --svg-platte: #0e9594; --svg-psf:#c0392b; --svg-psg:#8e44ad; --svg-paf:#d35400;
+  --svg-nr:#2563eb; --svg-auswahl:#f59e0b; --svg-mess:#0a8a3a;
+  --svg-bohrung:#be185d; /* v2.59 BOZ/BOY/BOX */
+}
+[data-theme="dark"] {
+  --hintergrund: #0f1117;
+  --flaeche: #1a1d27;
+  --flaeche-2: #242837;
+  --flaeche-hover: #2e3345;
+  --rahmen: #353a4f;
+  --rahmen-weich: #2a2f42;
+  --text: #e8eaf0;
+  --text-gedimmt: #8b90a5;
+  --text-blass: #5d6178;
+  --ueberschrift: #f0f4ff;
+  --akzent: #60a5fa;
+  --akzent-hover: #93c5fd;
+  --akzent-hintergrund: rgba(96, 165, 250, 0.15);
+  --erfolg: #4ade80;
+  --erfolg-hintergrund: rgba(74, 222, 128, 0.12);
+  --fehler:  #f87171;
+  --fehler-hintergrund:  rgba(248, 113, 113, 0.12);
+  --warnung: #fbbf24;
+  --warnung-hintergrund: rgba(251, 191, 36, 0.12);
+  --hinweis: #60a5fa;
+  --hinweis-hintergrund: rgba(96, 165, 250, 0.12);
+  --schatten: 0 4px 12px rgba(0,0,0,0.4);
+  --schatten-gross: 0 8px 24px rgba(0,0,0,0.5);
+  --syn-psg:#c084fc; --syn-paf:#fb923c; --syn-psf:#f87171; --syn-psz:#e07b7b;
+  --syn-nr:#60a5fa; --syn-poly:#5d6178; --syn-platte:#2dd4bf; --syn-bauteil:#d4a373;
+  --syn-kopf:#8b90a5; --syn-txt:#6b7089;
+  --syn-x:#f87171; --syn-y:#60a5fa; --syn-z:#4ade80; --syn-t:#c084fc;
+  --syn-a:#fb923c; --syn-mat:#facc15;
+  --sc-tausend:#2dd4bf; --sc-hundert:#f87171; --sc-zehn:#60a5fa; --sc-eins:#fb923c;
+  --svg-riegel:#7a6243; --svg-riegel-rand:#d4a373;
+  --svg-platte:#2dd4bf; --svg-psf:#f87171; --svg-psg:#c084fc; --svg-paf:#fb923c;
+  --svg-nr:#60a5fa; --svg-auswahl:#fbbf24; --svg-mess:#4ade80;
+  --svg-bohrung:#f472b6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: var(--schrift-standard);
+  background: var(--hintergrund);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+

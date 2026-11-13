@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de" class="rahmen">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WUP-Werkzeuge</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="seite.css">
+</head>
+<body>
+<header class="kopf">
+  <span><a class="marke" href="./">WUP-Werkzeuge</a><span class="reiter" role="tablist" aria-label="Werkzeug">
+    <button type="button" role="tab" id="reiter-editor" aria-controls="werkzeug-editor" data-werkzeug="editor">Editor</button>
+    <button type="button" role="tab" id="reiter-uebersicht" aria-controls="werkzeug-uebersicht" data-werkzeug="uebersicht">Übersicht</button>
+  </span></span>
+  <nav><a href="doku.html">Doku</a><a href="https://github.com/Hui-161/WUP_TOOLS">Quelltext</a><a id="ohneRahmen" href="Wup/wup_editor/wup_editor.html" title="Das Werkzeug ohne Website-Kopf im ganzen Fenster öffnen">Ohne Rahmen</a></nav>
+</header>
+<iframe id="werkzeug-editor" role="tabpanel" aria-labelledby="reiter-editor" title="WUP-Editor" src="Wup/wup_editor/wup_editor.html" hidden></iframe>
+<iframe id="werkzeug-uebersicht" role="tabpanel" aria-labelledby="reiter-uebersicht" title="WUP-Editor-Übersicht" src="Wup/wup_editor_oversight/wup_editor_oversight.html" hidden></iframe>
+<script>
+/* Beide Werkzeuge bleiben geladen; der Reiter schaltet nur die Sichtbarkeit
+   um — beim Wechsel geht nichts verloren. Die Seite meldet sich bei der
+   Übersicht (ab v0.22) als Umgebung mit Editor; deren Knöpfe "Im Editor
+   öffnen" und "Im Editor einrichten" schicken dann wup-editor-zeigen hierher.
+   Die Seite wechselt zum Editor und übergibt die Datei mit wup-uebergabe,
+   erneut:true (Editor ab v2.65). Der Rückweg zur Übersicht läuft über den
+   gemeinsamen Browser-Speicher. */
+(function () {
+  var pfad = { editor: 'Wup/wup_editor/wup_editor.html', uebersicht: 'Wup/wup_editor_oversight/wup_editor_oversight.html' };
+  var rahmen = { editor: document.getElementById('werkzeug-editor'), uebersicht: document.getElementById('werkzeug-uebersicht') };
+  var ohneRahmen = document.getElementById('ohneRahmen');
+  var aktiv = null;
+  function zeigen(name, ohneVerlauf) {
+    if (!rahmen[name]) name = 'editor';
+    aktiv = name;
+    Object.keys(rahmen).forEach(function (n) {
+      rahmen[n].hidden = n !== name;
+      document.getElementById('reiter-' + n).setAttribute('aria-selected', String(n === name));
+    });
+    ohneRahmen.href = pfad[name];
+    document.title = (name === 'editor' ? 'Editor' : 'Übersicht') + ' — WUP-Werkzeuge';
+    if (!ohneVerlauf && location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
+    try { rahmen[name].contentWindow.focus(); } catch (e) {}
+  }
+  document.querySelector('.reiter').addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-werkzeug]');
+    if (b) zeigen(b.getAttribute('data-werkzeug'));
+  });
+  window.addEventListener('hashchange', function () { zeigen(location.hash.slice(1), true); });
+  zeigen(location.hash.slice(1), true);
+
+  function editorBereit() {
+    var w = rahmen.editor.contentWindow;
+    return new Promise(function (fertig) {
+      (function warten() {
+        try { if (w.document.readyState === 'complete') return fertig(w); } catch (e) {}
+        setTimeout(warten, 50);
+      })();
+    });
+  }
+  /* Die Übersicht (ab v0.22) fragt nach dem Editor, sobald wir uns als
+     Umgebung mit Editor gemeldet haben. */
+  function umgebungMelden() {
+    try { rahmen.uebersicht.contentWindow.postMessage({ typ: 'wup-umgebung', editor: true }, location.origin); } catch (e) {}
+  }
+  rahmen.uebersicht.addEventListener('load', umgebungMelden);
+  window.addEventListener('message', function (ev) {
+    var d = ev.data;
+    if (ev.origin !== location.origin || ev.source !== rahmen.uebersicht.contentWindow) return;
+    if (!d || typeof d !== 'object' || d.typ !== 'wup-editor-zeigen') return;
+    zeigen('editor');
+    if (typeof d.text !== 'string' || !d.text) return;
+    editorBereit().then(function (w) {
+      w.postMessage({ typ: 'wup-uebergabe', name: d.name, text: d.text, erneut: true }, location.origin);
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+/* --- AP-WE3: Suchen & Ersetzen (Strg+H) — zweispaltig mit Quelltext-Vorschau --- */
+.we-fenster {
+  width: min(1180px, 95vw); max-height: 88vh;
+  display: flex; flex-direction: column;
+}
+.we-fenster.ohne-vorschau { width: min(600px, 92vw); }
+.we-layout { display: flex; gap: 18px; min-height: 0; flex: 1; }
+.we-formular { flex: 0 0 380px; min-width: 0; overflow-y: auto; padding-right: 2px; }
+.we-fenster.ohne-vorschau .we-formular { flex: 1; }
+.we-formular .modal-abschnitt { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.we-formular .modal-abschnitt .mini-hinweis { flex-basis: 100%; }
+.we-treffer {
+  margin-top: 14px; padding: 7px 10px; font-size: 0.82rem;
+  border: 1px solid var(--rahmen); border-radius: var(--eckenradius-klein);
+  color: var(--text-gedimmt); background: var(--flaeche-2);
+}
+.we-treffer.hat-treffer { color: var(--erfolg); background: var(--erfolg-hintergrund); border-color: transparent; }
+.we-vorschau {
+  flex: 1; min-width: 0; display: flex; flex-direction: column;
+  border: 1px solid var(--rahmen); border-radius: var(--eckenradius-klein);
+  background: var(--flaeche-2); overflow: hidden;
+}
+.we-vorschau.zu { display: none; }
+.we-vorschau-kopf {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  padding: 6px 10px; border-bottom: 1px solid var(--rahmen);
+  font-size: 0.78rem; font-weight: 600; color: var(--text-gedimmt); flex: none;
+}
+.we-vorschau-liste { overflow: auto; flex: 1; }
+.we-vorschau-leer { padding: 12px; font-size: 0.8rem; color: var(--text-gedimmt); }
+.we-hunk { border-bottom: 1px solid var(--rahmen); }
+.we-hunk:last-child { border-bottom: none; }
+.we-hunk-kopf {
+  padding: 4px 10px; font-size: 0.72rem; font-weight: 600;
+  font-family: var(--schrift-mono); color: var(--text-gedimmt);
+  background: var(--flaeche-hover); position: sticky; top: 0; z-index: 1;
+}
+.we-zeile-dim { padding: 1px 10px; font-size: 0.72rem; color: var(--text-gedimmt); font-style: italic; }
+.we-zeile-fund { background: var(--flaeche); color: var(--text); }
+.we-mark {
+  background: var(--warnung-hintergrund); color: var(--warnung);
+  border-radius: 2px; font-weight: 700; text-decoration: inherit;
+}
+.diff-zeile-neu .we-mark { background: var(--erfolg); color: var(--flaeche); }
+/* AP-WE6: klickbare Wert-Vorschlaege + Stellen-Dropdowns */
+.we-vorschlaege { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; margin-top: 8px; }
+.we-chip-label { font-size: 0.72rem; color: var(--text-blass); margin-right: 2px; flex-basis: 100%; }
+.we-chip {
+  display: inline-flex; align-items: center; gap: 5px; max-width: 100%;
+  padding: 2px 8px; font-size: 0.74rem; cursor: pointer;
+  background: var(--flaeche-2); color: var(--text);
+  border: 1px solid var(--rahmen); border-radius: 999px;
+}
+.we-chip:hover { background: var(--flaeche-hover); border-color: var(--akzent); }
+.we-chip b { font-weight: 700; }
+.we-chip-anzahl { color: var(--text-blass); font-size: 0.68rem; }
+.we-chip-text {
+  color: var(--text-gedimmt); font-size: 0.7rem; max-width: 230px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+@media (max-width: 1100px) {
+  .we-layout { flex-direction: column; }
+  .we-formular { flex: none; max-height: 45vh; }
+}
+

@@ -1,0 +1,28 @@
+<!-- Feedback-Modus: schwebt fixed ueber der gesamten App (Arbeitspaket 2, 1:1 aus wup_editor.html portiert) -->
+<div class="feedback-panel versteckt" id="feedbackPanel"></div>
+<div class="feedback-popover versteckt" id="feedbackPopover"></div>
+
+<!-- Verstecktes iframe: der eigentliche Editor-Kern (echtes DOM, init() läuft) -->
+<iframe id="kernFrame" style="display:none" title="WUP-Editor-Kern (unsichtbar)"></iframe>
+
+<!-- Fallback-Overlay: wup_editor.html auswählen, wenn fetch scheitert (file://) -->
+<div class="kernquelle-overlay" id="kernquelleOverlay" style="display:none">
+  <div class="kernquelle-fenster">
+    <h2>wup_editor.html auswählen</h2>
+    <p>Der Kern konnte nicht automatisch nachgeladen werden (vermutlich file://-Aufruf,
+       kein fetch() möglich). Bitte die Datei <b>wup_editor.html</b> aus demselben
+       Ordner auswählen oder hierher ziehen.</p>
+    <div class="kernquelle-dropzone" id="kernquelleDropzone">Datei hierher ziehen<br>oder klicken zum Auswählen</div>
+    <input type="file" id="kernquelleInput" accept=".html,.htm" style="display:none">
+  </div>
+</div>
+
+<!-- Fortschritt (Laden / Automatiken) -->
+<div class="fortschritt-hintergrund" id="fortschrittOverlay" style="display:none">
+  <div class="fortschritt-fenster">
+    <div class="fortschritt-titel" id="fortschrittTitel">Verarbeite…</div>
+    <div class="fortschritt-balken-aussen"><div class="fortschritt-balken-innen" id="fortschrittBalken" style="width:0%"></div></div>
+    <div class="fortschritt-status" id="fortschrittStatus"></div>
+  </div>
+</div>
+

@@ -1,0 +1,128 @@
+/* ===================== KOPFZEILE ===================== */
+.app-kopfzeile {
+  background: var(--flaeche);
+  border-bottom: 1px solid var(--rahmen);
+  padding: 8px 16px;
+  display: flex; align-items: center; gap: 10px;
+  position: sticky; top: 0; z-index: 100;
+  flex-wrap: wrap;
+}
+.app-titel { font-size: 1.1rem; font-weight: 600; color: var(--ueberschrift); white-space: nowrap; }
+.versions-badge {
+  font-size: 0.7rem; color: var(--text-gedimmt); background: var(--flaeche-2);
+  border: 1px solid var(--rahmen); border-radius: 999px; padding: 1px 8px;
+}
+.kopf-trenner { width: 1px; height: 24px; background: var(--rahmen); }
+.kopf-zeile2 {
+  background: var(--flaeche-2); border-bottom: 1px solid var(--rahmen);
+  padding: 6px 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.kopf-rechts { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.design-wechsler {
+  background: none; border: 1px solid var(--rahmen); border-radius: var(--eckenradius-klein);
+  color: var(--text-gedimmt); padding: 6px 9px; cursor: pointer; font-size: 0.95rem;
+}
+.design-wechsler:hover { background: var(--flaeche-hover); color: var(--text); }
+
+.schaltflaeche {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 13px; border: none; border-radius: var(--eckenradius-klein);
+  font-family: inherit; font-size: 0.83rem; font-weight: 500;
+  cursor: pointer; transition: all 0.15s; white-space: nowrap;
+}
+.schaltflaeche:disabled { opacity: 0.45; cursor: not-allowed; }
+.schaltflaeche-haupt { background: var(--akzent); color: #fff; }
+.schaltflaeche-haupt:hover:not(:disabled) { background: var(--akzent-hover); }
+.schaltflaeche-neben { background: var(--flaeche-2); color: var(--text); border: 1px solid var(--rahmen); }
+.schaltflaeche-neben:hover:not(:disabled) { background: var(--flaeche-hover); }
+.schaltflaeche-klein { padding: 4px 9px; font-size: 0.76rem; }
+.schaltflaeche-gefahr { color: var(--fehler); border-color: var(--fehler); }
+
+input.eingabefeld, select.eingabefeld {
+  padding: 6px 8px; background: var(--flaeche-2); border: 1px solid var(--rahmen);
+  border-radius: var(--eckenradius-klein); color: var(--text); font-family: inherit; font-size: 0.83rem;
+}
+input.eingabefeld:focus, select.eingabefeld:focus { outline: none; border-color: var(--akzent); }
+input.eingabefeld.schmal { width: 90px; }
+label.eig-feld { display: flex; flex-direction: column; gap: 2px; font-size: 0.7rem; color: var(--text-gedimmt); }
+
+.filter-chip { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; margin: 0 2px;
+  border-radius: 999px; border: 1px solid var(--rahmen); font-size: 0.72rem; cursor: pointer;
+  user-select: none; color: var(--text-gedimmt); background: var(--flaeche); }
+.filter-chip.an { color: var(--text); border-color: var(--akzent); background: var(--akzent-hintergrund); }
+.filter-chip .chip-punkt { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.chip-gruppe { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.chip-gruppe-label { font-size: 0.72rem; color: var(--text-gedimmt); margin-right: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* ===== ANGLEICHUNG an wup_editor.html (v2.35–v2.45): Automatiken-Menue,
+   Seiten-Dreiecke, Kontextmenue, Befehlspalette, Kuerzel-Panel. Klassen und
+   Verhalten bewusst IDENTISCH zum Editor halten — wer eines der beiden
+   Werkzeuge aendert, zieht das andere nach (Spec: gleiche Funktion = gleicher
+   Name, gleiches Symbol, gleiches Kuerzel). ===== */
+.menue-wrap { position: relative; }
+.menue-panel {
+  position: absolute; top: calc(100% + 6px); left: 0; z-index: 500;
+  min-width: 360px; padding: 6px;
+  background: var(--flaeche); border: 1px solid var(--rahmen);
+  border-radius: var(--eckenradius-klein); box-shadow: var(--schatten-gross);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.menue-eintrag {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+  width: 100%; padding: 8px 10px; border: none; border-radius: var(--eckenradius-klein);
+  background: none; color: var(--text); font-family: inherit; font-size: 0.83rem;
+  text-align: left; cursor: pointer;
+}
+.menue-eintrag:hover:not(:disabled) { background: var(--flaeche-hover); }
+.menue-eintrag:disabled { opacity: 0.45; cursor: not-allowed; }
+.menue-eintrag .menue-titel { font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.menue-eintrag .menue-hinweis { font-size: 0.72rem; color: var(--text-gedimmt); white-space: normal; }
+
+.seiten-dreieck { cursor: pointer; user-select: none; padding: 0 3px; font-size: 0.78rem;
+  color: var(--akzent); opacity: 0.45; }
+.seiten-dreieck:hover { opacity: 0.8; }
+.seiten-dreieck.an { opacity: 1; text-shadow: 0 0 6px var(--akzent); }
+
+.kontextmenue { position: fixed; z-index: 600; min-width: 200px; max-width: 300px;
+  background: var(--flaeche); border: 1px solid var(--rahmen); border-radius: var(--eckenradius-klein);
+  box-shadow: var(--schatten-gross); padding: 4px; font-size: 0.8rem; user-select: none; }
+.km-kopf { padding: 4px 10px 6px; color: var(--text-gedimmt); font-size: 0.7rem;
+  border-bottom: 1px solid var(--rahmen); margin-bottom: 4px; }
+.km-eintrag { display: flex; align-items: center; gap: 8px; padding: 5px 10px;
+  border-radius: 5px; cursor: pointer; color: var(--text); white-space: nowrap; }
+.km-eintrag:hover { background: var(--akzent-hintergrund); }
+.km-eintrag.deaktiviert { color: var(--text-gedimmt); opacity: 0.5; cursor: default; }
+.km-eintrag.deaktiviert:hover { background: transparent; }
+.km-icon { width: 16px; text-align: center; flex: none; }
+.km-trenner { height: 1px; background: var(--rahmen); margin: 4px 0; }
+
+.palette {
+  position: fixed; top: 12vh; left: 50%; transform: translateX(-50%);
+  width: min(520px, 92vw); z-index: 10001;
+  background: var(--flaeche); border: 1px solid var(--rahmen);
+  border-radius: var(--eckenradius-klein); box-shadow: var(--schatten-gross);
+  padding: 10px; display: flex; flex-direction: column; gap: 8px;
+}
+.palette input { width: 100%; font-size: 0.95rem; padding: 9px 12px; }
+#paletteListe { max-height: 46vh; overflow-y: auto; display: flex; flex-direction: column; gap: 1px; }
+.palette-eintrag {
+  display: flex; align-items: center; gap: 8px; padding: 7px 10px;
+  border-radius: var(--eckenradius-klein); cursor: pointer; font-size: 0.85rem;
+}
+.palette-eintrag.aktiv, .palette-eintrag:hover { background: var(--akzent-hintergrund); }
+.palette-eintrag .palette-hinweis { color: var(--text-gedimmt); font-size: 0.72rem; }
+.palette-eintrag .palette-kuerzel { margin-left: auto; color: var(--text-blass); font-size: 0.72rem; flex: none; }
+
+.kuerzel-panel {
+  position: fixed; right: 8px; bottom: 34px; z-index: 400;
+  display: flex; gap: 16px; flex-wrap: wrap; max-width: min(980px, 94vw);
+  background: var(--flaeche); border: 1px solid var(--rahmen);
+  border-radius: var(--eckenradius-klein); box-shadow: var(--schatten-gross);
+  padding: 10px 14px; font-size: 0.74rem;
+}
+.kuerzel-gruppe { min-width: 170px; }
+.kuerzel-thema { font-weight: 700; color: var(--ueberschrift); font-size: 0.7rem;
+  text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.kuerzel-zeile { display: flex; gap: 8px; align-items: baseline; padding: 1px 0; color: var(--text-gedimmt); }
+.kuerzel-taste { flex: none; min-width: 92px; }
+

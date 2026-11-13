@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "wup": {
+      "command": "node",
+      "args": ["Wup/Mcp/wup_mcp_server.js"]
+    }
+  }
+}

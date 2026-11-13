@@ -1,0 +1,64 @@
+</head>
+<body>
+
+<div class="app-kopfzeile">
+  <span class="app-titel">WUP-Editor-Übersicht</span>
+  <span class="versions-badge" id="versionsBadge">v–</span>
+  <div class="kopf-trenner"></div>
+  <button type="button" class="schaltflaeche schaltflaeche-haupt" id="btnOeffnen">📂 Dateien öffnen…</button>
+  <div class="drop-zone" id="dropZone">Oder .wup-Dateien hier ablegen (mehrere möglich)</div>
+  <input type="file" id="dateiInput" accept=".wup" multiple style="display:none">
+  <div class="kopf-rechts">
+    <span id="dateiZaehler" style="font-size:0.8rem;color:var(--text-gedimmt)"></span>
+    <button type="button" class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnFeedbackModus"
+      title="Feedback-Modus: auf ein beliebiges Feld/Element klicken, um einen Kommentar zu hinterlassen — am Ende als Text kopierbar">💬 Feedback</button>
+    <button type="button" class="design-wechsler" id="btnDesign" title="Hell/Dunkel umschalten">🌓</button>
+  </div>
+</div>
+
+<div class="kopf-zeile2">
+  <!-- v0.13: Rueckgaengig/Wiederholen wie im Editor (Alt+Z / Alt+Y) -->
+  <button type="button" class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnUndo" title="Rückgängig (Alt+Z)" disabled>↶</button>
+  <button type="button" class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnRedo" title="Wiederholen (Alt+Y)" disabled>↷</button>
+  <div class="kopf-trenner"></div>
+  <!-- Angleichung an Editor v2.35: die Automatiken buendeln sich in EINEM
+       Menue mit Erklaerzeilen; die Eintraege behalten ihre IDs, damit
+       Listener und die Zahlen-Tastenkuerzel (1/2/3/4) unveraendert greifen. -->
+  <div class="menue-wrap">
+    <button type="button" class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnAutomatiken"
+      title="Automatiken über alle geladenen Dateien">⚙ Automatiken ▾</button>
+    <div class="menue-panel versteckt" id="automatikMenue">
+      <button class="menue-eintrag" id="btnF1">
+        <span class="menue-titel">Auto Über-/Unterschnitt <kbd>1</kbd></span>
+        <span class="menue-hinweis">Alle Konturen prüfen und fehlende Schnitt-Korrekturen setzen</span></button>
+      <button class="menue-eintrag" id="btnF2">
+        <span class="menue-titel">Freistiche <kbd>2</kbd></span>
+        <span class="menue-hinweis">Freistiche an unterschnittenen Innenecken einfügen</span></button>
+      <button class="menue-eintrag" id="btnF3">
+        <span class="menue-titel">Auto-Sperrflächen <kbd>3</kbd></span>
+        <span class="menue-hinweis">Sperrflächen unter zerspanenden Bearbeitungen erzeugen</span></button>
+      <button class="menue-eintrag" id="btnAutoKontur">
+        <span class="menue-titel">⛓ Auto-Kontur <kbd>4</kbd></span>
+        <span class="menue-hinweis">PAF/PSF mit gemeinsamen Endpunkten verketten, PSG-Linien in gleicher Achse zusammenfassen</span></button>
+    </div>
+  </div>
+  <div class="kopf-trenner"></div>
+  <button type="button" class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnWerteErsetzen">🔁 Werte ersetzen… (Strg+H)</button>
+  <button type="button" class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnGravPopup" title="Gravierende Befunde (P-19 bis P-23) erneut pruefen und das Popup wieder oeffnen">⚠ Befunde prüfen</button>
+  <span id="auswahlHinweis"></span>
+  <div class="kopf-rechts">
+    <label style="font-size:0.78rem;color:var(--text-gedimmt);display:flex;align-items:center;gap:4px;">
+      <input type="checkbox" id="chkNurGeaenderte" checked> nur geänderte
+    </label>
+    <button type="button" class="schaltflaeche schaltflaeche-neben schaltflaeche-klein" id="btnAlleExport" title="Taste E">⬇ Alle exportieren</button>
+  </div>
+</div>
+
+<div class="kopf-zeile2" id="chipZeile">
+  <div class="chip-gruppe" id="chipsBearbeitungen"><span class="chip-gruppe-label">Bearbeitungen</span></div>
+  <div class="kopf-trenner"></div>
+  <div class="chip-gruppe" id="chipsLagen"><span class="chip-gruppe-label">Lagen</span></div>
+  <div class="kopf-trenner"></div>
+  <div class="chip-gruppe" id="chipsRiegel"><span class="chip-gruppe-label">Riegelwerk</span></div>
+</div>
+
